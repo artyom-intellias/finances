@@ -1,17 +1,39 @@
 from collections import namedtuple
+from decimal import *
 
 import plotly.graph_objects as go
 from tabulate import tabulate
+from dataclasses import dataclass
+
+
+class FinanceYear:
+    def __init__(self, initial: Decimal = 0.0, monthly_salary: Decimal = 0.0, inflation_rate: Decimal = 0.0, interest_rate: Decimal = 0.0):
+        self.initial = initial
+        self.monthly_salary = monthly_salary
+        self.inflation_rate = inflation_rate
+        self.interest_rate = interest_rate
+
+    def report(self):
+        return {
+
+            'profit'
+            'loss'
+            ''
+        }
+
+    def _process(self):
+        if self.initial:
+            self.monthly_salary * 12
+        self.initial = self.monthly_salary * 12
 
 
 class Calc:
 
-    def __init__(self, initial=0, monthly=0, perc_avg=0.0, years=0, recursive_pay=False):
+    def __init__(self, initial=0, monthly_salary=0, perc_avg=0.0, years=0):
         self.initial = initial  # начальная сума вклада
-        self.monthly = monthly  # ежемесячное зачисление
+        self.monthly_salary = monthly_salary  # ежемесячное зачисление
         self.perc_avg = perc_avg  # средняя норма прибыли после инфляции
         self.years = years  # количество лет
-        self.recursive_pay = recursive_pay  # возвращаются ли обратно дивиденты на вклад?
         self.year_report = namedtuple('year_report',
                                       ['year', 'amount', 'compound_interest_amount', 'inflated_amount',
                                        'year_perc_income', 'year_compound_income', 'year_perc_inflation',
@@ -92,9 +114,9 @@ class Calc:
             amount, compound_interest_amount, inflated_amount = [self.initial] * 3
 
         for year in range(1, self.years + 1):
-            amount += self.monthly * 12
-            compound_interest_amount += self.monthly * 12
-            inflated_amount += self.monthly * 12
+            amount += self.monthly_salary * 12
+            compound_interest_amount += self.monthly_salary * 12
+            inflated_amount += self.monthly_salary * 12
 
             year_perc_income = amount * self.perc_avg * 0.01
             year_compound_income = compound_interest_amount * self.perc_avg * 0.01
@@ -133,10 +155,10 @@ class Calc:
 
 if __name__ == '__main__':
     Calc(
-        initial=1000,
-        monthly=2500,
-        perc_avg=0.01,
-        years=25,
+        initial=10000,
+        monthly_salary=10000,
+        perc_avg=10,
+        years=5,
     ).generate_report(table=True, graph=True)
 
 # начальный вклад 40000, ежемесячный вклад 3000, норма прибыли 7% на 3 года, с реинвестированием = 172840
@@ -146,10 +168,10 @@ if __name__ == '__main__':
 # конец активной фазы накопления, вкладываем только дивиденды
 # начальный вклад 694959, ежемесячный вклад 4000, норма прибыли 7% на 10 лет, с реинвестированием = 2076702
 
-#todo расчитать когда начать тратить чтоб выйти в ноль
+# todo расчитать когда начать тратить чтоб выйти в ноль
 
-#todo сделать возможность периодизации по годам, для разных фаз накопления с разной активностью
+# todo сделать возможность периодизации по годам, для разных фаз накопления с разной активностью
 
-#todo сделать коррекцию на эквивалент сегодняшний и конечной даты
+# todo сделать коррекцию на эквивалент сегодняшний и конечной даты
 
-#todo сделать разную инфляцию и ставку snp
+# todo сделать разную инфляцию и ставку snp
