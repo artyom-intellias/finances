@@ -11,6 +11,7 @@
 
 <py-env>
 - paths:
+    - src/dashboard_init.py
     - src/finance_year.py
 </py-env>
 
@@ -26,21 +27,18 @@
         <button id="add_year_btn">Add year</button>
                 <br>
         <button id="remove_year_btn">Remove Year</button>
+
     </form>
 </div>
 <div>
     <ul id="years_list">
-        <li>year 1</li>
-        <li>year 2</li>
-        <li>year 3</li>
-        <li>year 4</li>
-        <li>year 5</li>
     </ul>
 </div>
 
 <div id="dashboard"></div>
 
-<py-script src="src/event_handlers.py" output="dashboard">
+<py-script src="src/dashboard_init.py" output="dashboard">
+import dashboard_init
 import finance_year
 </py-script>
 

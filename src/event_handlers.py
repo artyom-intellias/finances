@@ -1,21 +1,18 @@
 from pyodide.ffi import create_proxy
-import js
-
 
 def e_add_year_btn(e):
     el = document.getElementById("years_list")
     years_total = el.childElementCount
-    new_li = js.document.createElement("li")
-    text = js.document.createTextNode(f"year {years_total}")
+    new_li = document.createElement("li")
+    text = document.createTextNode(f"year {years_total}")
     new_li.appendChild(text)
     el.append(new_li)
 
 
 def e_remove_year_btn(e):
-    li = js.document.createElement("li")
+    li = document.createElement("li")
     el = document.getElementById("years_list")
     el.lastChild.remove()
-
 
 def e_set_years_btn(e):
     years_desired = int(document.getElementById("years_input").value)
@@ -33,6 +30,11 @@ def e_set_years_btn(e):
             years_amount = el.childElementCount
     else:
         pass
+
+def e_set_yearly_inflation(e):...
+def e_set_yearly_interest_rate(e):...
+
+
 
 
 document.getElementById("add_year_btn").onclick = e_add_year_btn
