@@ -1,5 +1,5 @@
 from pyodide.ffi import create_proxy
-from helpers import create_el
+from helpers import create_el, trigger_event
 import js
 
 
@@ -30,15 +30,14 @@ def e_set_years_btn(e):
     years_desired = int(js.document.getElementById("years_input").value)
     el = js.document.getElementById("years_list")
     years_amount = el.childElementCount
-    event = js.document.createEvent('Event')
 
     if years_desired > years_amount:
         while years_amount < years_desired:
-            e_add_year_btn(event)
+            trigger_event(e_add_year_btn)
             years_amount = el.childElementCount
     elif years_desired < years_amount:
         while years_amount > years_desired:
-            e_remove_year_btn(event)
+            trigger_event(e_remove_year_btn)
             years_amount = el.childElementCount
     else:
         pass
