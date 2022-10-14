@@ -1,7 +1,12 @@
 
-# Always import according to - paths: specification, omit actual path, and point to exact file
+# Always import according to index.html - paths: specification, omit everything except the imported file itself
+# if  index.html - paths: - src/event_handlers.py
+# then you need to "import event_handlers", not "from src import event handlers"
+
 from event_handlers import e_add_year_btn
+from helpers import trigger_event
+import js
 
 for i in range(10):
-    event = document.createEvent('Event')
-    e_add_year_btn(event)
+    trigger_event(e_add_year_btn)
+
