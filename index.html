@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<link rel="stylesheet" href="./pyscript.css" />
-<link rel="stylesheet" href="./bootstrap.min.css" />
-<link rel="stylesheet" href="./custom.css" />
+<link rel="stylesheet" href="./pyscript.css"/>
+<link rel="stylesheet" href="./bootstrap.min.css"/>
+<link rel="stylesheet" href="./custom.css"/>
 <script defer src="./pyscript.js"></script>
 <script defer src="./bootstrap.bundle.min.js"></script>
 
@@ -24,7 +24,7 @@
 <body>
 <div class="container">
     <div class="row p-2">
-        <div class="col-3">
+        <div class="col-4">
             <form onsubmit="return event.preventDefault()">
                 <span> your monthly salary</span>
                 <br>
@@ -32,7 +32,7 @@
                 <br>
             </form>
         </div>
-        <div class="col-3">
+        <div class="col-4">
             <form onsubmit="return event.preventDefault()">
                 <span> how many years to invest?</span>
                 <br>
@@ -45,12 +45,34 @@
                 <button id="remove_year_btn" class="form-control">Remove Year</button>
             </form>
         </div>
+        <div class="col-4">
+            <form onsubmit="return event.preventDefault()">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <span> Base interest rate</span>
+                            <br>
+                            <input class="form-control" autocomplete="5"/>
+                            <button class="form-control">set</button>
+                        </div>
+                        <div class="col-6">
+                            <span> Base inflation rate</span>
+                            <br>
+                            <input class="form-control" autocomplete="0"/>
+                            <button class="form-control">set</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="row p-2">
+        <ul id="years_list" class="list-group list-group-horizontal overflow-auto">
+        </ul>
     </div>
 </div>
-<div class="row p-2">
-    <ul id="years_list" class="list-group list-group-horizontal overflow-auto">
-    </ul>
-</div>
+
 
 <div id="dashboard" class="row"></div>
 <div id="output" class="row"></div>
