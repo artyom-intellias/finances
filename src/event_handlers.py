@@ -1,24 +1,25 @@
 from pyodide.ffi import create_proxy
+import js
 
 def e_add_year_btn(e):
-    el = document.getElementById("years_list")
+    el = js.document.getElementById("years_list")
     years_total = el.childElementCount
-    new_li = document.createElement("li")
-    text = document.createTextNode(f"year {years_total}")
+    new_li = js.document.createElement("li")
+    text = js.document.createTextNode(f"year {years_total}")
     new_li.appendChild(text)
     el.append(new_li)
 
 
 def e_remove_year_btn(e):
-    li = document.createElement("li")
-    el = document.getElementById("years_list")
+    li = js.document.createElement("li")
+    el = js.document.getElementById("years_list")
     el.lastChild.remove()
 
 def e_set_years_btn(e):
-    years_desired = int(document.getElementById("years_input").value)
-    el = document.getElementById("years_list")
+    years_desired = int(js.document.getElementById("years_input").value)
+    el = js.document.getElementById("years_list")
     years_amount = el.childElementCount
-    event = document.createEvent('Event')
+    event = js.document.createEvent('Event')
 
     if years_desired > years_amount:
         while years_amount != years_desired:
@@ -37,6 +38,6 @@ def e_set_yearly_interest_rate(e):...
 
 
 
-document.getElementById("add_year_btn").onclick = e_add_year_btn
-document.getElementById("remove_year_btn").onclick = e_remove_year_btn
-document.getElementById("set_years_btn").onclick = e_set_years_btn
+js.document.getElementById("add_year_btn").onclick = e_add_year_btn
+js.document.getElementById("remove_year_btn").onclick = e_remove_year_btn
+js.document.getElementById("set_years_btn").onclick = e_set_years_btn

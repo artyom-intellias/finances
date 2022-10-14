@@ -11,7 +11,7 @@
 
 <py-env>
 - paths:
-    - src/dashboard_init.py
+    - src/event_handlers.py
     - src/finance_year.py
 </py-env>
 
@@ -37,9 +37,11 @@
 
 <div id="dashboard"></div>
 
-<py-script src="src/dashboard_init.py" output="dashboard">
+<py-script src="src/base.py" output="dashboard">
 import dashboard_init
 import finance_year
+
+    import pyodide_js; print(pyodide_js.version)
 </py-script>
 
 </body>
