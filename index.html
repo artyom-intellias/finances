@@ -26,14 +26,19 @@
     <div class="row p-2">
         <div class="col-4">
             <form onsubmit="return event.preventDefault()">
-                <span> your monthly salary</span>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">your monthly salary</span>
+                    </div>
+                    <input id="monthly_salary" class="form-control" type="text" autocomplete="1000"/>
+                </div>
                 <br>
-                <input id="monthly_salary" class="form-control" autocomplete="1000"/>
-                <br>
-                <span> your living cost</span>
-                <br>
-                <input id="living_cost" class="form-control" autocomplete="1000"/>
-                <br>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> your living cost</span>
+                    </div>
+                    <input id="living_cost" class="form-control" type="text" autocomplete="1000"/>
+                </div>
             </form>
         </div>
         <div class="col-4">
@@ -54,20 +59,22 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-6">
-                            <span> Base interest rate</span>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> Base interest rate</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="10">
+                            </div>
                             <br>
-                            <input class="form-control" autocomplete="5"/>
-                            <button class="form-control">set</button>
-                        </div>
-                        <div class="col-6">
-                            <span> Base inflation rate</span>
-                            <br>
-                            <input class="form-control" autocomplete="0"/>
-                            <button class="form-control">set</button>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> Base inflation rate</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="5">
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </form>
         </div>
     </div>
