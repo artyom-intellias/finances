@@ -13,6 +13,8 @@
 - paths:
     - src/event_handlers.py
     - src/finance_year.py
+    - src/purchase.py
+    - src/helpers.py
 </py-env>
 
 <body>
@@ -36,13 +38,9 @@
 </div>
 
 <div id="dashboard"></div>
+<div id="output"></div>
 
-<py-script src="src/base.py" output="dashboard">
-import dashboard_init
-import finance_year
-
-    import pyodide_js; print(pyodide_js.version)
-</py-script>
+<py-script src="src/base.py" output="dashboard"></py-script>
 
 </body>
 </html>
