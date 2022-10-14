@@ -1,23 +1,21 @@
 from pyodide.ffi import create_proxy
+from helpers import create_el
 import js
 
 
 def e_add_year_btn(e):
     el = js.document.getElementById("years_list")
     years_total = el.childElementCount + 1
-    new_li = js.document.createElement("li")
+
+    new_li = create_el(type_='li', class_="list-group-item")
     text = js.document.createTextNode(f"year {years_total}")
     new_li.appendChild(text)
     el.append(new_li)
 
-    inflation_input = js.document.createElement('input')
-    inflation_input.setAttribute('id', f'inflation_input_{years_total}')
-    inflation_input.setAttribute('class', f'inflation_input')
+    inflation_input = create_el(type_='input', id_=f'inflation_input_{years_total}', class_="inflation_input form-control input-sm p-2")
     new_li.append(inflation_input)
 
-    interest_rate_input = js.document.createElement('input')
-    interest_rate_input.setAttribute('id', f'interest_rate_input_{years_total}')
-    interest_rate_input.setAttribute('class', f'interest_rate_input')
+    interest_rate_input = create_el(type_='input', id_=f'interest_rate_input_{years_total}', class_="inflation_input form-control input-sm p-2")
     new_li.append(interest_rate_input)
 
 
@@ -43,8 +41,11 @@ def e_set_years_btn(e):
     else:
         pass
 
-def e_set_yearly_inflation(e):...
-def e_set_yearly_interest_rate(e):...
+
+def e_set_yearly_inflation(e): ...
+
+
+def e_set_yearly_interest_rate(e): ...
 
 
 js.document.getElementById("add_year_btn").onclick = e_add_year_btn
