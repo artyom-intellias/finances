@@ -28,7 +28,11 @@
             <form onsubmit="return event.preventDefault()">
                 <span> your monthly salary</span>
                 <br>
-                <input id="salary_input" class="form-control" autocomplete="1000"/>
+                <input id="monthly_salary" class="form-control" autocomplete="1000"/>
+                <br>
+                <span> your living cost</span>
+                <br>
+                <input id="living_cost" class="form-control" autocomplete="1000"/>
                 <br>
             </form>
         </div>
@@ -68,8 +72,14 @@
         </div>
     </div>
     <div class="row p-2">
-        <ul id="years_list" class="list-group list-group-horizontal overflow-auto">
-        </ul>
+        <div class="col-1">
+            <button type="button" class="btn btn-danger">Danger</button>
+            <button type="button" class="btn btn-success">Success</button>
+        </div>
+        <div class="container">
+            <ul id="years_list" class="list-group list-group-horizontal row"></ul>
+        </div>
+        </div>
     </div>
 </div>
 
