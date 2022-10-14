@@ -12,9 +12,9 @@ def e_add_year_btn(e):
 
 
 def e_remove_year_btn(e):
-    li = js.document.createElement("li")
     el = js.document.getElementById("years_list")
-    el.lastChild.remove()
+    return el.lastChild.remove() if el.lastChild else None
+
 
 def e_set_years_btn(e):
     years_desired = int(js.document.getElementById("years_input").value)
