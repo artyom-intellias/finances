@@ -7,17 +7,17 @@ def e_add_year_btn(e):
     el = js.document.getElementById("years_list")
     years_total = el.childElementCount + 1
 
-    new_li = create_el(type_='li', class_="list-group-item p-4")
+    new_li = create_el(type_='li', class_="list-group-item sortable-item p-4")
 
     text = create_el(type_='p', class_="text-center", text=f"year {years_total}")
     # text = js.document.createTextNode(f"year {years_total}")
     new_li.appendChild(text)
     el.append(new_li)
 
-    interest_rate_input = create_el(type_='input', id_=f'interest_rate_input_{years_total}', class_="inflation_input form-control bg-success text-white")
+    interest_rate_input = create_el(type_='input', class_="interest_rate_input form-control bg-success text-white ")
     new_li.append(interest_rate_input)
 
-    inflation_input = create_el(type_='input', id_=f'inflation_input_{years_total}', class_="inflation_input form-control bg-danger text-white")
+    inflation_input = create_el(type_='input', class_="inflation_input form-control bg-danger text-white")
     new_li.append(inflation_input)
 
 

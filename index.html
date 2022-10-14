@@ -3,8 +3,11 @@
 
 <link rel="stylesheet" href="./pyscript.css" />
 <link rel="stylesheet" href="./bootstrap.min.css" />
+<link rel="stylesheet" href="./mdb.min.css" />
 <script defer src="./pyscript.js"></script>
 <script defer src="./bootstrap.bundle.min.js"></script>
+<script defer src="./mdb.min.js"></script>
+
 
 <head>
     <meta charset="UTF-8">
@@ -23,14 +26,23 @@
 <div class="container">
     <div class="row p-2">
         <div class="col-3">
-            <form id="years_form" onsubmit="return event.preventDefault()">
-                <span id="question"> how many years to invest?</span>
+            <form onsubmit="return event.preventDefault()">
+                <span> how many years to invest?</span>
                 <br>
                 <input id="years_input" class="form-control" autocomplete="10"/>
                 <br>
                 <button id="set_years_btn" class="form-control">Set years</button>
                 <br>
                 <button id="add_year_btn" class="form-control">Add year</button>
+                <br>
+                <button id="remove_year_btn" class="form-control">Remove Year</button>
+            </form>
+        </div>
+        <div class="col-3">
+            <form onsubmit="return event.preventDefault()">
+                <span> your monthly salary</span>
+                <br>
+                <input id="years_input" class="form-control" autocomplete="10"/>
                 <br>
                 <button id="remove_year_btn" class="form-control">Remove Year</button>
             </form>
