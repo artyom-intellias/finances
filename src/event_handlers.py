@@ -10,6 +10,16 @@ def e_add_year_btn(e):
     new_li.appendChild(text)
     el.append(new_li)
 
+    inflation_input = js.document.createElement('input')
+    inflation_input.setAttribute('id', f'inflation_input_{years_total}')
+    inflation_input.setAttribute('class', f'inflation_input')
+    new_li.append(inflation_input)
+
+    interest_rate_input = js.document.createElement('input')
+    interest_rate_input.setAttribute('id', f'interest_rate_input_{years_total}')
+    interest_rate_input.setAttribute('class', f'interest_rate_input')
+    new_li.append(interest_rate_input)
+
 
 def e_remove_year_btn(e):
     el = js.document.getElementById("years_list")
