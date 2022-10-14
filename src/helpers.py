@@ -7,9 +7,9 @@ def trigger_event(event):
 
 def create_el(type_='div', id_=None, class_=None):
     el = js.document.createElement(type_)
-    if id:
+    if id_:
         el.setAttribute('id', id_)
     if class_:
-        el.setAttribute('class', 'interest_rate_input form-control input-sm p-2')
+        el.setAttribute('class', class_)
     return el
 

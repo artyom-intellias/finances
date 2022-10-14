@@ -20,29 +20,30 @@
 </py-env>
 
 <body>
-<div>
-    <form id="years_form" onsubmit="return event.preventDefault()" >
-        <span id="question"> how many years to invest?</span>
-        <br>
-        <input id="years_input" autocomplete="10" />
+<div class="container">
+    <div class="row p-2">
+        <div class="col-3">
+            <form id="years_form" onsubmit="return event.preventDefault()">
+                <span id="question"> how many years to invest?</span>
                 <br>
-        <button id="set_years_btn">Set years</button>
+                <input id="years_input" class="form-control" autocomplete="10"/>
                 <br>
-        <button id="add_year_btn">Add year</button>
+                <button id="set_years_btn" class="form-control">Set years</button>
                 <br>
-        <button id="remove_year_btn">Remove Year</button>
+                <button id="add_year_btn" class="form-control">Add year</button>
+                <br>
+                <button id="remove_year_btn" class="form-control">Remove Year</button>
+            </form>
+        </div>
+    </div>
+    <div class="row p-2">
+        <ul id="years_list" class="list-group list-group-horizontal">
+        </ul>
+    </div>
 
-    </form>
+    <div id="dashboard" class="row"></div>
+    <div id="output" class="row"></div>
 </div>
-<div>
-    <ul id="years_list">
-    </ul>
-</div>
-
-<div id="dashboard"></div>
-<div id="output"></div>
-
 <py-script src="src/base.py" output="dashboard"></py-script>
-
 </body>
 </html>
