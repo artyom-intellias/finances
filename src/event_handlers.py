@@ -8,7 +8,9 @@ def e_add_year_btn(e):
     years_total = el.childElementCount + 1
 
     new_li = create_el(type_='li', class_="list-group-item p-3")
-    text = js.document.createTextNode(f"year {years_total}")
+
+    text = create_el(type_='p', class_="text-center", text=f"year {years_total}")
+    # text = js.document.createTextNode(f"year {years_total}")
     new_li.appendChild(text)
     el.append(new_li)
 
