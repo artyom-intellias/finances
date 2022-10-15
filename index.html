@@ -23,69 +23,53 @@
 
 <body>
 <div class="container">
-    <div class="row p-2">
+    <div class="row mt-5 p-2">
         <div class="col-4">
             <form onsubmit="return event.preventDefault()">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text">your monthly salary</span>
+                        <span id="monthly_salary" class="input-group-text non-rounded-right fixed-width-span-200-px">your monthly salary</span>
                     </div>
-                    <input id="monthly_salary" class="form-control" type="text" autocomplete="1000"/>
+                    <input id="monthly_salary_input" class="form-control" type="text" placeholder="3000" aria-label="monthly_salary" aria-describedby="monthly_salary"/>
                 </div>
-                <br>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text"> your living cost</span>
+                        <span id="living_cost" class="input-group-text non-rounded-right fixed-width-span-200-px"> your living cost</span>
                     </div>
-                    <input id="living_cost" class="form-control" type="text" autocomplete="1000"/>
+                    <input id="living_cost_input" class="form-control" type="text" placeholder="1000" aria-label="living_cost" aria-describedby="living_cost"/>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span id="interest_rate" class="input-group-text non-rounded-right fixed-width-span-200-px"> Base interest rate</span>
+                    </div>
+                    <input id="interest_rate_input" type="text" class="form-control" placeholder="10" aria-label="interest_rate" aria-describedby="interest_rate" />
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span id="inflation_rate" class="input-group-text non-rounded-right fixed-width-span-200-px"> Base inflation rate</span>
+                    </div>
+                    <input id="inflation_rate_input" type="text" class="form-control" placeholder="5" aria-label="inflation_rate" aria-describedby="inflation_rate">
                 </div>
             </form>
         </div>
         <div class="col-4">
             <form onsubmit="return event.preventDefault()">
-                <span> how many years to invest?</span>
-                <br>
-                <input id="years_input" class="form-control" autocomplete="10"/>
-                <br>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button id="remove_year_btn" class="btn btn-outline-danger non-rounded-right" type="button" >Remove Year</button>
+                    </div>
+                    <input id="years_input" class="form-control" autocomplete="10"/>
+                    <div class="input-group-append">
+                        <button id="add_year_btn" class="btn btn-outline-success non-rounded-left" type="button">Add year</button>
+                    </div>
+                </div>
                 <button id="set_years_btn" class="form-control">Set years</button>
-                <br>
-                <button id="add_year_btn" class="form-control">Add year</button>
-                <br>
-                <button id="remove_year_btn" class="form-control">Remove Year</button>
-            </form>
-        </div>
-        <div class="col-4">
-            <form onsubmit="return event.preventDefault()">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"> Base interest rate</span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="10">
-                            </div>
-                            <br>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"> Base inflation rate</span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="5">
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </form>
         </div>
     </div>
     <div class="row p-2">
-        <div class="col-1">
-            <button type="button" class="btn btn-danger">Danger</button>
-            <button type="button" class="btn btn-success">Success</button>
-        </div>
         <div class="container">
             <ul id="years_list" class="list-group list-group-horizontal row"></ul>
-        </div>
         </div>
     </div>
 </div>
