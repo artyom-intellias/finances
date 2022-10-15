@@ -1,4 +1,19 @@
 
+.non-rounded-right {
+    border-top-right-radius: unset;
+    border-bottom-right-radius: unset;
+}
+
+.non-rounded-left {
+    border-top-left-radius: unset;
+    border-bottom-left-radius: unset;
+}
+
+.fixed-width-span-200-px {
+  display: inline-block;
+  width: 200px;
+}
+
 .year-list-item {
     min-width: 160px;
     max-width: 160px;
