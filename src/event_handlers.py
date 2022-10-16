@@ -7,8 +7,8 @@ def e_add_year_btn(e):
     el = js.document.getElementById("years_list")
     years_total = el.childElementCount + 1
 
-    years_total_span = js.document.getElementById("years_count")
-    years_total_span.textContent = years_total
+    years_count = js.document.getElementById("years_stored_value")
+    years_count.value = years_total
 
     li = create_el(type_='li', class_="year-list-item list-group-item sortable-item p-3 col-2")
     el.append(li)
@@ -23,10 +23,17 @@ def e_add_year_btn(e):
 
     text1 = create_el(type_='p', class_="text-center", text=f"year {years_total}")
     text2 = create_el(type_='p', class_="text-center", text=f"placeholder")
-    interest_rate_input = create_el(type_='input',
-                                    class_=f"interest_rate_input_{years_total} form-control bg-success text-white")
-    inflation_input = create_el(type_='input',
-                                class_=f"inflation_input_{years_total} form-control bg-danger text-white")
+
+    # base_interest_rate =
+    # base_inflation_rate =
+    # max_inflation_rate =
+    # max_inflation_rate =
+
+    interest_rate_input = create_el(type_='input', type='range', min=0, max=10, value=5, step=0.01, oninput="this.nextSibling.value = this.value")
+    interest_rate_display = create_el(type_='output', text='0')
+
+    inflation_rate_input = create_el(type_='input', type='range', min=0, max=10, value=5, step=0.01, oninput="this.nextSibling.value = this.value")
+    inflation_rate_display = create_el(type_='output', text='0')
 
     li.appendChild(collapse_btn)
     li.appendChild(collapse_body)
@@ -35,15 +42,17 @@ def e_add_year_btn(e):
     collapse_body.appendChild(text2)
 
     collapse_body.appendChild(interest_rate_input)
-    collapse_body.appendChild(inflation_input)
+    collapse_body.appendChild(interest_rate_display)
+    collapse_body.appendChild(inflation_rate_input)
+    collapse_body.appendChild(inflation_rate_display)
 
 
 def e_remove_year_btn(e):
     el = js.document.getElementById("years_list")
     years_total = el.childElementCount - 1
 
-    years_total_span = js.document.getElementById("years_count")
-    years_total_span.textContent = years_total
+    years_count = js.document.getElementById("years_stored_value")
+    years_count.value = years_total
 
     return el.lastChild.remove() if el.lastChild else None
 
