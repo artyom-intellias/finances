@@ -22,3 +22,21 @@ def create_el(type_='div', id_=None, class_=None, text='', **kwargs):
 
     return el
 
+
+def validate_input(el, max, min=0):
+    val = el.value
+    if val.isdigit():
+        if int(val) > max:
+            el.classList.add('is-invalid')
+            return ''
+        elif int(val) < min:
+            el.classList.add('is-invalid')
+            return ''
+        else:
+            el.classList.remove("is-invalid")
+            return str(val)
+    elif val == '':
+        return ''
+    else:
+        el.classList.add('is-invalid')
+        return ''

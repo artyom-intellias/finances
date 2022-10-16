@@ -1,5 +1,5 @@
 from pyodide.ffi import create_proxy
-from helpers import create_el, trigger_event
+from helpers import create_el, trigger_event, validate_input
 import js
 
 
@@ -60,56 +60,71 @@ def e_remove_year(e):
 
 
 def e_set_years(e):
-    years_desired = int(js.document.getElementById("years_input").value)
+    years_desired = validate_input(js.document.getElementById("years_input"), 100, min=1)
+    js.document.getElementById("years_input").value = ''
+    if not years_desired:
+        return None
     el = js.document.getElementById("years_list")
-    years_amount = el.childElementCount
+    years_amount = str(el.childElementCount)
 
     if years_desired > years_amount:
         while years_amount < years_desired:
             trigger_event(e_add_year)
-            years_amount = el.childElementCount
+            years_amount = str(el.childElementCount)
     elif years_desired < years_amount:
         while years_amount > years_desired:
             trigger_event(e_remove_year)
-            years_amount = el.childElementCount
+            years_amount = str(el.childElementCount)
     else:
         pass
 
 
 def e_set_monthly_salary(e):
     storage = js.document.getElementById("monthly_salary_stored_value")
-    new_val = js.document.getElementById("monthly_salary_input").value
-    storage.textContent = new_val
+    validated_input = validate_input(js.document.getElementById("monthly_salary_input"), 100_000, min=1)
+    if validated_input:
+        storage.textContent = validated_input + ' $'
+    js.document.getElementById("monthly_salary_input").value = ''
 
 
 def e_set_living_cost(e):
     storage = js.document.getElementById("living_cost_stored_value")
-    new_val = js.document.getElementById("living_cost_input").value
-    storage.textContent = new_val
+    validated_input = validate_input(js.document.getElementById("living_cost_input"), 100_000)
+    if validated_input:
+        storage.textContent = validated_input + ' $'
+    js.document.getElementById("living_cost_input").value = ''
 
 
 def e_set_base_interest_rate(e):
     storage = js.document.getElementById("base_interest_rate_stored_value")
-    new_val = js.document.getElementById("base_interest_rate_input").value
-    storage.textContent = new_val
+    validated_input = validate_input(js.document.getElementById("base_interest_rate_input"), 100)
+    if validated_input:
+        storage.textContent = validated_input + ' %'
+    js.document.getElementById("base_interest_rate_input").value = ''
 
 
 def e_set_base_inflation_rate(e):
     storage = js.document.getElementById("base_inflation_rate_stored_value")
-    new_val = js.document.getElementById("base_inflation_rate_input").value
-    storage.textContent = new_val
+    validated_input = validate_input(js.document.getElementById("base_inflation_rate_input"), 100)
+    if validated_input:
+        storage.textContent = validated_input + ' %'
+    js.document.getElementById("base_inflation_rate_input").value = ''
 
 
 def e_set_max_interest_rate(e):
     storage = js.document.getElementById("max_interest_rate_stored_value")
-    new_val = js.document.getElementById("max_interest_rate_input").value
-    storage.textContent = new_val
+    validated_input = validate_input(js.document.getElementById("max_interest_rate_input"), 100)
+    if validated_input:
+        storage.textContent = validated_input + ' %'
+    js.document.getElementById("max_interest_rate_input").value = ''
 
 
 def e_set_max_inflation_rate(e):
     storage = js.document.getElementById("max_inflation_rate_stored_value")
-    new_val = js.document.getElementById("max_inflation_rate_input").value
-    storage.textContent = new_val
+    validated_input = validate_input(js.document.getElementById("max_inflation_rate_input"), 100)
+    if validated_input:
+        storage.textContent = validated_input + ' %'
+    js.document.getElementById("max_inflation_rate_input").value = ''
 
 
 js.document.getElementById("add_year_btn").onclick = e_add_year

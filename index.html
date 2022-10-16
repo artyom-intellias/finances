@@ -31,87 +31,101 @@
                         <span class="input-group-text non-rounded-right fixed-width-span-200-px">Your monthly salary</span>
                     </div>
                     <span id="monthly_salary_stored_value"
-                          class="input-group-text non-rounded-right fixed-width-span-200-px">3000</span>
-                    <input id="monthly_salary_input" class="form-control" type="text" placeholder="3000"/>
+                          class="input-group-text non-rounded-right fixed-width-span-100-px">3000 $</span>
+                    <input id="monthly_salary_input" class="form-control"
+                           type="text" placeholder="1-100000"/>
                     <div class="input-group-append">
                         <button id="set_monthly_salary_btn"
                                 class="form-control btn btn-outline-primary non-rounded-left">Set
                         </button>
                     </div>
                 </div>
+            </form>
+            <form onsubmit="return event.preventDefault()">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text non-rounded-right fixed-width-span-200-px">Your living cost</span>
                     </div>
                     <span id="living_cost_stored_value"
-                          class="input-group-text non-rounded-right fixed-width-span-200-px">1000</span>
-                    <input id="living_cost_input" class="form-control" type="text" placeholder="1000"/>
+                          class="input-group-text non-rounded-right fixed-width-span-100-px">1000 $</span>
+                    <input id="living_cost_input" class="form-control" type="text" placeholder="0-100000"/>
                     <div class="input-group-append">
                         <button id="set_living_cost_btn"
                                 class="form-control btn btn-outline-primary non-rounded-left">Set
                         </button>
                     </div>
                 </div>
+            </form>
+            <form onsubmit="return event.preventDefault()">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text non-rounded-right fixed-width-span-200-px">Base interest rate</span>
                     </div>
                     <span id="base_interest_rate_stored_value"
-                          class="input-group-text non-rounded-right fixed-width-span-200-px">10</span>
-                    <input id="base_interest_rate_input" type="text" class="form-control" placeholder="10"/>
+                          class="input-group-text non-rounded-right fixed-width-span-100-px">10 %</span>
+                    <input id="base_interest_rate_input" type="text" class="form-control" placeholder="0-100"/>
                     <div class="input-group-append">
                         <button id="set_base_interest_rate_btn"
                                 class="form-control btn btn-outline-primary non-rounded-left">Set
                         </button>
                     </div>
                 </div>
+            </form>
+            <form onsubmit="return event.preventDefault()">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text non-rounded-right fixed-width-span-200-px">Max interest rate</span>
                     </div>
                     <span id="max_interest_rate_stored_value"
-                          class="input-group-text non-rounded-right fixed-width-span-200-px">10</span>
-                    <input id="max_interest_rate_input" type="text" class="form-control" placeholder="10">
+                          class="input-group-text non-rounded-right fixed-width-span-100-px">10 %</span>
+                    <input id="max_interest_rate_input" type="text" class="form-control" placeholder="0-100">
                     <div class="input-group-append">
                         <button id="set_max_interest_rate_btn"
                                 class="form-control btn btn-outline-primary non-rounded-left">Set
                         </button>
                     </div>
                 </div>
+            </form>
+            <form onsubmit="return event.preventDefault()">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text non-rounded-right fixed-width-span-200-px">Base inflation rate</span>
                     </div>
                     <span id="base_inflation_rate_stored_value"
-                          class="input-group-text non-rounded-right fixed-width-span-200-px">5</span>
-                    <input id="base_inflation_rate_input" type="text" class="form-control" placeholder="5">
+                          class="input-group-text non-rounded-right fixed-width-span-100-px">5 %</span>
+                    <input id="base_inflation_rate_input" type="text" class="form-control" placeholder="0-100">
                     <div class="input-group-append">
                         <button id="set_base_inflation_rate_btn"
                                 class="form-control btn btn-outline-primary non-rounded-left">Set
                         </button>
                     </div>
                 </div>
+            </form>
+            <form onsubmit="return event.preventDefault()">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text non-rounded-right fixed-width-span-200-px">Max inflation rate</span>
                     </div>
                     <span id="max_inflation_rate_stored_value"
-                          class="input-group-text non-rounded-right fixed-width-span-200-px">10</span>
-                    <input id="max_inflation_rate_input" type="text" class="form-control" placeholder="10">
+                          class="input-group-text non-rounded-right fixed-width-span-100-px">10 %</span>
+                    <input id="max_inflation_rate_input" type="text" class="form-control" placeholder="0-100">
                     <div class="input-group-append">
                         <button id="set_max_inflation_rate_btn"
                                 class="form-control btn btn-outline-primary non-rounded-left">Set
                         </button>
                     </div>
                 </div>
+            </form>
+            <form onsubmit="return event.preventDefault()">
                 <div class="input-group mb-3">
                     <div class="input-group-append">
                         <span class="input-group-text non-rounded-right fixed-width-span-200-px">Years total</span>
                     </div>
                     <div class="input-group-append">
-                        <span id="years_stored_value" class="input-group-text non-rounded-right fixed-width-span-200-px">10</span>
+                        <span id="years_stored_value"
+                              class="input-group-text non-rounded-right fixed-width-span-100-px">10 %</span>
                     </div>
-                    <input id="years_input" class="form-control" placeholder="10"/>
+                    <input id="years_input" class="form-control" placeholder="1-100"/>
                     <div class="input-group-append">
                         <button id="set_years_btn"
                                 class="form-control btn btn-outline-primary non-rounded-left">Set
