@@ -30,46 +30,76 @@
                     <div class="input-group-prepend">
                         <span id="monthly_salary" class="input-group-text non-rounded-right fixed-width-span-200-px">your monthly salary</span>
                     </div>
-                    <input id="monthly_salary_input" class="form-control" type="text" placeholder="3000" aria-label="monthly_salary" aria-describedby="monthly_salary"/>
+                    <input id="monthly_salary_input" class="form-control" type="text" placeholder="3000"
+                           aria-label="monthly_salary" aria-describedby="monthly_salary"/>
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span id="living_cost" class="input-group-text non-rounded-right fixed-width-span-200-px"> your living cost</span>
                     </div>
-                    <input id="living_cost_input" class="form-control" type="text" placeholder="1000" aria-label="living_cost" aria-describedby="living_cost"/>
+                    <input id="living_cost_input" class="form-control" type="text" placeholder="1000"
+                           aria-label="living_cost" aria-describedby="living_cost"/>
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span id="interest_rate" class="input-group-text non-rounded-right fixed-width-span-200-px"> Base interest rate</span>
                     </div>
-                    <input id="interest_rate_input" type="text" class="form-control" placeholder="10" aria-label="interest_rate" aria-describedby="interest_rate" />
+                    <input id="interest_rate_input" type="text" class="form-control" placeholder="10"
+                           aria-label="interest_rate" aria-describedby="interest_rate"/>
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span id="inflation_rate" class="input-group-text non-rounded-right fixed-width-span-200-px"> Base inflation rate</span>
                     </div>
-                    <input id="inflation_rate_input" type="text" class="form-control" placeholder="5" aria-label="inflation_rate" aria-describedby="inflation_rate">
+                    <input id="inflation_rate_input" type="text" class="form-control" placeholder="5"
+                           aria-label="inflation_rate" aria-describedby="inflation_rate">
                 </div>
             </form>
         </div>
         <div class="col-4">
-            <form onsubmit="return event.preventDefault()">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <button id="remove_year_btn" class="btn btn-outline-danger non-rounded-right" type="button" >Remove Year</button>
-                    </div>
-                    <input id="years_input" class="form-control" autocomplete="10"/>
-                    <div class="input-group-append">
-                        <button id="add_year_btn" class="btn btn-outline-success non-rounded-left" type="button">Add year</button>
-                    </div>
+        </div>
+    </div>
+    <div class="row mb-5 p-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-4"><h3><span id="years_count">0</span> years</h3>
                 </div>
-                <button id="set_years_btn" class="form-control">Set years</button>
-            </form>
+                <div class="col-4">
+                </div>
+                <div class="col-4">
+                    <form onsubmit="return event.preventDefault()">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <button id="remove_year_btn" class="btn btn-outline-danger non-rounded-right"
+                                        type="button">
+                                    Remove
+                                </button>
+                            </div>
+                            <div class="input-group-prepend">
+                                <button id="add_year_btn"
+                                        class="btn btn-outline-success non-rounded-left non-rounded-right"
+                                        type="button">Add
+                                </button>
+                            </div>
+                            <input id="years_input" class="form-control" autocomplete="10"/>
+                            <div class="input-group-append">
+                                <button id="set_years_btn"
+                                        class="form-control btn btn-outline-primary non-rounded-left">Set years
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row p-2">
         <div class="container">
-            <ul id="years_list" class="list-group list-group-horizontal row"></ul>
+            <div class="row">
+                <div class="col-12">
+                    <ul id="years_list" class="list-group list-group-horizontal row"></ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>

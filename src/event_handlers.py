@@ -7,6 +7,9 @@ def e_add_year_btn(e):
     el = js.document.getElementById("years_list")
     years_total = el.childElementCount + 1
 
+    years_total_span = js.document.getElementById("years_count")
+    years_total_span.textContent = years_total
+
     li = create_el(type_='li', class_="year-list-item list-group-item sortable-item p-3 col-2")
     el.append(li)
 
@@ -37,6 +40,11 @@ def e_add_year_btn(e):
 
 def e_remove_year_btn(e):
     el = js.document.getElementById("years_list")
+    years_total = el.childElementCount - 1
+
+    years_total_span = js.document.getElementById("years_count")
+    years_total_span.textContent = years_total
+
     return el.lastChild.remove() if el.lastChild else None
 
 
