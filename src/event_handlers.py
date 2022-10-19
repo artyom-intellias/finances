@@ -4,14 +4,14 @@ import js
 
 
 def e_add_year(e):
-    el = js.document.getElementById("years_list")
-    years_total = el.childElementCount + 1
+    years_list = js.document.getElementById("years_list")
+    years_total = years_list.childElementCount + 1
 
     years_count = js.document.getElementById("years_stored_value")
     years_count.textContent = years_total
 
-    li = create_el(type_='li', class_="year-list-item list-group-item sortable-item p-3 col-2")
-    el.append(li)
+    li = create_el(class_="col list-group-item sortable-item p-3")
+    years_list.append(li)
 
     collapse_btn = create_el('button', class_="btn", custom={"type": "button",
                                                              "data-bs-toggle": "collapse",
@@ -21,7 +21,7 @@ def e_add_year(e):
                                                              })
     collapse_body = create_el(class_="collapse", id_=f"collapseExample_{years_total}")
 
-    text1 = create_el(type_='p', class_="text-center", text=f"year {years_total}")
+    text1 = create_el(type_='h3', class_="text-center", text=f"Year #{years_total}")
     text2 = create_el(type_='p', class_="text-center", text=f"placeholder")
 
     # base_interest_rate = js.document.getElementById("years_stored_value")
