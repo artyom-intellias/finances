@@ -6,49 +6,20 @@ import js
 def e_add_year(e):
     years_list = js.document.getElementById("years_list")
     years_total = years_list.childElementCount + 1
-
     years_count = js.document.getElementById("years_stored_value")
     years_count.textContent = years_total
 
-    li = create_el(class_="col list-group-item sortable-item p-3")
-    years_list.append(li)
+    year_btn = create_el('button', id_=f"year_{years_total}", class_="btn btn-light col list-group-item sortable-item border p-3", custom={"type": "button"})
+    btn_text = create_el(type_='h3', class_="text-center muted-event-child", text=f"Year #{years_total}")
 
-    collapse_btn = create_el('button', class_="btn", custom={"type": "button",
-                                                             "data-bs-toggle": "collapse",
-                                                             "data-bs-target": f"#collapseExample_{years_total}",
-                                                             "aria-expanded": "false",
-                                                             "aria-controls": f"collapseExample_{years_total}",
-                                                             })
-    collapse_body = create_el(class_="collapse", id_=f"collapseExample_{years_total}")
+    year_btn.appendChild(btn_text)
+    years_list.appendChild(year_btn)
 
-    text1 = create_el(type_='h3', class_="text-center", text=f"Year #{years_total}")
-    text2 = create_el(type_='p', class_="text-center", text=f"placeholder")
+    def e_btn(e):
+        e.target.classList.toggle('active')
+        print(e.target)
 
-    # base_interest_rate = js.document.getElementById("years_stored_value")
-    # base_inflation_rate = js.document.getElementById("years_stored_value")
-    # max_inflation_rate = js.document.getElementById("years_stored_value")
-    # max_inflation_rate = js.document.getElementById("years_stored_value")
-    #
-    # div = create_el()
-
-    interest_rate_input = create_el(type_='input', type='range', min=0, max=10, value=5, step=0.1,
-                                    oninput="this.nextSibling.value = this.value")
-    interest_rate_display = create_el(type_='output', text='0')
-
-    inflation_rate_input = create_el(type_='input', type='range', min=0, max=10, value=5, step=0.1,
-                                     oninput="this.nextSibling.value = this.value")
-    inflation_rate_display = create_el(type_='output', text='0')
-
-    li.appendChild(collapse_btn)
-    li.appendChild(collapse_body)
-
-    collapse_btn.appendChild(text1)
-    collapse_body.appendChild(text2)
-
-    collapse_body.appendChild(interest_rate_input)
-    collapse_body.appendChild(interest_rate_display)
-    collapse_body.appendChild(inflation_rate_input)
-    collapse_body.appendChild(inflation_rate_display)
+    js.document.getElementById(f"year_{years_total}").onclick = e_btn
 
 
 def e_remove_year(e):
