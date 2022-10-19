@@ -24,16 +24,18 @@ def e_add_year(e):
     text1 = create_el(type_='p', class_="text-center", text=f"year {years_total}")
     text2 = create_el(type_='p', class_="text-center", text=f"placeholder")
 
-    # base_interest_rate =
-    # base_inflation_rate =
-    # max_inflation_rate =
-    # max_inflation_rate =
+    # base_interest_rate = js.document.getElementById("years_stored_value")
+    # base_inflation_rate = js.document.getElementById("years_stored_value")
+    # max_inflation_rate = js.document.getElementById("years_stored_value")
+    # max_inflation_rate = js.document.getElementById("years_stored_value")
+    #
+    # div = create_el()
 
-    interest_rate_input = create_el(type_='input', type='range', min=0, max=10, value=5, step=0.01,
+    interest_rate_input = create_el(type_='input', type='range', min=0, max=10, value=5, step=0.1,
                                     oninput="this.nextSibling.value = this.value")
     interest_rate_display = create_el(type_='output', text='0')
 
-    inflation_rate_input = create_el(type_='input', type='range', min=0, max=10, value=5, step=0.01,
+    inflation_rate_input = create_el(type_='input', type='range', min=0, max=10, value=5, step=0.1,
                                      oninput="this.nextSibling.value = this.value")
     inflation_rate_display = create_el(type_='output', text='0')
 
