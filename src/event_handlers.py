@@ -90,26 +90,10 @@ def e_set_base_interest_rate(e):
 
 def e_set_base_inflation_rate(e):
     storage = js.document.getElementById("base_inflation_rate_stored_value")
-    validated_input = validate_input(js.document.getElementById("base_inflation_rate_input"), 100)
+    validated_input = validate_input(js.document.getElementById("base_inflation_rate_input"), 1000)
     if validated_input:
         storage.textContent = validated_input + ' %'
     js.document.getElementById("base_inflation_rate_input").value = ''
-
-
-def e_set_max_interest_rate(e):
-    storage = js.document.getElementById("max_interest_rate_stored_value")
-    validated_input = validate_input(js.document.getElementById("max_interest_rate_input"), 100)
-    if validated_input:
-        storage.textContent = validated_input + ' %'
-    js.document.getElementById("max_interest_rate_input").value = ''
-
-
-def e_set_max_inflation_rate(e):
-    storage = js.document.getElementById("max_inflation_rate_stored_value")
-    validated_input = validate_input(js.document.getElementById("max_inflation_rate_input"), 100)
-    if validated_input:
-        storage.textContent = validated_input + ' %'
-    js.document.getElementById("max_inflation_rate_input").value = ''
 
 
 js.document.getElementById("add_year_btn").onclick = e_add_year
@@ -118,6 +102,4 @@ js.document.getElementById("set_years_btn").onclick = e_set_years
 js.document.getElementById("set_monthly_salary_btn").onclick = e_set_monthly_salary
 js.document.getElementById("set_living_cost_btn").onclick = e_set_living_cost
 js.document.getElementById("set_base_interest_rate_btn").onclick = e_set_base_interest_rate
-js.document.getElementById("set_max_interest_rate_btn").onclick = e_set_max_interest_rate
 js.document.getElementById("set_base_inflation_rate_btn").onclick = e_set_base_inflation_rate
-js.document.getElementById("set_max_inflation_rate_btn").onclick = e_set_max_inflation_rate
