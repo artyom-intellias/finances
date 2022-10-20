@@ -22,14 +22,8 @@
 </py-env>
 
 <body>
-
-добавить инфляцию ЗП годовую и тотал2
-
-добавить переключение инфляции, прибыли, salary в режим этого года и дальнейшего периода, через switch
-
-
 <div class="container">
-    <div class="row mt-5 p-2">
+    <div class="row mt-5 mb-5 p-2">
         <div class="col-6">
             <form onsubmit="return event.preventDefault()">
                 <div class="input-group mb-3">
@@ -160,14 +154,13 @@
         <div class="col-6">
             <form onsubmit="return event.preventDefault()">
                 <div class="card">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="container p-2">
-                                <div class="row">
-                                    <h2 class="card-title text-center">Year #1</h2>
-                                </div>
-                            </div>
-                        </li>
+                    <div class="container p-3">
+                        <div class="row">
+                            <h2 class="card-title text-center">Year #1</h2>
+                        </div>
+                    </div>
+
+                    <ul class="list-group list-group-flush year-details">
                         <li class="list-group-item">
                             <div class="container p-2">
                                 <div class="row">
@@ -226,8 +219,8 @@
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        <p>Yearly income:</p>
-                                        <p>Total income:</p>
+                                        <p>Yearly inflation:</p>
+                                        <p>Total inflation:</p>
                                     </div>
                                 </div>
                             </div>
@@ -246,15 +239,7 @@
                                                 <span class="input-group-text">$</span>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <span>
-                                            Yearly inflation:
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
+
                                         <label class="input-group-text non-rounded-bottom" for="inputGroupSelect01">Index
                                             salary to inflation
                                         </label>
@@ -268,6 +253,14 @@
                                                 <option value="2">from this year</option>
                                             </select>
                                         </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>
+                                            Yearly total:
+                                        </p>
+                                        <p>
+                                            Yearly inflation:
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -286,15 +279,7 @@
                                                 <span class="input-group-text">$</span>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <span>
-                                            Yearly inflation:
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
+
                                         <label class="input-group-text non-rounded-bottom" for="inputGroupSelect01">Index
                                             living cost to inflation
                                         </label>
@@ -309,21 +294,28 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="col-6">
+                                        <p>
+                                            Yearly total:
+                                        </p>
+                                        <p>
+                                            Yearly inflation:
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </li>
                     </ul>
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-primary p-3">save</button>
-                        <button type="button" class="btn btn-secondary p-3">reset</button>
+                        <button type="button" class="btn btn-primary non-rounded-top p-3">save</button>
+                        <button type="button" class="btn btn-secondary non-rounded-top p-3">reset</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-    <div id="years_list" class="list-group list-group-horizontal row row-cols-6"></div>
+    <div id="years_list" class="list-group list-group-horizontal row row-cols-6 mb-5"></div>
 </div>
-
 
 <div id="dashboard" class="row"></div>
 <div id="output" class="row"></div>
