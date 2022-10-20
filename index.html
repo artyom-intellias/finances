@@ -172,20 +172,29 @@
                             <div class="container p-2">
                                 <div class="row">
                                     <div class="col-6">
-                                        <h3 class="card-title">Interest rate: 5%</h3>
-
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text non-rounded-right non-rounded-bottom fixed-width-span-150-px">Interest rate:</span>
+                                            </div>
+                                            <input type="text" class="form-control"
+                                                   aria-label="Amount (to the nearest dollar)">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text non-rounded-left non-rounded-bottom">%</span>
+                                            </div>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-text non-rounded-top">
+                                                <input class="form-check-input mt-0" type="checkbox" value=""
+                                                       aria-label="Checkbox for following text input">
+                                            </div>
+                                            <select class="form-select non-rounded-top" id="inputGroupSelect01">
+                                                <option selected value="1">only this year</option>
+                                                <option value="2">from this year</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="col-6">
                                         <p>Yearly income:</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <input type="range" class="form-range" min="0" max="100" step="0.1"
-                                               id="customRange3"
-                                               oninput="this.previousElementSibling.value = this.value + ' %'">
-                                    </div>
-                                    <div class="col-6">
                                         <p>Total income:</p>
                                     </div>
                                 </div>
@@ -195,20 +204,30 @@
                             <div class="container p-2">
                                 <div class="row">
                                     <div class="col-6">
-                                        <h3 class="card-title">Inflation rate: 10%</h3>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text non-rounded-right non-rounded-bottom fixed-width-span-150-px">Inflation rate:</span>
+                                            </div>
+                                            <input type="text" class="form-control"
+                                                   aria-label="Amount (to the nearest dollar)">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text non-rounded-left non-rounded-bottom">%</span>
+                                            </div>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-text non-rounded-top">
+                                                <input class="form-check-input mt-0" type="checkbox" value=""
+                                                       aria-label="Checkbox for following text input">
+                                            </div>
+                                            <select class="form-select non-rounded-top" id="inputGroupSelect01">
+                                                <option selected value="1">only this year</option>
+                                                <option value="2">from this year</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="col-6">
-                                        <p>Yearly inflation:</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <input type="range" class="form-range" min="0" max="100" step="0.1"
-                                               id="customRange3"
-                                               oninput="this.previousElementSibling.value = this.value + ' %'">
-                                    </div>
-                                    <div class="col-6">
-                                        <p>Total inflation:</p>
+                                        <p>Yearly income:</p>
+                                        <p>Total income:</p>
                                     </div>
                                 </div>
                             </div>
@@ -219,7 +238,7 @@
                                     <div class="col-6">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text non-rounded-right fixed-width-span-150-px">Monthly salary</span>
+                                                <span class="input-group-text non-rounded-right fixed-width-span-150-px">Monthly salary:</span>
                                             </div>
                                             <input type="text" class="form-control"
                                                    aria-label="Amount (to the nearest dollar)">
@@ -259,7 +278,7 @@
                                     <div class="col-6">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text non-rounded-right fixed-width-span-150-px">Living cost</span>
+                                                <span class="input-group-text non-rounded-right fixed-width-span-150-px">Living cost:</span>
                                             </div>
                                             <input type="text" class="form-control"
                                                    aria-label="Amount (to the nearest dollar)">
