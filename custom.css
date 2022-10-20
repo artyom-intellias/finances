@@ -1,4 +1,16 @@
 
+
+
+.non-rounded-top {
+    border-top-right-radius: unset;
+    border-top-left-radius: unset;
+}
+
+.non-rounded-bottom {
+    border-bottom-right-radius: unset;
+    border-bottom-left-radius: unset;
+}
+
 .non-rounded-right {
     border-top-right-radius: unset;
     border-bottom-right-radius: unset;
