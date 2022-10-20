@@ -13,6 +13,12 @@
   display: inline-block;
   width: 200px;
 }
+
+.fixed-width-span-150-px {
+  display: inline-block;
+  width: 150px;
+}
+
 .fixed-width-span-100-px {
   display: inline-block;
   width: 100px;
@@ -27,7 +33,7 @@
    pointer-events: none
 }
 .bigger-switch {
-    transform: scale(1.7);
+    transform: scale(1.3);
 }
 
 input[type=range] {
