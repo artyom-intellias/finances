@@ -134,6 +134,23 @@
                     </div>
                 </div>
             </form>
+            <form onsubmit="return event.preventDefault()">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button id="remove_year_btn"
+                                class="btn btn-outline-danger non-rounded-right fixed-width-span-200-px"
+                                type="button">
+                            Remove
+                        </button>
+                    </div>
+                    <div class="input-group-prepend">
+                        <button id="add_year_btn"
+                                class="btn btn-outline-success non-rounded-left non-rounded-left fixed-width-span-200-px"
+                                type="button">Add
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="col-6">
             <form onsubmit="return event.preventDefault()">
@@ -188,42 +205,10 @@
                                 </div>
                             </div>
                         </li>
-
-                        <li class="list-group-item">
-                            <div class="container p-2">
-                                <div class="row">
-                                    <button type="button" class="btn btn-primary">save</button>
-                                </div>
-                            </div>
-                        </li>
                     </ul>
+                    <button type="card-body" class="btn btn-primary">save</button>
                 </div>
             </form>
-        </div>
-    </div>
-    <div class="row mb-5 p-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-6">
-                    <form onsubmit="return event.preventDefault()">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <button id="remove_year_btn"
-                                        class="btn btn-outline-danger non-rounded-right fixed-width-span-200-px"
-                                        type="button">
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="input-group-prepend">
-                                <button id="add_year_btn"
-                                        class="btn btn-outline-success non-rounded-left non-rounded-right fixed-width-span-200-px"
-                                        type="button">Add
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
     <div id="years_list" class="list-group list-group-horizontal row row-cols-6"></div>
