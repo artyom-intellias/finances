@@ -167,16 +167,19 @@
                         <li class="list-group-item">
                             <div class="container p-2">
                                 <div class="row">
-                                    <div class="col-12">
+                                    <div class="col-6">
                                         <h3 class="card-title">Interest rate: 5%</h3>
-                                        <input type="range" class="form-range" min="0" max="100" step="0.1"
-                                               id="customRange3"
-                                               oninput="this.previousElementSibling.value = this.value + ' %'">
+
+                                    </div>
+                                    <div class="col-6">
+                                        <p>Yearly income:</p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
-                                        <p>Yearly income:</p>
+                                        <input type="range" class="form-range" min="0" max="100" step="0.1"
+                                               id="customRange3"
+                                               oninput="this.previousElementSibling.value = this.value + ' %'">
                                     </div>
                                     <div class="col-6">
                                         <p>Total income:</p>
@@ -188,16 +191,18 @@
                         <li class="list-group-item">
                             <div class="container p-2">
                                 <div class="row">
-                                    <div class="col-12">
+                                    <div class="col-6">
                                         <h3 class="card-title">Inflation rate: 10%</h3>
-                                        <input type="range" class="form-range" min="0" max="100" step="0.1"
-                                               id="customRange3"
-                                               oninput="this.previousElementSibling.value = this.value + ' %'">
+                                    </div>
+                                    <div class="col-6">
+                                        <p>Yearly inflation:</p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
-                                        <p>Yearly inflation:</p>
+                                        <input type="range" class="form-range" min="0" max="100" step="0.1"
+                                               id="customRange3"
+                                               oninput="this.previousElementSibling.value = this.value + ' %'">
                                     </div>
                                     <div class="col-6">
                                         <p>Total inflation:</p>
@@ -205,8 +210,36 @@
                                 </div>
                             </div>
                         </li>
+
+                        <li class="list-group-item">
+                            <div class="container p-2">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control"
+                                                   aria-label="Amount (to the nearest dollar)">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">$</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <span>
+                                            Index salary to inflation
+                                        </span>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input bigger-switch" type="checkbox"
+                                                   id="flexSwitchCheckDefault">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
                     </ul>
-                    <button type="card-body" class="btn btn-primary">save</button>
+                    <button type="button" class="btn btn-primary p-3">save</button>
                 </div>
             </form>
         </div>
