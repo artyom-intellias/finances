@@ -26,3 +26,10 @@
 .muted-event-child {
    pointer-events: none
 }
+
+
+input[type=range] {
+    border: 1px solid white;
+    outline: 2px solid white;
+    outline-offset: -1px;
+}

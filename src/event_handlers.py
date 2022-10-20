@@ -3,13 +3,15 @@ from helpers import create_el, trigger_event, validate_input
 import js
 from js import localStorage
 
+
 def e_add_year(e):
     years_list = js.document.getElementById("years_list")
     years_total = years_list.childElementCount + 1
     years_count = js.document.getElementById("years_stored_value")
     years_count.textContent = years_total
 
-    year_btn = create_el('button', id_=f"year_{years_total}", class_="btn btn-light col list-group-item sortable-item border p-3", custom={"type": "button"})
+    year_btn = create_el('button', id_=f"year_{years_total}",
+                         class_="btn btn-light col list-group-item sortable-item border p-3", custom={"type": "button"})
     btn_text = create_el(type_='h3', class_="text-center muted-event-child", text=f"Year #{years_total}")
 
     year_btn.appendChild(btn_text)
