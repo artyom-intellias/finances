@@ -60,6 +60,6 @@ input[type=range] {
     width: 80px;
 }
 
-.year-list-item-btn:nth-child(6n+1) {
-    margin-left: 4px;
+.year-list-item-btn {
+    margin: 6px
 }
