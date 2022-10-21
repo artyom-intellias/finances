@@ -4,6 +4,21 @@ import js
 from js import localStorage
 
 
+def e_year_btn(e):
+    active_year_id = localStorage.getItem('year_btn_active')
+    if active_year_id:
+        year_el = js.document.getElementById(active_year_id)
+        if active_year_id == e.target.id:
+            year_el.classList.toggle('active')
+        else:
+            year_el.classList.remove('active')
+            e.target.classList.add('active')
+            localStorage.setItem('year_btn_active', e.target.id)
+    else:
+        e.target.classList.add('active')
+        localStorage.setItem('year_btn_active', e.target.id)
+
+
 def e_add_year(e):
     years_list = js.document.getElementById("years_list")
     years_total = years_list.childElementCount + 1
@@ -17,21 +32,8 @@ def e_add_year(e):
     year_btn.appendChild(btn_text)
     years_list.appendChild(year_btn)
 
-    def e_year_btn(e):
-        active_year_id = localStorage.getItem('year_btn_active')
-        if active_year_id:
-            year_el = js.document.getElementById(active_year_id)
-            if active_year_id == e.target.id:
-                year_el.classList.toggle('active')
-            else:
-                year_el.classList.remove('active')
-                e.target.classList.add('active')
-                localStorage.setItem('year_btn_active', e.target.id)
-        else:
-            e.target.classList.add('active')
-            localStorage.setItem('year_btn_active', e.target.id)
-
     js.document.getElementById(f"year_{years_total}").onclick = e_year_btn
+    js.document.getElementById(f"year_{years_total}").click()
 
 
 def e_remove_year(e):
