@@ -53,7 +53,3 @@ input[type=range] {
     outline: 2px solid white;
     outline-offset: -1px;
 }
-
-.hidden {
-    display: none
-}
