@@ -96,6 +96,16 @@ def e_set_base_inflation_rate(e):
     js.document.getElementById("base_inflation_rate_input").value = ''
 
 
+def e_investments(e):
+    js.document.getElementById("expenses_tab").classList.add('hidden')
+    js.document.getElementById("investments_tab").classList.remove('hidden')
+
+
+def e_expenses(e):
+    js.document.getElementById("investments_tab").classList.add('hidden')
+    js.document.getElementById("expenses_tab").classList.remove('hidden')
+
+
 js.document.getElementById("add_year_btn").onclick = e_add_year
 js.document.getElementById("remove_year_btn").onclick = e_remove_year
 js.document.getElementById("set_years_btn").onclick = e_set_years
@@ -103,3 +113,5 @@ js.document.getElementById("set_monthly_salary_btn").onclick = e_set_monthly_sal
 js.document.getElementById("set_living_cost_btn").onclick = e_set_living_cost
 js.document.getElementById("set_base_interest_rate_btn").onclick = e_set_base_interest_rate
 js.document.getElementById("set_base_inflation_rate_btn").onclick = e_set_base_inflation_rate
+js.document.getElementById("investments_btn").onclick = e_investments
+js.document.getElementById("expenses_btn").onclick = e_expenses
