@@ -49,7 +49,7 @@ input[type=range] {
 
 #years_list_wrap {
     height: 430px;
-        overflow: scroll;
+    overflow: scroll;
     overflow-y: auto;
     overflow-x: hidden;
 
