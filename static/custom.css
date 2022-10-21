@@ -1,6 +1,4 @@
 
-
-
 .non-rounded-top {
     border-top-right-radius: unset;
     border-top-left-radius: unset;
@@ -36,11 +34,6 @@
   width: 100px;
 }
 
-.year-list-item {
-    min-width: 160px;
-    max-width: 160px;
-}
-
 .muted-event-child {
    pointer-events: none
 }
@@ -52,4 +45,17 @@ input[type=range] {
     border: 1px solid white;
     outline: 2px solid white;
     outline-offset: -1px;
+}
+
+#years_list_wrap {
+    height: 430px;
+        overflow: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+}
+
+.year-list-item-btn {
+    height: 95px;
+    width: 80px;
 }

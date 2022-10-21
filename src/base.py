@@ -7,6 +7,6 @@ from event_handlers import e_add_year
 from helpers import trigger_event
 import js
 
-for i in range(10):
+for i in range(12):
     trigger_event(e_add_year)
 

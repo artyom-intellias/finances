@@ -53,8 +53,8 @@ def e_add_year(e):
     years_count.textContent = years_total
 
     year_btn = create_el('button', id_=f"year_{years_total}",
-                         class_="btn btn-light col list-group-item sortable-item border p-3", custom={"type": "button"})
-    btn_text = create_el(type_='h3', class_="text-center muted-event-child", text=f"Year #{years_total}")
+                         class_="btn btn-light col list-group-item sortable-item border year-list-item-btn p-3", custom={"type": "button"})
+    btn_text = create_el(type_='span', class_="text-center muted-event-child", text=f"Year #{years_total}")
 
     year_btn.appendChild(btn_text)
     years_list.appendChild(year_btn)
