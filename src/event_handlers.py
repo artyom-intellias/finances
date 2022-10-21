@@ -20,6 +20,32 @@ def e_year_btn(e):
         js.document.getElementById('year_btn_active').title = e.target.id
 
 
+def e_prev_year_btn(e):
+    active_year_id = int(js.document.getElementById('year_btn_active').title.split('_')[1])
+
+    years_list = js.document.getElementById("years_list")
+    years_total = years_list.childElementCount + 1
+    if years_total == 1 and active_year_id == 1:
+        return
+
+    prev_year = js.document.getElementById(f'year_{active_year_id - 1}')
+    if prev_year:
+        prev_year.click()
+
+
+def e_next_year_btn(e):
+    active_year_id = int(js.document.getElementById('year_btn_active').title.split('_')[1])
+
+    years_list = js.document.getElementById("years_list")
+    years_total = years_list.childElementCount + 1
+    if years_total == 1 and active_year_id == 1:
+        return
+
+    next_year = js.document.getElementById(f'year_{active_year_id + 1}')
+    if next_year:
+        next_year.click()
+
+
 def e_add_year(e):
     years_list = js.document.getElementById("years_list")
     years_total = years_list.childElementCount + 1
@@ -112,3 +138,5 @@ js.document.getElementById("set_monthly_salary_btn").onclick = e_set_monthly_sal
 js.document.getElementById("set_living_cost_btn").onclick = e_set_living_cost
 js.document.getElementById("set_base_interest_rate_btn").onclick = e_set_base_interest_rate
 js.document.getElementById("set_base_inflation_rate_btn").onclick = e_set_base_inflation_rate
+js.document.getElementById("prev_year_btn").onclick = e_prev_year_btn
+js.document.getElementById("next_year_btn").onclick = e_next_year_btn

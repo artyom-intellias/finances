@@ -129,9 +129,12 @@
                     <div class="container p-3">
                         <div class="row">
                             <h2 class="card-title col-4">Year #1</h2>
+                            <div class="btn-group col-8" role="group" aria-label="Basic example">
+                                <button id="prev_year_btn" type="button" class="btn btn-secondary">prev</button>
+                                <button id="next_year_btn" type="button" class="btn btn-secondary">next</button>
+                            </div>
                         </div>
                     </div>
-
                     <ul id="investments_tab" class="list-group list-group-flush year-details">
                         <li class="list-group-item">
                             <div class="container p-2">
@@ -282,11 +285,11 @@
                         <button type="button" class="btn btn-primary non-rounded-top p-3">save</button>
                         <button type="button" class="btn btn-secondary non-rounded-top p-3">reset</button>
                     </div>
-                </div>
-            </form>
         </div>
+        </form>
     </div>
-    <div id="years_list" class="list-group list-group-horizontal row row-cols-6 mb-5"></div>
+</div>
+<div id="years_list" class="list-group list-group-horizontal row row-cols-6 mb-5"></div>
 </div>
 
 <div id="dashboard" class="row"></div>
