@@ -40,9 +40,15 @@ def e_add_year(e):
 def e_remove_year(e):
     el = js.document.getElementById("years_list")
     years_total = el.childElementCount - 1
+    if years_total == 0:
+        return
 
     years_count = js.document.getElementById("years_stored_value")
     years_count.innerText = years_total
+
+    if el.lastChild.classList.contains("active"):
+        el.lastChild.previousSibling.classList.add("active")
+        js.document.getElementById('year_btn_active').title = el.lastChild.previousSibling.id
 
     return el.lastChild.remove() if el.lastChild else None
 
