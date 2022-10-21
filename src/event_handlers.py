@@ -5,7 +5,7 @@ from js import localStorage
 
 
 def e_year_btn(e):
-    active_year_id = localStorage.getItem('year_btn_active')
+    active_year_id = js.document.getElementById('year_btn_active').title
     if active_year_id:
         year_el = js.document.getElementById(active_year_id)
         if active_year_id == e.target.id:
@@ -13,10 +13,11 @@ def e_year_btn(e):
         else:
             year_el.classList.remove('active')
             e.target.classList.add('active')
-            localStorage.setItem('year_btn_active', e.target.id)
+            js.document.getElementById('year_btn_active').title = e.target.id
+
     else:
         e.target.classList.add('active')
-        localStorage.setItem('year_btn_active', e.target.id)
+        js.document.getElementById('year_btn_active').title = e.target.id
 
 
 def e_add_year(e):
@@ -41,7 +42,7 @@ def e_remove_year(e):
     years_total = el.childElementCount - 1
 
     years_count = js.document.getElementById("years_stored_value")
-    years_count.value = years_total
+    years_count.innerText = years_total
 
     return el.lastChild.remove() if el.lastChild else None
 
