@@ -9,7 +9,7 @@ def e_year_btn(e):
     if active_year_id:
         year_el = js.document.getElementById(active_year_id)
         if active_year_id == e.target.id:
-            year_el.classList.toggle('active')
+            pass
         else:
             year_el.classList.remove('active')
             e.target.classList.add('active')
