@@ -1,11 +1,13 @@
 from finance_year import FinanceYear
 from decimal import Decimal
 from enum import Enum
+import json
+from pprint import pprint
 
 
 class YearsIndexing(Enum):
-     THIS_YEAR = 1
-     ALL_SUBSEQUENT = 2
+    THIS_YEAR = 1
+    ALL_SUBSEQUENT = 2
 
 
 """
@@ -30,16 +32,22 @@ for_this_and_subsequent влияет на каждый новый созданн
 """
 
 
+def decimal_into_json_float_rounded(obj):
+    if isinstance(obj, Decimal):
+        return round(float(obj), 2)
+    return str(obj)
+
+
 class PlanComposer:
 
     def __init__(self, monthly_salary, monthly_expenses, interest_rate, inflation_rate, years_total):
         self.years = []
 
         year = FinanceYear(
-            monthly_salary=monthly_salary,
-            monthly_expenses=monthly_expenses,
-            interest_rate=interest_rate,
-            inflation_rate=inflation_rate
+            monthly_salary=Decimal(monthly_salary),
+            monthly_expenses=Decimal(monthly_expenses),
+            interest_rate=Decimal(interest_rate),
+            inflation_rate=Decimal(inflation_rate)
         )
         self.years.append(year)
         for i in range(years_total):
@@ -88,18 +96,30 @@ class PlanComposer:
                  is_index_expenses: bool = False
                  ) -> FinanceYear:
         """ calculates values for new year, based on previous """
-        base_year = prev_year.generate_report()
+        base_year_report = prev_year.generate_report()
 
         new_year = FinanceYear(
-            initial=base_year["total_income"],
-            monthly_salary=base_year["monthly_salary"],
-            monthly_expenses=base_year["monthly_expenses"],
+            initial=base_year_report["total_income"],
+            monthly_salary=base_year_report["monthly_salary"],
+            monthly_expenses=base_year_report["monthly_expenses"],
             is_index_salary=is_index_salary,
             is_index_expenses=is_index_expenses,
-            inflation_rate=custom_inflation_rate if custom_inflation_rate else base_year["inflation_rate"],
-            interest_rate=custom_interest_rate if custom_interest_rate else base_year["interest_rate"],
-            devaluation_rate=base_year["devaluation_rate"],
-            previous_income=base_year["previous_income"],
-            previous_inflation=base_year["previous_inflation"]
+            inflation_rate=custom_inflation_rate if custom_inflation_rate else prev_year.inflation_rate,
+            interest_rate=custom_interest_rate if custom_interest_rate else prev_year.interest_rate,
+            devaluation_rate=base_year_report["devaluation_rate"],
+            previous_income=base_year_report["total_income"],
+            previous_inflation=base_year_report["total_inflated"]
         )
         return new_year
+
+    def get_plan_in_json(self):
+
+        for year in self.years:
+            # json_report = json.dumps(year.report)
+            json_report = json.dumps(year.report, ensure_ascii=False, default=decimal_into_json_float_rounded)
+            pprint(json_report)
+
+
+if __name__ == '__main__':
+    plan = PlanComposer(monthly_salary=10, monthly_expenses=5, interest_rate=5, inflation_rate=5, years_total=5)
+    plan.get_plan_in_json()
