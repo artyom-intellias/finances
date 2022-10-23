@@ -5,9 +5,9 @@ class FinanceYear:
     def __init__(self,
                  initial: Decimal = Decimal(0.0),
                  monthly_salary: Decimal = Decimal(0.0),
-                 index_salary: bool = False,
-                 living_cost: Decimal = Decimal(0.0),
-                 index_living_cost: bool = False,
+                 is_index_salary: bool = False,
+                 monthly_expenses: Decimal = Decimal(0.0),
+                 is_index_expenses: bool = False,
                  inflation_rate: Decimal = Decimal(0.0),
                  interest_rate: Decimal = Decimal(0.0),
                  devaluation_rate: Decimal = Decimal(1.0),
@@ -17,9 +17,9 @@ class FinanceYear:
         self.devaluation_rate = devaluation_rate
         self.initial = initial
         self.monthly_salary = monthly_salary
-        self.index_salary = index_salary
-        self.living_cost = living_cost
-        self.index_living_cost = index_living_cost
+        self.is_index_salary = is_index_salary
+        self.monthly_expenses = monthly_expenses
+        self.is_index_expenses = is_index_expenses
         self.inflation_rate = inflation_rate
         self.interest_rate = interest_rate
         self.previous_income = previous_income
@@ -30,11 +30,11 @@ class FinanceYear:
         self.initial += self.monthly_salary * 12
         devaluation_rate = self.devaluation_rate * (1 - (self.inflation_rate * Decimal(0.01)))
         yearly_salary = self.monthly_salary * 12
-        yearly_living_cost = self.living_cost * 12
+        yearly_expenses = self.monthly_expenses * 12
         monthly_salary_indexed = self.monthly_salary + (self.monthly_salary * self.inflation_rate * Decimal(0.01))
         yearly_salary_indexed = monthly_salary_indexed * 12
-        monthly_living_cost_indexed = self.living_cost + (self.living_cost * self.inflation_rate * Decimal(0.01))
-        yearly_living_cost_indexed = monthly_living_cost_indexed * 12
+        monthly_expenses_indexed = self.monthly_expenses + (self.monthly_expenses * self.inflation_rate * Decimal(0.01))
+        yearly_expenses_indexed = monthly_expenses_indexed * 12
         yearly_income = (self.initial + yearly_salary) * (self.interest_rate * Decimal(0.01) + 1)
         monthly_income = yearly_income / 12
         yearly_adjusted_income = yearly_income * self.devaluation_rate
@@ -47,12 +47,14 @@ class FinanceYear:
 
         report = {
             "devaluation_rate": devaluation_rate,
+            "monthly_salary": self.monthly_salary,
+            "monthly_expenses": self.monthly_expenses,
             "yearly_salary": yearly_salary,
-            "yearly_living_cost": yearly_living_cost,
+            "yearly_expenses": yearly_expenses,
             "monthly_salary_indexed": monthly_salary_indexed,
             "yearly_salary_indexed": yearly_salary_indexed,
-            "monthly_living_cost_indexed": monthly_living_cost_indexed,
-            "yearly_living_cost_indexed": yearly_living_cost_indexed,
+            "monthly_expenses_indexed": monthly_expenses_indexed,
+            "yearly_expenses_indexed": yearly_expenses_indexed,
             "yearly_income": yearly_income,
             "monthly_income": monthly_income,
             "yearly_adjusted_income": yearly_adjusted_income,

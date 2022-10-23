@@ -107,12 +107,12 @@ def e_set_monthly_salary(e):
     js.document.getElementById("monthly_salary_input").value = ''
 
 
-def e_set_living_cost(e):
-    storage = js.document.getElementById("living_cost_stored_value")
-    validated_input = validate_number_input(js.document.getElementById("living_cost_input"), 100_000)
+def e_set_monthly_expenses(e):
+    storage = js.document.getElementById("monthly_expenses_stored_value")
+    validated_input = validate_number_input(js.document.getElementById("monthly_expenses_input"), 100_000)
     if validated_input:
         storage.textContent = validated_input + ' $'
-    js.document.getElementById("living_cost_input").value = ''
+    js.document.getElementById("monthly_expenses_input").value = ''
 
 
 def e_set_base_interest_rate(e):
@@ -135,7 +135,7 @@ js.document.getElementById("add_year_btn").onclick = e_add_year
 js.document.getElementById("remove_year_btn").onclick = e_remove_year
 js.document.getElementById("set_years_btn").onclick = e_set_years
 js.document.getElementById("set_monthly_salary_btn").onclick = e_set_monthly_salary
-js.document.getElementById("set_living_cost_btn").onclick = e_set_living_cost
+js.document.getElementById("set_monthly_expenses_btn").onclick = e_set_monthly_expenses
 js.document.getElementById("set_base_interest_rate_btn").onclick = e_set_base_interest_rate
 js.document.getElementById("set_base_inflation_rate_btn").onclick = e_set_base_inflation_rate
 js.document.getElementById("prev_year_btn").onclick = e_prev_year_btn

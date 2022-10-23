@@ -30,7 +30,7 @@
             <form onsubmit="return event.preventDefault()">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text non-rounded-right fixed-width-span-200-px">Your monthly salary</span>
+                        <span class="input-group-text non-rounded-right fixed-width-span-200-px">Monthly salary</span>
                     </div>
                     <span id="monthly_salary_stored_value"
                           class="input-group-text non-rounded-right fixed-width-span-100-px">3000 $</span>
@@ -46,13 +46,13 @@
             <form onsubmit="return event.preventDefault()">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text non-rounded-right fixed-width-span-200-px">Your living cost</span>
+                        <span class="input-group-text non-rounded-right fixed-width-span-200-px">Monthly expenses</span>
                     </div>
-                    <span id="living_cost_stored_value"
+                    <span id="monthly_expenses_stored_value"
                           class="input-group-text non-rounded-right fixed-width-span-100-px">1000 $</span>
-                    <input id="living_cost_input" class="form-control" type="text" placeholder="0-100000"/>
+                    <input id="monthly_expenses_input" class="form-control" type="text" placeholder="0-100000"/>
                     <div class="input-group-append">
-                        <button id="set_living_cost_btn"
+                        <button id="set_monthly_expenses_btn"
                                 class="form-control btn btn-outline-primary non-rounded-left">Set
                         </button>
                     </div>
@@ -194,7 +194,7 @@
                                     <div class="col-6">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text non-rounded-right fixed-width-span-150-px">Living cost:</span>
+                                                <span class="input-group-text non-rounded-right fixed-width-span-150-px">Monthly expenses:</span>
                                             </div>
                                             <input type="text" class="form-control"
                                                    aria-label="Amount (to the nearest dollar)">
@@ -204,7 +204,7 @@
                                         </div>
 
                                         <label class="input-group-text non-rounded-bottom" for="inputGroupSelect01">Index
-                                            living cost to inflation
+                                            expenses to inflation
                                         </label>
                                         <div class="input-group mb-3">
                                             <div class="input-group-text non-rounded-top">
@@ -219,13 +219,13 @@
                                     </div>
                                     <div class="col-5">
                                         <p>
-                                            Yearly living cost:
+                                            Yearly expenses:
                                         </p>
                                         <p>
-                                            Monthly living cost indexed:
+                                            Monthly expenses indexed:
                                         </p>
                                         <p>
-                                            Yearly living cost indexed:
+                                            Yearly expenses indexed:
                                         </p>
                                     </div>
                                 </div>
