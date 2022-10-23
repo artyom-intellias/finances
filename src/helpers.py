@@ -23,15 +23,38 @@ def create_el(type_='div', id_=None, class_=None, text='', **kwargs):
     return el
 
 
-def validate_input(el, max, min=0, error_timeout=1000):
-    val = el.value
+def isfloat(num):
+    try:
+        float(num)
+        return True
+    except ValueError:
+        return False
+
+
+def to_number(val: str) -> int or float or None:
+    if ',' in val or '.' in val:
+        val = val.replace(',', '.')
+        if isfloat(val):
+            return float(val)
+        else:
+            return None
+    else:
+        if val.isdigit():
+            return int(val)
+        else:
+            return None
+
+
+def validate_number_input(el, max, min=0, error_timeout=1000):
+    val = str(el.value)
     class_toggle = create_proxy(lambda: el.classList.remove('is-invalid'))
-    if val.isdigit():
-        if int(val) > max:
+    number = to_number(val)
+    if number:
+        if number > max:
             el.classList.add('is-invalid')
             js.window.setTimeout(class_toggle, error_timeout)
             return ''
-        elif int(val) < min:
+        elif number < min:
             el.classList.add('is-invalid')
             js.window.setTimeout(class_toggle, error_timeout)
             return ''
