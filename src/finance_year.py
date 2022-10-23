@@ -3,7 +3,7 @@ from decimal import *
 
 class FinanceYear:
     def __init__(self,
-                 initial: Decimal = 0.0 or float,
+                 initial: Decimal or float = 0.0,
                  monthly_salary: Decimal or float = 0.0,
                  index_salary: bool = False,
                  living_cost: Decimal or float = 0.0,
@@ -14,31 +14,31 @@ class FinanceYear:
                  previous_income: Decimal or float = 1.0,
                  previous_inflation: Decimal or float = 1.0,
                  ):
-        self.devaluation_rate = devaluation_rate * (1 - (inflation_rate * 0.01))
-        self.initial = initial
-        self.monthly_salary = monthly_salary
-        self.index_salary = index_salary
-        self.living_cost = living_cost
-        self.index_living_cost = index_living_cost
-        self.inflation_rate = inflation_rate
-        self.interest_rate = interest_rate
-        self.previous_income = previous_income
-        self.previous_inflation = previous_inflation
+        self.devaluation_rate = Decimal(Decimal(devaluation_rate) * (1 - (Decimal(inflation_rate) * Decimal(0.01))))
+        self.initial = Decimal(initial)
+        self.monthly_salary = Decimal(monthly_salary)
+        self.index_salary = Decimal(index_salary)
+        self.living_cost = Decimal(living_cost)
+        self.index_living_cost = Decimal(index_living_cost)
+        self.inflation_rate = Decimal(inflation_rate)
+        self.interest_rate = Decimal(interest_rate)
+        self.previous_income = Decimal(previous_income)
+        self.previous_inflation = Decimal(previous_inflation)
         self.report = self.generate_report()
 
     def generate_report(self):
         self.initial += self.monthly_salary * 12
         yearly_salary = self.monthly_salary * 12
         yearly_living_cost = self.living_cost * 12
-        monthly_salary_indexed = self.monthly_salary + (self.monthly_salary * self.inflation_rate * 0.01)
+        monthly_salary_indexed = self.monthly_salary + (self.monthly_salary * self.inflation_rate * Decimal(0.01))
         yearly_salary_indexed = monthly_salary_indexed * 12
-        monthly_living_cost_indexed = self.living_cost + (self.living_cost * self.inflation_rate * 0.01)
+        monthly_living_cost_indexed = self.living_cost + (self.living_cost * self.inflation_rate * Decimal(0.01))
         yearly_living_cost_indexed = monthly_living_cost_indexed * 12
-        yearly_income = (self.initial + yearly_salary) * (self.interest_rate * 0.01 + 1)
+        yearly_income = (self.initial + yearly_salary) * (self.interest_rate * Decimal(0.01) + 1)
         monthly_income = yearly_income / 12
         yearly_adjusted_income = yearly_income * self.devaluation_rate
         monthly_adjusted_income = yearly_adjusted_income / 12
-        yearly_inflated = (yearly_salary + yearly_income) * (1 - (self.inflation_rate * 0.01))
+        yearly_inflated = (yearly_salary + yearly_income) * (1 - (self.inflation_rate * Decimal(0.01)))
         monthly_inflated = yearly_inflated / 12
         total_income = self.previous_income + yearly_income
         total_adjusted_income = total_income * self.devaluation_rate
