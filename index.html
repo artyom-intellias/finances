@@ -106,21 +106,6 @@
                 </div>
             </form>
             <form onsubmit="return event.preventDefault()">
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <button id="remove_year_btn"
-                                class="btn btn-outline-danger non-rounded-right fixed-width-span-200-px"
-                                type="button">
-                            Remove
-                        </button>
-                    </div>
-                    <div class="input-group-prepend">
-                        <button id="add_year_btn"
-                                class="btn btn-outline-success non-rounded-left non-rounded-left fixed-width-span-200-px"
-                                type="button">Add
-                        </button>
-                    </div>
-                </div>
                 <div id="years_list_wrap">
                     <div id="years_list" class="list-group list-group-horizontal row row-cols-6 mb-5 p-2"></div>
                 </div>
@@ -132,9 +117,21 @@
                     <div class="container p-3">
                         <div class="row">
                             <h2 class="card-title col-4">Year #1</h2>
-                            <div class="btn-group col-8" role="group" aria-label="Basic example">
+
+                            <div class="btn-group col-4" role="group" aria-label="Basic example">
                                 <button id="prev_year_btn" type="button" class="btn btn-outline-info">prev</button>
                                 <button id="next_year_btn" type="button" class="btn btn-outline-info">next</button>
+                            </div>
+                            <div class="btn-group col-4" role="group" aria-label="Basic example">
+                                <button id="remove_year_btn"
+                                        class="btn btn-outline-danger non-rounded-right fixed-width-span-200-px"
+                                        type="button">
+                                    Remove
+                                </button>
+                                <button id="add_year_btn"
+                                        class="btn btn-outline-success non-rounded-left non-rounded-left fixed-width-span-200-px"
+                                        type="button">Add
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -299,7 +296,6 @@
                         <button type="button" class="btn btn-primary non-rounded-top p-3">save</button>
                         <button type="button" class="btn btn-secondary non-rounded-top p-3">reset</button>
                     </div>
-
         </div>
     </div>
 
