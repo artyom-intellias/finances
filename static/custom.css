@@ -48,7 +48,7 @@ input[type=range] {
 }
 
 #years_list_wrap {
-    height: 430px;
+    height: 600px;
     overflow: scroll;
     overflow-y: auto;
     overflow-x: hidden;
