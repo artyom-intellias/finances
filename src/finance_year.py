@@ -14,7 +14,7 @@ class FinanceYear:
                  previous_income: Decimal = Decimal(0.0),
                  previous_inflation: Decimal = Decimal(0.0),
                  ):
-        self.devaluation_rate = devaluation_rate * (1 - (inflation_rate * Decimal(0.01)))
+        self.devaluation_rate = devaluation_rate
         self.initial = initial
         self.monthly_salary = monthly_salary
         self.index_salary = index_salary
@@ -28,6 +28,7 @@ class FinanceYear:
 
     def generate_report(self):
         self.initial += self.monthly_salary * 12
+        devaluation_rate = self.devaluation_rate * (1 - (self.inflation_rate * Decimal(0.01)))
         yearly_salary = self.monthly_salary * 12
         yearly_living_cost = self.living_cost * 12
         monthly_salary_indexed = self.monthly_salary + (self.monthly_salary * self.inflation_rate * Decimal(0.01))
@@ -45,7 +46,7 @@ class FinanceYear:
         total_inflated = self.previous_inflation + yearly_inflated
 
         report = {
-            "devaluation_rate": self.devaluation_rate,
+            "devaluation_rate": devaluation_rate,
             "yearly_salary": yearly_salary,
             "yearly_living_cost": yearly_living_cost,
             "monthly_salary_indexed": monthly_salary_indexed,
@@ -64,19 +65,6 @@ class FinanceYear:
         }
         return report
 
-
-"""
-
-если к году добавилась галочка for_this_and_subsequent переписываются все последующий годы с заданным значением и галочкой
-
-если к году добавилась галочка for_this_year на любой из показателей, тогда меняем значения этого года
-в соответствии с флажками, а следующий год получит свои флажки из предыдущего года, давая текущему исключительное значение
-но, если предыдущий год тоже имеет галочку for_this_year, тогда ищем год в котором её нет, если такой год не найден, сбрасываем до base уровня
-
-если в этом году for_this_year, а в предыдущем была for_this_and_subsequent, тогда следующий получит значение из for_this_and_subsequent
-
-for_this_and_subsequent влияет на каждый новый созданный год, по сути base уровень существует только для первого года, остальные получают значения по цепоке
-"""
 
 # TODO сделать галочку которая позволит сохранить оригинальное знаечние для годов с for_this_year, если на более ранние года была наложена for_this_and_subsequent
 # TODO сделать модалку которая будет уведомлять о том какие года будут затронуты и как именно
