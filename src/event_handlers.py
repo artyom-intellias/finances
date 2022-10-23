@@ -2,7 +2,38 @@ from pyodide.ffi import create_proxy
 from helpers import create_el, trigger_event, validate_number_input
 from plan_composer import PlanComposer
 import js
-from js import localStorage
+
+
+def populate_year_form(year_number, year_info):
+    print(year_info)
+
+    squize = lambda x: float(round(x, 1))
+
+    js.document.getElementById("year_number").textContent = f"Year #{year_number}"
+
+    js.document.getElementById("monthly_salary_detailed_input").value = squize(year_info.report['monthly_salary'])
+    js.document.getElementById("yearly_salary").textContent = squize(year_info.report['yearly_salary'])
+    js.document.getElementById("monthly_salary_indexed").textContent = squize(year_info.report['monthly_salary_indexed'])
+    js.document.getElementById("yearly_salary_indexed").textContent = squize(year_info.report['yearly_salary_indexed'])
+
+    js.document.getElementById("monthly_expenses_detailed_input").value = squize(year_info.report['monthly_expenses'])
+    js.document.getElementById("yearly_expenses").textContent = squize(year_info.report['yearly_expenses'])
+    js.document.getElementById("monthly_expenses_indexed").textContent = squize(year_info.report['monthly_expenses_indexed'])
+    js.document.getElementById("yearly_expenses_indexed").textContent = squize(year_info.report['yearly_expenses_indexed'])
+
+    js.document.getElementById("interest_rate_detailed_input").value = squize(year_info.interest_rate)
+    js.document.getElementById("yearly_income").textContent = squize(year_info.report['yearly_income'])
+    js.document.getElementById("yearly_adjusted_income").textContent = squize(year_info.report['yearly_adjusted_income'])
+    js.document.getElementById("monthly_income").textContent = squize(year_info.report['monthly_income'])
+    js.document.getElementById("monthly_adjusted_income").textContent = squize(year_info.report['monthly_adjusted_income'])
+    js.document.getElementById("total_income").textContent = squize(year_info.report['total_income'])
+    js.document.getElementById("total_adjusted_income").textContent = squize(year_info.report['total_adjusted_income'])
+
+    js.document.getElementById("inflation_rate_detailed_input").value = squize(year_info.inflation_rate)
+    js.document.getElementById("monthly_inflated").textContent = squize(year_info.report['monthly_inflated'])
+    js.document.getElementById("yearly_inflated").textContent = squize(year_info.report['yearly_inflated'])
+    js.document.getElementById("total_inflated").textContent = squize(year_info.report['total_inflated'])
+    # print(year_info.report['total_inflated'])
 
 
 def e_year_btn(e):
@@ -19,6 +50,12 @@ def e_year_btn(e):
     else:
         e.target.classList.add('active')
         js.document.getElementById('year_btn_active').title = e.target.id
+
+    active_year_id_updated = js.document.getElementById('year_btn_active').title
+    year_number = int(active_year_id_updated[5:])
+    info_index = year_number - 1
+    year_info = js.document.plan.years[info_index]
+    populate_year_form(year_number, year_info)
 
 
 def e_prev_year_btn(e):
@@ -61,6 +98,9 @@ def e_add_year(e):
     year_btn.appendChild(btn_text)
     years_list.appendChild(year_btn)
 
+    last_year = js.document.plan.years[-1]
+    js.document.plan.add_year(prev_year=last_year)
+
     js.document.getElementById(f"year_{years_total}").onclick = e_year_btn
     js.document.getElementById(f"year_{years_total}").click()
 
@@ -78,7 +118,11 @@ def e_remove_year(e):
         el.lastChild.previousSibling.classList.add("active")
         js.document.getElementById('year_btn_active').title = el.lastChild.previousSibling.id
 
-    return el.lastChild.remove() if el.lastChild else None
+    if el.lastChild:
+        js.document.plan.years.pop()
+        return el.lastChild.remove()
+    else:
+        return None
 
 
 def e_set_years(e):
@@ -141,7 +185,7 @@ def e_generate_plan(e):
     years_total = int(js.document.getElementById("years_stored_value").innerText)
     js.document.plan = PlanComposer(monthly_salary=monthly_salary, monthly_expenses=monthly_expenses,
                                     interest_rate=interest_rate,
-                                    inflation_rate=inflation_rate, years_total=years_total).get_plan_in_json()
+                                    inflation_rate=inflation_rate, years_total=years_total)
 
 
 js.document.getElementById("add_year_btn").onclick = e_add_year

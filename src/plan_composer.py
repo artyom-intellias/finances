@@ -112,9 +112,10 @@ class PlanComposer:
         )
         return new_year
 
-    def get_plan_in_json(self):
-        return json.dumps([year.report for year in self.years], ensure_ascii=False,
-                          default=decimal_into_json_float_rounded)
+    # def get_plan_in_json(self):
+    #     return [year.report for year in self.years]
+    #     return json.dumps([year.report for year in self.years], ensure_ascii=False,
+    #                       default=decimal_into_json_float_rounded)
 
         # with open("sample.json", "w") as outfile:
         #     outfile.write(years_reports_in_json)

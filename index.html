@@ -122,7 +122,7 @@
                 <li class="card">
                     <div class="container p-3">
                         <div class="row">
-                            <h2 class="card-title text-center col-4">Year #1</h2>
+                            <h2 id="year_number" class="card-title text-center col-4">Year #1</h2>
 
                             <div class="btn-group col-4" role="group" aria-label="Basic example">
                                 <button id="prev_year_btn" type="button" class="btn btn-outline-info">
@@ -154,7 +154,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text non-rounded-right fixed-width-span-150-px">Monthly salary:</span>
                                             </div>
-                                            <input type="text" class="form-control"
+                                            <input id="monthly_salary_detailed_input" type="text" class="form-control"
                                                    aria-label="Amount (to the nearest dollar)">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">$</span>
@@ -178,12 +178,18 @@
                                     <div class="col-5">
                                         <p>
                                             Yearly salary:
+                                            <span id="yearly_salary">
+                                            </span>
                                         </p>
                                         <p>
                                             Monthly salary indexed:
+                                            <span id="monthly_salary_indexed">
+                                            </span>
                                         </p>
                                         <p>
                                             Yearly salary indexed:
+                                             <span id="yearly_salary_indexed">
+                                            </span>
                                         </p>
                                     </div>
                                 </div>
@@ -197,7 +203,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text non-rounded-right fixed-width-span-150-px">Monthly expenses:</span>
                                             </div>
-                                            <input type="text" class="form-control"
+                                            <input id="monthly_expenses_detailed_input" type="text" class="form-control"
                                                    aria-label="Amount (to the nearest dollar)">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">$</span>
@@ -221,12 +227,18 @@
                                     <div class="col-5">
                                         <p>
                                             Yearly expenses:
+                                            <span id="yearly_expenses">
+                                            </span>
                                         </p>
                                         <p>
                                             Monthly expenses indexed:
+                                            <span id="monthly_expenses_indexed">
+                                            </span>
                                         </p>
                                         <p>
                                             Yearly expenses indexed:
+                                            <span id="yearly_expenses_indexed">
+                                            </span>
                                         </p>
                                     </div>
                                 </div>
@@ -240,7 +252,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text non-rounded-right non-rounded-bottom fixed-width-span-150-px">Interest rate:</span>
                                             </div>
-                                            <input type="text" class="form-control"
+                                            <input id="interest_rate_detailed_input" type="text" class="form-control"
                                                    aria-label="Amount (to the nearest dollar)">
                                             <div class="input-group-append">
                                                 <span class="input-group-text non-rounded-left non-rounded-bottom">%</span>
@@ -258,12 +270,30 @@
                                         </div>
                                     </div>
                                     <div class="col-5">
-                                        <p>Yearly income:</p>
-                                        <p>Yearly adjusted income:</p>
-                                        <p>Monthly income:</p>
-                                        <p>Monthly adjusted income:</p>
-                                        <p>Total income:</p>
-                                        <p>Total adjusted income:</p>
+                                        <p>Yearly income:
+                                            <span id="yearly_income">
+                                            </span>
+                                        </p>
+                                        <p>Yearly adjusted income:
+                                            <span id="yearly_adjusted_income">
+                                            </span>
+                                        </p>
+                                        <p>Monthly income:
+                                            <span id="monthly_income">
+                                            </span>
+                                        </p>
+                                        <p>Monthly adjusted income:
+                                            <span id="monthly_adjusted_income">
+                                            </span>
+                                        </p>
+                                        <p>Total income:
+                                            <span id="total_income">
+                                            </span>
+                                        </p>
+                                        <p>Total adjusted income:
+                                            <span id="total_adjusted_income">
+                                            </span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -276,7 +306,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text non-rounded-right non-rounded-bottom fixed-width-span-150-px">Inflation rate:</span>
                                             </div>
-                                            <input type="text" class="form-control"
+                                            <input id="inflation_rate_detailed_input" type="text" class="form-control"
                                                    aria-label="Amount (to the nearest dollar)">
                                             <div class="input-group-append">
                                                 <span class="input-group-text non-rounded-left non-rounded-bottom">%</span>
@@ -294,9 +324,18 @@
                                         </div>
                                     </div>
                                     <div class="col-5">
-                                        <p>Monthly inflated:</p>
-                                        <p>Yearly inflated:</p>
-                                        <p>Total inflated:</p>
+                                        <p>Monthly inflated:
+                                            <span id="monthly_inflated">
+                                            </span>
+                                        </p>
+                                        <p>Yearly inflated:
+                                            <span id="yearly_inflated">
+                                            </span>
+                                        </p>
+                                        <p>Total inflated:
+                                            <span id="total_inflated">
+                                            </span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -304,7 +343,6 @@
                     </ul>
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-primary non-rounded-top p-3">save</button>
-                        <button type="button" class="btn btn-secondary non-rounded-top p-3">reset</button>
                     </div>
         </div>
     </div>
