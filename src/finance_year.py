@@ -17,8 +17,8 @@ class FinanceYear:
         self.devaluation_rate = devaluation_rate
         self.initial = initial
         self.monthly_salary = monthly_salary
-        self.is_index_salary = is_index_salary
         self.monthly_expenses = monthly_expenses
+        self.is_index_salary = is_index_salary
         self.is_index_expenses = is_index_expenses
         self.inflation_rate = inflation_rate
         self.interest_rate = interest_rate
@@ -47,8 +47,8 @@ class FinanceYear:
 
         report = {
             "devaluation_rate": devaluation_rate,
-            "monthly_salary": self.monthly_salary,
-            "monthly_expenses": self.monthly_expenses,
+            "monthly_salary": monthly_salary_indexed if self.is_index_salary else self.monthly_salary,
+            "monthly_expenses": monthly_expenses_indexed if self.is_index_expenses else self.monthly_expenses,
             "yearly_salary": yearly_salary,
             "yearly_expenses": yearly_expenses,
             "monthly_salary_indexed": monthly_salary_indexed,
