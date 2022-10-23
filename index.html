@@ -17,7 +17,8 @@
 - paths:
     - src/event_handlers.py
     - src/finance_year.py
-    - src/purchase.py
+    - src/finance_year.py
+    - src/plan_composer.py
     - src/helpers.py
 </py-env>
 
@@ -107,7 +108,7 @@
             </form>
             <form onsubmit="return event.preventDefault()">
                 <div class="btn-group col-12" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-lg btn-success">generate investment plan</button>
+                    <button id="generate_investment_plan_btn" type="button" class="btn btn-lg btn-success">generate investment plan</button>
                 </div>
             </form>
             <form onsubmit="return event.preventDefault()">
