@@ -1,5 +1,5 @@
 from pyodide.ffi import create_proxy
-from helpers import create_el, trigger_event, validate_input
+from helpers import create_el, trigger_event, validate_number_input
 import js
 from js import localStorage
 
@@ -80,7 +80,7 @@ def e_remove_year(e):
 
 
 def e_set_years(e):
-    years_desired = validate_input(js.document.getElementById("years_input"), 100, min=1)
+    years_desired = validate_number_input(js.document.getElementById("years_input"), 100, min=1)
     js.document.getElementById("years_input").value = ''
     if not years_desired:
         return None
@@ -101,7 +101,7 @@ def e_set_years(e):
 
 def e_set_monthly_salary(e):
     storage = js.document.getElementById("monthly_salary_stored_value")
-    validated_input = validate_input(js.document.getElementById("monthly_salary_input"), 100_000, min=1)
+    validated_input = validate_number_input(js.document.getElementById("monthly_salary_input"), 100_000, min=1)
     if validated_input:
         storage.textContent = validated_input + ' $'
     js.document.getElementById("monthly_salary_input").value = ''
@@ -109,7 +109,7 @@ def e_set_monthly_salary(e):
 
 def e_set_living_cost(e):
     storage = js.document.getElementById("living_cost_stored_value")
-    validated_input = validate_input(js.document.getElementById("living_cost_input"), 100_000)
+    validated_input = validate_number_input(js.document.getElementById("living_cost_input"), 100_000)
     if validated_input:
         storage.textContent = validated_input + ' $'
     js.document.getElementById("living_cost_input").value = ''
@@ -117,7 +117,7 @@ def e_set_living_cost(e):
 
 def e_set_base_interest_rate(e):
     storage = js.document.getElementById("base_interest_rate_stored_value")
-    validated_input = validate_input(js.document.getElementById("base_interest_rate_input"), 100)
+    validated_input = validate_number_input(js.document.getElementById("base_interest_rate_input"), 100)
     if validated_input:
         storage.textContent = validated_input + ' %'
     js.document.getElementById("base_interest_rate_input").value = ''
@@ -125,7 +125,7 @@ def e_set_base_interest_rate(e):
 
 def e_set_base_inflation_rate(e):
     storage = js.document.getElementById("base_inflation_rate_stored_value")
-    validated_input = validate_input(js.document.getElementById("base_inflation_rate_input"), 1000)
+    validated_input = validate_number_input(js.document.getElementById("base_inflation_rate_input"), 1000)
     if validated_input:
         storage.textContent = validated_input + ' %'
     js.document.getElementById("base_inflation_rate_input").value = ''

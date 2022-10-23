@@ -1,6 +1,7 @@
 import js
 from pyodide.ffi import create_proxy
 
+
 def trigger_event(event):
     event(js.document.createEvent('Event'))
 
@@ -61,7 +62,7 @@ def validate_number_input(el, max, min=0, error_timeout=1000):
         else:
             el.classList.remove("is-invalid")
             js.window.setTimeout(class_toggle, error_timeout)
-            return str(val)
+            return str(number)
     elif val == '':
         return ''
     else:
