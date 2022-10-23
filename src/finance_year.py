@@ -3,27 +3,27 @@ from decimal import *
 
 class FinanceYear:
     def __init__(self,
-                 initial: Decimal or float = 0.0,
-                 monthly_salary: Decimal or float = 0.0,
+                 initial: Decimal = Decimal(0.0),
+                 monthly_salary: Decimal = Decimal(0.0),
                  index_salary: bool = False,
-                 living_cost: Decimal or float = 0.0,
+                 living_cost: Decimal = Decimal(0.0),
                  index_living_cost: bool = False,
-                 inflation_rate: Decimal or float = 0.0,
-                 interest_rate: Decimal or float = 0.0,
-                 devaluation_rate: Decimal or float = 1.0,
-                 previous_income: Decimal or float = 1.0,
-                 previous_inflation: Decimal or float = 1.0,
+                 inflation_rate: Decimal = Decimal(0.0),
+                 interest_rate: Decimal = Decimal(0.0),
+                 devaluation_rate: Decimal = Decimal(1.0),
+                 previous_income: Decimal = Decimal(0.0),
+                 previous_inflation: Decimal = Decimal(0.0),
                  ):
-        self.devaluation_rate = Decimal(Decimal(devaluation_rate) * (1 - (Decimal(inflation_rate) * Decimal(0.01))))
-        self.initial = Decimal(initial)
-        self.monthly_salary = Decimal(monthly_salary)
-        self.index_salary = Decimal(index_salary)
-        self.living_cost = Decimal(living_cost)
-        self.index_living_cost = Decimal(index_living_cost)
-        self.inflation_rate = Decimal(inflation_rate)
-        self.interest_rate = Decimal(interest_rate)
-        self.previous_income = Decimal(previous_income)
-        self.previous_inflation = Decimal(previous_inflation)
+        self.devaluation_rate = devaluation_rate * (1 - (inflation_rate * Decimal(0.01)))
+        self.initial = initial
+        self.monthly_salary = monthly_salary
+        self.index_salary = index_salary
+        self.living_cost = living_cost
+        self.index_living_cost = index_living_cost
+        self.inflation_rate = inflation_rate
+        self.interest_rate = interest_rate
+        self.previous_income = previous_income
+        self.previous_inflation = previous_inflation
         self.report = self.generate_report()
 
     def generate_report(self):
