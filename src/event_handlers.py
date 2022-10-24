@@ -177,17 +177,6 @@ def e_set_base_inflation_rate(e):
     js.document.getElementById("base_inflation_rate_input").value = ''
 
 
-def e_generate_plan(e):
-    monthly_salary = float(js.document.getElementById("monthly_salary_stored_value").innerText[:-2])
-    monthly_expenses = float(js.document.getElementById("monthly_expenses_stored_value").innerText[:-2])
-    interest_rate = float(js.document.getElementById("base_interest_rate_stored_value").innerText[:-2])
-    inflation_rate = float(js.document.getElementById("base_inflation_rate_stored_value").innerText[:-2])
-    years_total = int(js.document.getElementById("years_stored_value").innerText)
-    js.document.plan = PlanComposer(monthly_salary=monthly_salary, monthly_expenses=monthly_expenses,
-                                    interest_rate=interest_rate,
-                                    inflation_rate=inflation_rate, years_total=years_total)
-
-
 js.document.getElementById("add_year_btn").onclick = e_add_year
 js.document.getElementById("remove_year_btn").onclick = e_remove_year
 js.document.getElementById("set_years_btn").onclick = e_set_years
@@ -197,4 +186,3 @@ js.document.getElementById("set_base_interest_rate_btn").onclick = e_set_base_in
 js.document.getElementById("set_base_inflation_rate_btn").onclick = e_set_base_inflation_rate
 js.document.getElementById("prev_year_btn").onclick = e_prev_year_btn
 js.document.getElementById("next_year_btn").onclick = e_next_year_btn
-js.document.getElementById("generate_investment_plan_btn").onclick = e_generate_plan
