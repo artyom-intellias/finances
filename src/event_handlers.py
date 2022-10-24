@@ -5,7 +5,7 @@ import js
 from decimal import Decimal
 
 js.document.active_year = 0
-
+js.document.plan = PlanComposer()
 
 def e_year_btn(e):
     active_year_id = js.document.active_year
@@ -48,25 +48,38 @@ def e_next_year_btn(e):
         if next_year:
             next_year.click()
 
-def e_add_year(e):
-    years_list = js.document.getElementById("years_list")
-    years_total = years_list.childElementCount + 1
-    years_count = js.document.getElementById("years_stored_value")
-    years_count.textContent = years_total
 
-    year_btn = create_el('button', id_=f"year_{years_total}",
+def e_add_year(e):
+    # update counters
+    years_list = js.document.getElementById("years_list")
+    years_present = years_list.childElementCount + 1
+    years_counter = js.document.getElementById("years_stored_value")
+    years_counter.textContent = years_present
+
+    # create year button
+    year_btn = create_el('button', id_=f"year_{years_present}",
                          class_="btn btn-light col list-group-item sortable-item border year-list-item-btn p-3",
                          custom={"type": "button"})
-    btn_text = create_el(type_='span', class_="text-center muted-event-child", text=f"Year #{years_total}")
-
+    btn_text = create_el(type_='span', class_="text-center muted-event-child", text=f"Year #{years_present}")
     year_btn.appendChild(btn_text)
     years_list.appendChild(year_btn)
 
-    last_year = js.document.plan.years[-1]
-    js.document.plan.add_year(prev_year=last_year)
+    if not js.document.plan.years:
 
-    js.document.getElementById(f"year_{years_total}").onclick = e_year_btn
-    js.document.getElementById(f"year_{years_total}").click()
+        monthly_salary = Decimal(js.document.getElementById("monthly_salary_stored_value").innerText[:-2])
+        monthly_expenses = Decimal(js.document.getElementById("monthly_expenses_stored_value").innerText[:-2])
+        interest_rate = Decimal(js.document.getElementById("base_interest_rate_stored_value").innerText[:-2])
+        inflation_rate = Decimal(js.document.getElementById("base_inflation_rate_stored_value").innerText[:-2])
+        js.document.plan.add_year(monthly_salary=monthly_salary,
+                                  monthly_expenses=monthly_expenses,
+                                  interest_rate=interest_rate,
+                                  inflation_rate=inflation_rate)
+    else:
+        js.document.plan.add_year()
+
+    # toggle new year to "active" state, and update year tab
+    js.document.getElementById(f"year_{years_present}").onclick = e_year_btn
+    js.document.getElementById(f"year_{years_present}").click()
 
 
 def e_remove_year(e):
