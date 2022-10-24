@@ -75,17 +75,11 @@ def e_prev_year_btn(e):
 
 
 def e_next_year_btn(e):
-    active_year_id = int(js.document.getElementById('year_btn_active').title.split('_')[1])
-
-    years_list = js.document.getElementById("years_list")
-    years_total = years_list.childElementCount + 1
-    if years_total == 1 and active_year_id == 1:
-        return
-
-    next_year = js.document.getElementById(f'year_{active_year_id + 1}')
-    if next_year:
-        next_year.click()
-
+    active_year_id = js.document.active_year
+    if active_year_id:
+        next_year = js.document.getElementById(f'year_{active_year_id + 1}')
+        if next_year:
+            next_year.click()
 
 def e_add_year(e):
     years_list = js.document.getElementById("years_list")
