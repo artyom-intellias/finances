@@ -1,64 +1,32 @@
 from pyodide.ffi import create_proxy
-from helpers import create_el, trigger_event, validate_number_input, set_base_param
+from helpers import create_el, trigger_event, validate_number_input, set_base_param, populate_year_form
 from plan_composer import PlanComposer
 import js
 from decimal import Decimal
 
-
-def populate_year_form(year_number=0, year_info=None):
-    trim_decimal = lambda x: float(round(x, 0))
-
-    def set_info_by_id(id_, key, input=False):
-        value = trim_decimal(year_info.report[key]) if year_info else 0
-        if input:
-            js.document.getElementById(id_).value = value
-        else:
-            js.document.getElementById(id_).textContent = value
-
-    js.document.getElementById("year_number").textContent = f"Year #{year_number}"
-
-    set_info_by_id('monthly_salary_detailed_input', 'monthly_salary', input=True)
-    set_info_by_id('yearly_salary', 'yearly_salary')
-    set_info_by_id('monthly_salary_indexed', 'monthly_salary_indexed')
-    set_info_by_id('yearly_salary_indexed', 'yearly_salary_indexed')
-
-    set_info_by_id('monthly_expenses_detailed_input', 'monthly_expenses', input=True)
-    set_info_by_id('yearly_expenses', 'yearly_expenses')
-    set_info_by_id('monthly_expenses_indexed', 'monthly_expenses_indexed')
-    set_info_by_id('yearly_expenses_indexed', 'yearly_expenses_indexed')
-
-    set_info_by_id('interest_rate_detailed_input', 'interest_rate', input=True)
-    set_info_by_id('yearly_income', 'yearly_income')
-    set_info_by_id('yearly_adjusted_income', 'yearly_adjusted_income')
-    set_info_by_id('monthly_income', 'monthly_income')
-    set_info_by_id('monthly_adjusted_income', 'monthly_adjusted_income')
-    set_info_by_id('total_income', 'total_income')
-
-    set_info_by_id('inflation_rate_detailed_input', 'inflation_rate', input=True)
-    set_info_by_id('monthly_inflated', 'monthly_inflated')
-    set_info_by_id('total_inflated', 'total_inflated')
+js.document.active_year = 0
 
 
 def e_year_btn(e):
-    active_year_id = js.document.getElementById('year_btn_active').title
+    active_year_id = js.document.active_year
     if active_year_id:
-        year_el = js.document.getElementById(active_year_id)
+        year_el = js.document.getElementById(f'year_{active_year_id}')
         if active_year_id == e.target.id:
             pass
         else:
             year_el.classList.remove('active')
             e.target.classList.add('active')
-            js.document.getElementById('year_btn_active').title = e.target.id
+            js.document.active_year = int(e.target.id.split('_')[1])
+
 
     else:
         e.target.classList.add('active')
         js.document.getElementById('year_btn_active').title = e.target.id
+        js.document.active_year = int(e.target.id.split('_')[1])
 
-    active_year_id_updated = js.document.getElementById('year_btn_active').title
-    year_number = int(active_year_id_updated[5:])
-    info_index = year_number - 1
-    year_info = js.document.plan.years[info_index]
-    populate_year_form(year_number, year_info)
+    # fill with calculated data
+    # year_info = js.document.plan.years[active_year_id - 1]
+    # populate_year_form(active_year_id, year_info)
 
 
 def e_prev_year_btn(e):
