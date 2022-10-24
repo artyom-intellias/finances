@@ -69,3 +69,11 @@ def validate_number_input(el, max, min=0, error_timeout=1000):
         el.classList.add('is-invalid')
         js.window.setTimeout(class_toggle, error_timeout)
         return ''
+
+
+def set_base_param(storage_id: str, input_id: str, trailing_char: str, min: int = 0, max: int = 1):
+    storage = js.document.getElementById(storage_id)
+    validated_input = validate_number_input(js.document.getElementById(input_id), max=max, min=min)
+    if validated_input:
+        storage.textContent = validated_input + f' {trailing_char}'
+    js.document.getElementById(input_id).value = ''

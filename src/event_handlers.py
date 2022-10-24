@@ -1,5 +1,5 @@
 from pyodide.ffi import create_proxy
-from helpers import create_el, trigger_event, validate_number_input
+from helpers import create_el, trigger_event, validate_number_input, set_base_param
 from plan_composer import PlanComposer
 import js
 
@@ -146,35 +146,19 @@ def e_set_years(e):
 
 
 def e_set_monthly_salary(e):
-    storage = js.document.getElementById("monthly_salary_stored_value")
-    validated_input = validate_number_input(js.document.getElementById("monthly_salary_input"), 100_000, min=1)
-    if validated_input:
-        storage.textContent = validated_input + ' $'
-    js.document.getElementById("monthly_salary_input").value = ''
+    set_base_param('monthly_salary_stored_value', 'monthly_salary_input', '$', max=100_000, min=1)
 
 
 def e_set_monthly_expenses(e):
-    storage = js.document.getElementById("monthly_expenses_stored_value")
-    validated_input = validate_number_input(js.document.getElementById("monthly_expenses_input"), 100_000)
-    if validated_input:
-        storage.textContent = validated_input + ' $'
-    js.document.getElementById("monthly_expenses_input").value = ''
+    set_base_param('monthly_expenses_stored_value', 'monthly_expenses_input', '$', max=100_000)
 
 
 def e_set_base_interest_rate(e):
-    storage = js.document.getElementById("base_interest_rate_stored_value")
-    validated_input = validate_number_input(js.document.getElementById("base_interest_rate_input"), 100)
-    if validated_input:
-        storage.textContent = validated_input + ' %'
-    js.document.getElementById("base_interest_rate_input").value = ''
+    set_base_param('base_interest_rate_stored_value', 'base_interest_rate_input', '%', max=100)
 
 
 def e_set_base_inflation_rate(e):
-    storage = js.document.getElementById("base_inflation_rate_stored_value")
-    validated_input = validate_number_input(js.document.getElementById("base_inflation_rate_input"), 1000)
-    if validated_input:
-        storage.textContent = validated_input + ' %'
-    js.document.getElementById("base_inflation_rate_input").value = ''
+    set_base_param('base_inflation_rate_stored_value', 'base_inflation_rate_input', '%', max=1000)
 
 
 js.document.getElementById("add_year_btn").onclick = e_add_year
