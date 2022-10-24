@@ -71,22 +71,20 @@ def e_add_year(e):
 
 def e_remove_year(e):
     el = js.document.getElementById("years_list")
-    years_total = el.childElementCount - 1
-    if years_total == 0:
-        return
-
-    years_count = js.document.getElementById("years_stored_value")
-    years_count.innerText = years_total
-
-    if el.lastChild.classList.contains("active"):
-        el.lastChild.previousSibling.classList.add("active")
-        js.document.getElementById('year_btn_active').title = el.lastChild.previousSibling.id
-
-    if el.lastChild:
-        js.document.plan.years.pop()
-        return el.lastChild.remove()
-    else:
+    years_total = el.childElementCount
+    if not years_total:
         return None
+    elif years_total == 1:
+        js.document.active_year = 0
+        el.lastChild.remove()
+        js.document.plan.years = []
+        js.document.getElementById("years_stored_value").innerText = 0
+        populate_year_form()
+    else:
+        js.document.plan.years.pop()
+        if el.lastChild.classList.contains("active"):
+            el.lastChild.previousSibling.click()
+        el.lastChild.remove()
 
 
 def e_set_years(e):
