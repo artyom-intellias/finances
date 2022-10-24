@@ -104,21 +104,21 @@ def e_remove_year(e):
 
 
 def e_set_years(e):
-    years_desired = validate_number_input(js.document.getElementById("years_input"), 100, min=1)
+    years_desired = int(validate_number_input(js.document.getElementById("years_input"), 100, min=1))
     js.document.getElementById("years_input").value = ''
     if not years_desired:
         return None
     el = js.document.getElementById("years_list")
-    years_amount = str(el.childElementCount)
+    years_amount = el.childElementCount
 
     if years_desired > years_amount:
         while years_amount < years_desired:
             trigger_event(e_add_year)
-            years_amount = str(el.childElementCount)
+            years_amount = el.childElementCount
     elif years_desired < years_amount:
         while years_amount > years_desired:
             trigger_event(e_remove_year)
-            years_amount = str(el.childElementCount)
+            years_amount = el.childElementCount
     else:
         pass
 
