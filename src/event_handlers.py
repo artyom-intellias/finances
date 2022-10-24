@@ -7,8 +7,10 @@ from decimal import Decimal
 js.document.active_year = 0
 js.document.plan = PlanComposer()
 
+
 def e_year_btn(e):
     active_year_id = js.document.active_year
+
     if active_year_id:
         year_el = js.document.getElementById(f'year_{active_year_id}')
         if active_year_id == e.target.id:
@@ -23,8 +25,9 @@ def e_year_btn(e):
         js.document.active_year = int(e.target.id.split('_')[1])
 
     # fill with calculated data
-    # year_info = js.document.plan.years[active_year_id - 1]
-    # populate_year_form(active_year_id, year_info)
+    active_year_id = js.document.active_year
+    year_info = js.document.plan.years[active_year_id - 1]
+    populate_year_form(active_year_id, year_info)
 
 
 def e_prev_year_btn(e):
