@@ -42,3 +42,9 @@ for i in range(30):
     if inflated_monthly > wanted_monthly_income:
         print('fucking hell!')
         break
+
+if __name__ == '__main__':
+    from decimal import *
+    a = Decimal(1.0) / 2
+    b = type(a)
+    print(b)
