@@ -156,11 +156,7 @@
                                             </div>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <div class="input-group-text non-rounded-top">
-                                                <input class="form-check-input mt-0" type="checkbox" value=""
-                                                       aria-label="Checkbox for following text input">
-                                            </div>
-                                            <select class="form-select non-rounded-top" id="inputGroupSelect01">
+                                            <select class="form-select non-rounded-top" id="interest_rate_span_input">
                                                 <option selected value="1">only for this year</option>
                                                 <option value="2">this and all subsequent years</option>
                                             </select>
@@ -210,11 +206,7 @@
                                             </div>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <div class="input-group-text non-rounded-top">
-                                                <input class="form-check-input mt-0" type="checkbox" value=""
-                                                       aria-label="Checkbox for following text input">
-                                            </div>
-                                            <select class="form-select non-rounded-top" id="inputGroupSelect01">
+                                            <select class="form-select non-rounded-top" id="inflation_rate_span_input">
                                                 <option selected value="1">only for this year</option>
                                                 <option value="2">this and all subsequent years</option>
                                             </select>
@@ -243,28 +235,38 @@
                                     <div class="col-6">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text non-rounded-right fixed-width-span-150-px">Monthly salary:</span>
+                                                <span class="input-group-text non-rounded-right non-rounded-bottom fixed-width-span-150-px">Monthly salary:</span>
                                             </div>
                                             <input id="monthly_salary_detailed_input" type="text" class="form-control"
                                                    aria-label="Amount (to the nearest dollar)">
                                             <div class="input-group-append">
-                                                <span class="input-group-text">$</span>
+                                                <span class="input-group-text non-rounded-bottom">$</span>
+                                            </div>
+                                            <div class="input-group mb-3">
+                                                <select class="form-select non-rounded-top" id="monthly_salary_span_input">
+                                                    <option selected value="1">only for this year</option>
+                                                    <option value="2">this and all subsequent years</option>
+                                                </select>
                                             </div>
                                         </div>
 
-                                        <label class="input-group-text non-rounded-bottom" for="inputGroupSelect01">
-                                            Index salary to inflation
-                                        </label>
                                         <div class="input-group mb-3">
+
+                                            <div class="input-group-prepend fixed-width-span-237-px">
+                                                <span class="input-group-text non-rounded-right ">Index salary to inflation</span>
+                                            </div>
                                             <div class="input-group-text non-rounded-top">
-                                                <input class="form-check-input mt-0" type="checkbox" value=""
+                                                <input id="monthly_salary_indexing_input" class="form-check-input mt-0" type="checkbox" value=""
                                                        aria-label="Checkbox for following text input">
                                             </div>
-                                            <select class="form-select non-rounded-top" id="inputGroupSelect01">
-                                                <option selected value="1">only for this year</option>
-                                                <option value="2">this and all subsequent years</option>
-                                            </select>
+                                            <div class="input-group mb-3">
+                                                <select class="form-select non-rounded-top" id="monthly_salary_indexing_span_input">
+                                                    <option selected value="1">only for this year</option>
+                                                    <option value="2">this and all subsequent years</option>
+                                                </select>
+                                            </div>
                                         </div>
+
                                     </div>
                                     <div class="col-5">
                                         <p>
@@ -297,23 +299,32 @@
                                             <input id="monthly_expenses_detailed_input" type="text" class="form-control"
                                                    aria-label="Amount (to the nearest dollar)">
                                             <div class="input-group-append">
-                                                <span class="input-group-text">$</span>
+                                                <span class="input-group-text non-rounded-bottom">$</span>
+                                            </div>
+                                            <div class="input-group mb-3">
+                                                <select class="form-select non-rounded-top" id="monthly_expenses_span_input">
+                                                    <option selected value="1">only for this year</option>
+                                                    <option value="2">this and all subsequent years</option>
+                                                </select>
                                             </div>
                                         </div>
 
-                                        <label class="input-group-text non-rounded-bottom" for="inputGroupSelect01">Index
-                                            expenses to inflation
-                                        </label>
                                         <div class="input-group mb-3">
+                                            <div class="input-group-prepend fixed-width-span-237-px">
+                                                <span class="input-group-text non-rounded-right non-rounded-bottom">Index expenses to inflation</span>
+                                            </div>
                                             <div class="input-group-text non-rounded-top">
-                                                <input class="form-check-input mt-0" type="checkbox" value=""
+                                                <input id="monthly_expenses_indexing_input" class="form-check-input mt-0" type="checkbox" value=""
                                                        aria-label="Checkbox for following text input">
                                             </div>
-                                            <select class="form-select non-rounded-top" id="inputGroupSelect01">
-                                                <option selected value="1">only for this year</option>
-                                                <option value="2">this and all subsequent years</option>
-                                            </select>
+                                            <div class="input-group mb-3">
+                                                <select class="form-select non-rounded-top" id="monthly_expenses_indexing_span_input">
+                                                    <option selected value="1">only for this year</option>
+                                                    <option value="2">this and all subsequent years</option>
+                                                </select>
+                                            </div>
                                         </div>
+
                                     </div>
                                     <div class="col-5">
                                         <p>
@@ -337,7 +348,7 @@
                         </li>
                     </ul>
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-primary non-rounded-top p-3">save</button>
+                        <button id="save_btn" type="button" class="btn btn-primary non-rounded-top p-3">save</button>
                     </div>
 
         </div>

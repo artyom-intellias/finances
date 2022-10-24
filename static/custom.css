@@ -19,6 +19,11 @@
     border-bottom-left-radius: unset;
 }
 
+
+.fixed-width-span-237-px {
+  width: 237px;
+}
+
 .fixed-width-span-200-px {
   display: inline-block;
   width: 200px;
