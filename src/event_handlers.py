@@ -2,38 +2,41 @@ from pyodide.ffi import create_proxy
 from helpers import create_el, trigger_event, validate_number_input, set_base_param
 from plan_composer import PlanComposer
 import js
+from decimal import Decimal
 
 
-def populate_year_form(year_number, year_info):
-    print(year_info)
+def populate_year_form(year_number=0, year_info=None):
+    trim_decimal = lambda x: float(round(x, 0))
 
-    squize = lambda x: float(round(x, 1))
+    def set_info_by_id(id_, key, input=False):
+        value = trim_decimal(year_info.report[key]) if year_info else 0
+        if input:
+            js.document.getElementById(id_).value = value
+        else:
+            js.document.getElementById(id_).textContent = value
 
     js.document.getElementById("year_number").textContent = f"Year #{year_number}"
 
-    js.document.getElementById("monthly_salary_detailed_input").value = squize(year_info.report['monthly_salary'])
-    js.document.getElementById("yearly_salary").textContent = squize(year_info.report['yearly_salary'])
-    js.document.getElementById("monthly_salary_indexed").textContent = squize(year_info.report['monthly_salary_indexed'])
-    js.document.getElementById("yearly_salary_indexed").textContent = squize(year_info.report['yearly_salary_indexed'])
+    set_info_by_id('monthly_salary_detailed_input', 'monthly_salary', input=True)
+    set_info_by_id('yearly_salary', 'yearly_salary')
+    set_info_by_id('monthly_salary_indexed', 'monthly_salary_indexed')
+    set_info_by_id('yearly_salary_indexed', 'yearly_salary_indexed')
 
-    js.document.getElementById("monthly_expenses_detailed_input").value = squize(year_info.report['monthly_expenses'])
-    js.document.getElementById("yearly_expenses").textContent = squize(year_info.report['yearly_expenses'])
-    js.document.getElementById("monthly_expenses_indexed").textContent = squize(year_info.report['monthly_expenses_indexed'])
-    js.document.getElementById("yearly_expenses_indexed").textContent = squize(year_info.report['yearly_expenses_indexed'])
+    set_info_by_id('monthly_expenses_detailed_input', 'monthly_expenses', input=True)
+    set_info_by_id('yearly_expenses', 'yearly_expenses')
+    set_info_by_id('monthly_expenses_indexed', 'monthly_expenses_indexed')
+    set_info_by_id('yearly_expenses_indexed', 'yearly_expenses_indexed')
 
-    js.document.getElementById("interest_rate_detailed_input").value = squize(year_info.interest_rate)
-    js.document.getElementById("yearly_income").textContent = squize(year_info.report['yearly_income'])
-    js.document.getElementById("yearly_adjusted_income").textContent = squize(year_info.report['yearly_adjusted_income'])
-    js.document.getElementById("monthly_income").textContent = squize(year_info.report['monthly_income'])
-    js.document.getElementById("monthly_adjusted_income").textContent = squize(year_info.report['monthly_adjusted_income'])
-    js.document.getElementById("total_income").textContent = squize(year_info.report['total_income'])
-    js.document.getElementById("total_adjusted_income").textContent = squize(year_info.report['total_adjusted_income'])
+    set_info_by_id('interest_rate_detailed_input', 'interest_rate', input=True)
+    set_info_by_id('yearly_income', 'yearly_income')
+    set_info_by_id('yearly_adjusted_income', 'yearly_adjusted_income')
+    set_info_by_id('monthly_income', 'monthly_income')
+    set_info_by_id('monthly_adjusted_income', 'monthly_adjusted_income')
+    set_info_by_id('total_income', 'total_income')
 
-    js.document.getElementById("inflation_rate_detailed_input").value = squize(year_info.inflation_rate)
-    js.document.getElementById("monthly_inflated").textContent = squize(year_info.report['monthly_inflated'])
-    js.document.getElementById("yearly_inflated").textContent = squize(year_info.report['yearly_inflated'])
-    js.document.getElementById("total_inflated").textContent = squize(year_info.report['total_inflated'])
-    # print(year_info.report['total_inflated'])
+    set_info_by_id('inflation_rate_detailed_input', 'inflation_rate', input=True)
+    set_info_by_id('monthly_inflated', 'monthly_inflated')
+    set_info_by_id('total_inflated', 'total_inflated')
 
 
 def e_year_btn(e):
