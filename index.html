@@ -145,6 +145,102 @@
                             <div class="container p-2">
                                 <div class="row">
                                     <div class="col-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text non-rounded-right non-rounded-bottom fixed-width-span-150-px">Interest rate:</span>
+                                            </div>
+                                            <input id="interest_rate_detailed_input" type="text" class="form-control"
+                                                   aria-label="Amount (to the nearest dollar)">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text non-rounded-left non-rounded-bottom">%</span>
+                                            </div>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-text non-rounded-top">
+                                                <input class="form-check-input mt-0" type="checkbox" value=""
+                                                       aria-label="Checkbox for following text input">
+                                            </div>
+                                            <select class="form-select non-rounded-top" id="inputGroupSelect01">
+                                                <option selected value="1">only for this year</option>
+                                                <option value="2">this and all subsequent years</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-5">
+                                        <p>Yearly income:
+                                            <span id="yearly_income">
+                    </span>
+                                        </p>
+                                        <p>Yearly adjusted income:
+                                            <span id="yearly_adjusted_income">
+                    </span>
+                                        </p>
+                                        <p>Monthly income:
+                                            <span id="monthly_income">
+                    </span>
+                                        </p>
+                                        <p>Monthly adjusted income:
+                                            <span id="monthly_adjusted_income">
+                    </span>
+                                        </p>
+                                        <p>Total income:
+                                            <span id="total_income">
+                    </span>
+                                        </p>
+                                        <p>Total adjusted income:
+                                            <span id="total_adjusted_income">
+                    </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="container p-2">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text non-rounded-right non-rounded-bottom fixed-width-span-150-px">Inflation rate:</span>
+                                            </div>
+                                            <input id="inflation_rate_detailed_input" type="text" class="form-control"
+                                                   aria-label="Amount (to the nearest dollar)">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text non-rounded-left non-rounded-bottom">%</span>
+                                            </div>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-text non-rounded-top">
+                                                <input class="form-check-input mt-0" type="checkbox" value=""
+                                                       aria-label="Checkbox for following text input">
+                                            </div>
+                                            <select class="form-select non-rounded-top" id="inputGroupSelect01">
+                                                <option selected value="1">only for this year</option>
+                                                <option value="2">this and all subsequent years</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-5">
+                                        <p>Monthly inflated:
+                                            <span id="monthly_inflated">
+                                            </span>
+                                        </p>
+                                        <p>Yearly inflated:
+                                            <span id="yearly_inflated">
+                                            </span>
+                                        </p>
+                                        <p>Total inflated:
+                                            <span id="total_inflated">
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="container p-2">
+                                <div class="row">
+                                    <div class="col-6">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text non-rounded-right fixed-width-span-150-px">Monthly salary:</span>
@@ -183,7 +279,7 @@
                                         </p>
                                         <p>
                                             Yearly salary indexed:
-                                             <span id="yearly_salary_indexed">
+                                            <span id="yearly_salary_indexed">
                                             </span>
                                         </p>
                                     </div>
@@ -239,109 +335,13 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="list-group-item">
-                            <div class="container p-2">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text non-rounded-right non-rounded-bottom fixed-width-span-150-px">Interest rate:</span>
-                                            </div>
-                                            <input id="interest_rate_detailed_input" type="text" class="form-control"
-                                                   aria-label="Amount (to the nearest dollar)">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text non-rounded-left non-rounded-bottom">%</span>
-                                            </div>
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-text non-rounded-top">
-                                                <input class="form-check-input mt-0" type="checkbox" value=""
-                                                       aria-label="Checkbox for following text input">
-                                            </div>
-                                            <select class="form-select non-rounded-top" id="inputGroupSelect01">
-                                                <option selected value="1">only for this year</option>
-                                                <option value="2">this and all subsequent years</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-5">
-                                        <p>Yearly income:
-                                            <span id="yearly_income">
-                                            </span>
-                                        </p>
-                                        <p>Yearly adjusted income:
-                                            <span id="yearly_adjusted_income">
-                                            </span>
-                                        </p>
-                                        <p>Monthly income:
-                                            <span id="monthly_income">
-                                            </span>
-                                        </p>
-                                        <p>Monthly adjusted income:
-                                            <span id="monthly_adjusted_income">
-                                            </span>
-                                        </p>
-                                        <p>Total income:
-                                            <span id="total_income">
-                                            </span>
-                                        </p>
-                                        <p>Total adjusted income:
-                                            <span id="total_adjusted_income">
-                                            </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="container p-2">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text non-rounded-right non-rounded-bottom fixed-width-span-150-px">Inflation rate:</span>
-                                            </div>
-                                            <input id="inflation_rate_detailed_input" type="text" class="form-control"
-                                                   aria-label="Amount (to the nearest dollar)">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text non-rounded-left non-rounded-bottom">%</span>
-                                            </div>
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-text non-rounded-top">
-                                                <input class="form-check-input mt-0" type="checkbox" value=""
-                                                       aria-label="Checkbox for following text input">
-                                            </div>
-                                            <select class="form-select non-rounded-top" id="inputGroupSelect01">
-                                                <option selected value="1">only for this year</option>
-                                                <option value="2">this and all subsequent years</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-5">
-                                        <p>Monthly inflated:
-                                            <span id="monthly_inflated">
-                                            </span>
-                                        </p>
-                                        <p>Yearly inflated:
-                                            <span id="yearly_inflated">
-                                            </span>
-                                        </p>
-                                        <p>Total inflated:
-                                            <span id="total_inflated">
-                                            </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
                     </ul>
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-primary non-rounded-top p-3">save</button>
                     </div>
+
         </div>
     </div>
-
     <div id="dashboard" class="row"></div>
     <div id="output" class="row"></div>
 </div>
