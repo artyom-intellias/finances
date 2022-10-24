@@ -17,8 +17,6 @@ def e_year_btn(e):
             year_el.classList.remove('active')
             e.target.classList.add('active')
             js.document.active_year = int(e.target.id.split('_')[1])
-
-
     else:
         e.target.classList.add('active')
         js.document.getElementById('year_btn_active').title = e.target.id
@@ -30,16 +28,17 @@ def e_year_btn(e):
 
 
 def e_prev_year_btn(e):
-    active_year_id = int(js.document.getElementById('year_btn_active').title.split('_')[1])
+    active_year_id = js.document.active_year
 
     years_list = js.document.getElementById("years_list")
-    years_total = years_list.childElementCount + 1
-    if years_total == 1 and active_year_id == 1:
-        return
+    years_total = years_list.childElementCount
+    if years_total:
+        if years_total == 1 and active_year_id == 1:
+            return
 
-    prev_year = js.document.getElementById(f'year_{active_year_id - 1}')
-    if prev_year:
-        prev_year.click()
+        prev_year = js.document.getElementById(f'year_{active_year_id - 1}')
+        if prev_year:
+            prev_year.click()
 
 
 def e_next_year_btn(e):
