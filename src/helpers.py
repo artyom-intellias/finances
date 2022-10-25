@@ -72,6 +72,8 @@ def validate_number_input(el, max_, min_=0, error_timeout=1000):
 
 
 def set_base_param(storage_id: str, input_id: str, trailing_char: str, min_: int = 0, max_: int = 1):
+    if js.document.getElementById(input_id).readOnly:
+        return None
     storage = js.document.getElementById(storage_id)
     validated_input = validate_number_input(js.document.getElementById(input_id), max_=max_, min_=min_)
     if validated_input:
