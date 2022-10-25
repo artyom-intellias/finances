@@ -104,7 +104,7 @@ def e_remove_year(e):
 
 
 def e_set_years(e):
-    years_desired = int(validate_number_input(js.document.getElementById("years_input"), 100, min=1))
+    years_desired = int(validate_number_input(js.document.getElementById("years_input"), max_=100, min_=1))
     js.document.getElementById("years_input").value = ''
     if not years_desired:
         return None
@@ -124,19 +124,19 @@ def e_set_years(e):
 
 
 def e_set_monthly_salary(e):
-    set_base_param('monthly_salary_stored_value', 'monthly_salary_input', '$', max=100_000, min=1)
+    set_base_param('monthly_salary_stored_value', 'monthly_salary_input', '$', max_=100_000, min_=1)
 
 
 def e_set_monthly_expenses(e):
-    set_base_param('monthly_expenses_stored_value', 'monthly_expenses_input', '$', max=100_000)
+    set_base_param('monthly_expenses_stored_value', 'monthly_expenses_input', '$', max_=100_000, min_=0)
 
 
 def e_set_base_interest_rate(e):
-    set_base_param('base_interest_rate_stored_value', 'base_interest_rate_input', '%', max=100)
+    set_base_param('base_interest_rate_stored_value', 'base_interest_rate_input', '%', max_=100, min_=0)
 
 
 def e_set_base_inflation_rate(e):
-    set_base_param('base_inflation_rate_stored_value', 'base_inflation_rate_input', '%', max=1000)
+    set_base_param('base_inflation_rate_stored_value', 'base_inflation_rate_input', '%', max_=1000, min_=0)
 
 
 js.document.getElementById("add_year_btn").onclick = e_add_year

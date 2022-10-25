@@ -46,16 +46,16 @@ def to_number(val: str) -> int or float or None:
             return None
 
 
-def validate_number_input(el, max, min=0, error_timeout=1000):
+def validate_number_input(el, max_, min_=0, error_timeout=1000):
     val = str(el.value)
     class_toggle = create_proxy(lambda: el.classList.remove('is-invalid'))
     number = to_number(val)
-    if number:
-        if number > max:
+    if number or number == 0:
+        if number > max_:
             el.classList.add('is-invalid')
             js.window.setTimeout(class_toggle, error_timeout)
             return ''
-        elif number < min:
+        elif number < min_:
             el.classList.add('is-invalid')
             js.window.setTimeout(class_toggle, error_timeout)
             return ''
@@ -71,10 +71,10 @@ def validate_number_input(el, max, min=0, error_timeout=1000):
         return ''
 
 
-def set_base_param(storage_id: str, input_id: str, trailing_char: str, min: int = 0, max: int = 1):
+def set_base_param(storage_id: str, input_id: str, trailing_char: str, min_: int = 0, max_: int = 1):
     storage = js.document.getElementById(storage_id)
-    validated_input = validate_number_input(js.document.getElementById(input_id), max=max, min=min)
-    if validated_input:
+    validated_input = validate_number_input(js.document.getElementById(input_id), max_=max_, min_=min_)
+    if validated_input :
         storage.textContent = validated_input + f' {trailing_char}'
     js.document.getElementById(input_id).value = ''
 
