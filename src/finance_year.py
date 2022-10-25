@@ -63,8 +63,8 @@ class FinanceYear:
             "inflation_rate": self.inflation_rate,
             "devaluation_rate": devaluation_rate,
 
-            "salary_indexed": self.is_index_salary,
-            "expenses_indexed": self.is_index_expenses,
+            "salary_was_indexed": self.is_index_salary,
+            "expenses_was_indexed": self.is_index_expenses,
 
             "monthly_salary": monthly_salary,
             "monthly_expenses": monthly_expenses,

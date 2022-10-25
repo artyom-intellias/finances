@@ -1,5 +1,6 @@
 from pyodide.ffi import create_proxy
-from helpers import create_el, trigger_event, validate_number_input, set_base_param, populate_year_form, block_base_params, unblock_base_params
+from helpers import create_el, trigger_event, validate_number_input, set_base_param, populate_year_form, \
+    block_base_params, unblock_base_params, validate_years_param
 from plan_composer import PlanComposer
 import js
 from decimal import Decimal
@@ -29,6 +30,57 @@ def e_year_btn(e):
     year_info = js.document.plan.years[active_year_id - 1]
     populate_year_form(active_year_id, year_info)
 
+
+def e_save_year_btn(e):
+    active_year = js.document.active_year
+
+    el = js.document.getElementById("years_list")
+    years_amount = el.childElementCount
+
+    # input values
+
+    custom_inflation_rate = validate_years_param('inflation_rate_detailed_input', min_=0, max_=1000)
+    custom_interest_rate = validate_years_param('interest_rate_detailed_input', min_=0, max_=100)
+    custom_monthly_salary = validate_years_param('monthly_salary_detailed_input', min_=1, max_=100000)
+    custom_monthly_expenses = validate_years_param('monthly_expenses_detailed_input', min_=0, max_=100000)
+
+    if custom_inflation_rate == '' or custom_interest_rate == '' or custom_monthly_salary == '' or custom_monthly_expenses == '':
+        return None
+
+    # # rates spans
+    interest_rate_span = js.document.getElementById('interest_rate_span_input').value
+    inflation_rate_span = js.document.getElementById('inflation_rate_span_input').value
+
+    # salary/expenses spans
+    monthly_salary_span = js.document.getElementById('monthly_salary_span_input').value
+    monthly_expenses_span = js.document.getElementById('monthly_expenses_span_input').value
+
+    # indexing checkboxes
+    is_index_salary = js.document.getElementById('monthly_salary_indexing_input').checked
+    is_index_expenses = js.document.getElementById('monthly_expenses_indexing_input').checked
+
+    salary_indexing_span = js.document.getElementById('monthly_salary_indexing_span_input').value
+    expenses_indexing_span = js.document.getElementById('monthly_expenses_indexing_span_input').value
+
+    js.document.plan.save_year(active_year, years_amount,
+                               custom_interest_rate=Decimal(custom_interest_rate),
+                               custom_inflation_rate=Decimal(custom_inflation_rate),
+                               custom_monthly_salary=Decimal(custom_monthly_salary),
+                               custom_monthly_expenses=Decimal(custom_monthly_expenses),
+                               interest_rate_span=interest_rate_span,
+                               inflation_rate_span=inflation_rate_span,
+                               monthly_salary_span=monthly_salary_span,
+                               monthly_expenses_span=monthly_expenses_span,
+                               is_index_salary=is_index_salary,
+                               is_index_expenses=is_index_expenses,
+                               salary_indexing_span=salary_indexing_span,
+                               expenses_indexing_span=expenses_indexing_span
+                               )
+
+    # fill with calculated data
+    active_year_id = js.document.active_year
+    year_info = js.document.plan.years[active_year_id - 1]
+    populate_year_form(active_year_id, year_info)
 
 def e_prev_year_btn(e):
     active_year_id = js.document.active_year
@@ -164,4 +216,3 @@ js.document.getElementById("prev_year_btn").onclick = e_prev_year_btn
 js.document.getElementById("next_year_btn").onclick = e_next_year_btn
 js.document.getElementById("save_btn").onclick = e_save_year_btn
 js.document.onkeydown = e_hotkeys
-
