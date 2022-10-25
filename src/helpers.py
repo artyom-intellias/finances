@@ -80,7 +80,7 @@ def set_base_param(storage_id: str, input_id: str, trailing_char: str, min_: int
 
 
 def populate_year_form(year_number=0, year_info=None):
-    trim_decimal = lambda x: float(round(x, 0))
+    trim_decimal = lambda x: float(round(x, 2))
 
     def set_info_by_id(id_, key, input=False):
         value = trim_decimal(year_info.report[key]) if year_info else 0
@@ -106,10 +106,12 @@ def populate_year_form(year_number=0, year_info=None):
     set_info_by_id('yearly_adjusted_income', 'yearly_adjusted_income')
     set_info_by_id('monthly_income', 'monthly_income')
     set_info_by_id('monthly_adjusted_income', 'monthly_adjusted_income')
-    set_info_by_id('total_income', 'total_income')
+    set_info_by_id('total_balance', 'total_balance')
 
     set_info_by_id('inflation_rate_detailed_input', 'inflation_rate', input=True)
     set_info_by_id('monthly_inflated', 'monthly_inflated')
     set_info_by_id('total_inflated', 'total_inflated')
-    set_info_by_id('total_adjusted_income', 'total_adjusted_income')
+    set_info_by_id('total_adjusted_balance', 'total_adjusted_balance')
     set_info_by_id('yearly_inflated', 'yearly_inflated')
+
+    set_info_by_id('devaluation_rate', 'devaluation_rate')
