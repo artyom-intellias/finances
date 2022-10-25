@@ -80,10 +80,10 @@ def set_base_param(storage_id: str, input_id: str, trailing_char: str, min_: int
 
 
 def populate_year_form(year_number=0, year_info=None):
-    trim_decimal = lambda x: float(round(x, 2))
+    trim_decimal = lambda val, round_to: float(round(val, round_to))
 
-    def set_info_by_id(id_, key, input=False):
-        value = trim_decimal(year_info.report[key]) if year_info else 0
+    def set_info_by_id(id_, key, input=False, round_to=0):
+        value = trim_decimal(year_info.report[key], round_to) if year_info else 0
         if input:
             js.document.getElementById(id_).value = value
         else:
@@ -114,4 +114,4 @@ def populate_year_form(year_number=0, year_info=None):
     set_info_by_id('total_adjusted_balance', 'total_adjusted_balance')
     set_info_by_id('yearly_inflated', 'yearly_inflated')
 
-    set_info_by_id('devaluation_rate', 'devaluation_rate')
+    set_info_by_id('devaluation_rate', 'devaluation_rate', round_to=2)
