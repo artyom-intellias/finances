@@ -162,38 +162,6 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-5">
-                                        <p>Monthly income:
-                                            <span id="monthly_income">
-                                            </span>
-                                        </p>
-                                        <p>Monthly adjusted income:
-                                            <span id="monthly_adjusted_income">
-                                            </span>
-                                        </p>
-                                        <p>Yearly income:
-                                            <span id="yearly_income">
-                                            </span>
-                                        </p>
-                                        <p>Yearly adjusted income:
-                                            <span id="yearly_adjusted_income">
-                                            </span>
-                                        </p>
-                                        <p>Total balance:
-                                            <span id="total_balance">
-                                            </span>
-                                        </p>
-                                        <p>Total adjusted balance:
-                                            <span id="total_adjusted_balance">
-                                            </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="container p-2">
-                                <div class="row">
                                     <div class="col-6">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
@@ -212,26 +180,6 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-5">
-                                        <p>Monthly inflated:
-                                            <span id="monthly_inflated">
-                                            </span>
-                                        </p>
-                                        <p>Yearly inflated:
-                                            <span id="yearly_inflated">
-                                            </span>
-                                        </p>
-                                        <p>Total inflated:
-                                            <span id="total_inflated">
-                                            </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="container p-2">
-                                <div class="row">
                                     <div class="col-6">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
@@ -240,7 +188,7 @@
                                             <input id="monthly_salary_detailed_input" type="text" class="form-control"
                                                    aria-label="Amount (to the nearest dollar)" placeholder="1-100000">
                                             <div class="input-group-append">
-                                                <span class="input-group-text non-rounded-bottom">$</span>
+                                                <span class="input-group-text non-rounded-bottom non-rounded-left">$</span>
                                             </div>
                                             <div class="input-group mb-3">
                                                 <select class="form-select non-rounded-top"
@@ -254,7 +202,7 @@
                                         <div class="input-group mb-3">
 
                                             <div class="input-group-prepend fixed-width-span-289-px">
-                                                <span class="input-group-text non-rounded-right ">Index salary to inflation</span>
+                                                <span class="input-group-text non-rounded-right non-rounded-bottom">Index salary to inflation</span>
                                             </div>
                                             <div class="input-group-text non-rounded-top">
                                                 <input id="monthly_salary_indexing_input" class="form-check-input mt-0"
@@ -271,38 +219,15 @@
                                         </div>
 
                                     </div>
-                                    <div class="col-5">
-                                        <p>
-                                            Monthly salary indexed:
-                                            <span id="monthly_salary_indexed">
-                                            </span>
-                                        </p>
-                                        <p>
-                                            Yearly salary:
-                                            <span id="yearly_salary">
-                                            </span>
-                                        </p>
-                                        <p>
-                                            Yearly salary indexed:
-                                            <span id="yearly_salary_indexed">
-                                            </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="container p-2">
-                                <div class="row">
                                     <div class="col-6">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text non-rounded-right fixed-width-span-150-px">Monthly expenses:</span>
+                                                <span class="input-group-text non-rounded-right non-rounded-bottom fixed-width-span-150-px">Monthly expenses:</span>
                                             </div>
                                             <input id="monthly_expenses_detailed_input" type="text" class="form-control"
                                                    aria-label="Amount (to the nearest dollar)" placeholder="0-100000">
                                             <div class="input-group-append">
-                                                <span class="input-group-text non-rounded-bottom">$</span>
+                                                <span class="input-group-text non-rounded-bottom non-rounded-left">$</span>
                                             </div>
                                             <div class="input-group mb-3">
                                                 <select class="form-select non-rounded-top"
@@ -332,7 +257,60 @@
                                         </div>
 
                                     </div>
-                                    <div class="col-5">
+                                    <div class="col-6">
+                                        <p>Monthly income:
+                                            <span id="monthly_income">
+                                            </span>
+                                        </p>
+                                        <p>Monthly adjusted income:
+                                            <span id="monthly_adjusted_income">
+                                            </span>
+                                        </p>
+                                        <p>Yearly income:
+                                            <span id="yearly_income">
+                                            </span>
+                                        </p>
+                                        <p>Yearly adjusted income:
+                                            <span id="yearly_adjusted_income">
+                                            </span>
+                                        </p>
+                                        <p>Total balance:
+                                            <span id="total_balance">
+                                            </span>
+                                        </p>
+                                        <p>Total adjusted balance:
+                                            <span id="total_adjusted_balance">
+                                            </span>
+                                        </p>
+                                        <p>Monthly inflated:
+                                            <span id="monthly_inflated">
+                                            </span>
+                                        </p>
+                                        <p>Yearly inflated:
+                                            <span id="yearly_inflated">
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>Total inflated:
+                                            <span id="total_inflated">
+                                            </span>
+                                        </p>
+                                        <p>
+                                            Monthly salary indexed:
+                                            <span id="monthly_salary_indexed">
+                                            </span>
+                                        </p>
+                                        <p>
+                                            Yearly salary:
+                                            <span id="yearly_salary">
+                                            </span>
+                                        </p>
+                                        <p>
+                                            Yearly salary indexed:
+                                            <span id="yearly_salary_indexed">
+                                            </span>
+                                        </p>
                                         <p>
                                             Monthly expenses indexed:
                                             <span id="monthly_expenses_indexed">
