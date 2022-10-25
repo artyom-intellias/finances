@@ -82,7 +82,7 @@ def set_base_param(storage_id: str, input_id: str, trailing_char: str, min_: int
 
 
 def validate_years_param(input_id: str, min_: int, max_: int = 1):
-    validated_input = validate_number_input(js.document.getElementById(input_id), max_=max_, min_=min_, error_timeout=3000)
+    validated_input = validate_number_input(js.document.getElementById(input_id), max_=max_, min_=min_, error_timeout=1000)
     if validated_input:
         return validated_input
     js.document.getElementById(input_id).value = ''
