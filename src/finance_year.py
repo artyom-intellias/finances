@@ -30,10 +30,10 @@ class FinanceYear:
         yearly_expenses = self.monthly_expenses * 12
         yearly_salary = self.monthly_salary * 12
 
-        monthly_salary_indexed = self.monthly_salary + (self.monthly_salary * self.inflation_rate * Decimal(0.01))
-        yearly_salary_indexed = monthly_salary_indexed * 12
-        monthly_expenses_indexed = self.monthly_expenses + (self.monthly_expenses * self.inflation_rate * Decimal(0.01))
-        yearly_expenses_indexed = monthly_expenses_indexed * 12
+        yearly_salary_indexed = yearly_salary * (1 + self.inflation_rate * Decimal(0.01))
+        monthly_salary_indexed = yearly_salary_indexed / 12
+        yearly_expenses_indexed = yearly_expenses * (1 + self.inflation_rate * Decimal(0.01))
+        monthly_expenses_indexed = yearly_expenses_indexed / 12
 
         before_income = self.previous_balance + yearly_salary - yearly_expenses
         after_income = before_income * (1 + (self.interest_rate * Decimal(0.01)))
