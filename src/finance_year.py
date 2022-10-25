@@ -3,31 +3,28 @@ from decimal import *
 
 class FinanceYear:
     def __init__(self,
-                 initial: Decimal = Decimal(0.0),
                  monthly_salary: Decimal = Decimal(0.0),
-                 is_index_salary: bool = False,
                  monthly_expenses: Decimal = Decimal(0.0),
+                 is_index_salary: bool = False,
                  is_index_expenses: bool = False,
                  inflation_rate: Decimal = Decimal(0.0),
                  interest_rate: Decimal = Decimal(0.0),
                  devaluation_rate: Decimal = Decimal(1.0),
-                 previous_income: Decimal = Decimal(0.0),
+                 previous_balance: Decimal = Decimal(0.0),
                  previous_inflation: Decimal = Decimal(0.0),
                  ):
-        self.devaluation_rate = devaluation_rate
-        self.initial = initial
-        self.monthly_salary = monthly_salary
-        self.monthly_expenses = monthly_expenses
+        self.devaluation_rate = devaluation_rate  # accumulated inflation
+        self.monthly_salary = monthly_salary  # monthly earnings
+        self.monthly_expenses = monthly_expenses  # monthly spendings
         self.is_index_salary = is_index_salary
         self.is_index_expenses = is_index_expenses
         self.inflation_rate = inflation_rate
         self.interest_rate = interest_rate
-        self.previous_income = previous_income
-        self.previous_inflation = previous_inflation
+        self.previous_balance = previous_balance  # everything on balance after expenses, profit and inflation
+        self.previous_inflation = previous_inflation  # everything inflated from income
         self.report = self.generate_report()
 
     def generate_report(self):
-        self.initial += self.monthly_salary * 12
         devaluation_rate = self.devaluation_rate * (1 - (self.inflation_rate * Decimal(0.01)))
 
         yearly_expenses = self.monthly_expenses * 12
@@ -38,8 +35,10 @@ class FinanceYear:
         monthly_expenses_indexed = self.monthly_expenses + (self.monthly_expenses * self.inflation_rate * Decimal(0.01))
         yearly_expenses_indexed = monthly_expenses_indexed * 12
 
+        before_income = self.previous_balance + yearly_salary - yearly_expenses
+        after_income = before_income * (1 + (self.interest_rate * Decimal(0.01)))
 
-        yearly_income = (self.initial + yearly_salary - yearly_expenses) * (self.interest_rate * Decimal(0.01) + 1)
+        yearly_income = after_income - before_income
         monthly_income = yearly_income / 12
 
         yearly_adjusted_income = yearly_income * self.devaluation_rate
@@ -48,9 +47,11 @@ class FinanceYear:
         yearly_inflated = (yearly_salary + yearly_income) * (1 - (self.inflation_rate * Decimal(0.01)))
         monthly_inflated = yearly_inflated / 12
 
-        total_income = self.previous_income + yearly_income
-        total_adjusted_income = total_income * self.devaluation_rate
+        total_balance = after_income
+        total_adjusted_balance = total_balance * self.devaluation_rate
         total_inflated = self.previous_inflation + yearly_inflated
+
+        print(f'from year {self.previous_balance=} {before_income=} {after_income=} {total_balance=}')
 
         report = {
             "interest_rate": self.interest_rate,
@@ -77,8 +78,8 @@ class FinanceYear:
             "yearly_inflated": yearly_inflated,
             "monthly_inflated": monthly_inflated,
 
-            "total_income": total_income,
-            "total_adjusted_income": total_adjusted_income,
+            "total_balance": total_balance,
+            "total_adjusted_balance": total_adjusted_balance,
             "total_inflated": total_inflated,
         }
         return report
