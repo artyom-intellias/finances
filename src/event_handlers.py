@@ -44,8 +44,9 @@ def e_save_year_btn(e):
     custom_monthly_salary = validate_years_param('monthly_salary_detailed_input', min_=1, max_=100000)
     custom_monthly_expenses = validate_years_param('monthly_expenses_detailed_input', min_=0, max_=100000)
 
-    if custom_inflation_rate == '' or custom_interest_rate == '' or custom_monthly_salary == '' or custom_monthly_expenses == '':
-        return None
+    for i in [custom_inflation_rate, custom_interest_rate, custom_monthly_salary, custom_monthly_expenses]:
+        if i is None or i == '':
+            return None
 
     # # rates spans
     interest_rate_span = js.document.getElementById('interest_rate_span_input').value
