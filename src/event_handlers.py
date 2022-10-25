@@ -1,5 +1,5 @@
 from pyodide.ffi import create_proxy
-from helpers import create_el, trigger_event, validate_number_input, set_base_param, populate_year_form
+from helpers import create_el, trigger_event, validate_number_input, set_base_param, populate_year_form, block_base_params, unblock_base_params
 from plan_composer import PlanComposer
 import js
 from decimal import Decimal
@@ -68,7 +68,7 @@ def e_add_year(e):
     years_list.appendChild(year_btn)
 
     if not js.document.plan.years:
-
+        trigger_event(block_base_params)
         monthly_salary = Decimal(js.document.getElementById("monthly_salary_stored_value").innerText[:-2])
         monthly_expenses = Decimal(js.document.getElementById("monthly_expenses_stored_value").innerText[:-2])
         interest_rate = Decimal(js.document.getElementById("base_interest_rate_stored_value").innerText[:-2])
@@ -91,6 +91,7 @@ def e_remove_year(e):
     if not years_total:
         return None
     elif years_total == 1:
+        trigger_event(unblock_base_params)
         js.document.active_year = 0
         el.lastChild.remove()
         js.document.plan.years = []

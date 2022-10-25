@@ -79,6 +79,20 @@ def set_base_param(storage_id: str, input_id: str, trailing_char: str, min_: int
     js.document.getElementById(input_id).value = ''
 
 
+def block_base_params(e):
+    js.document.getElementById('monthly_salary_input').readOnly = True
+    js.document.getElementById('monthly_expenses_input').readOnly = True
+    js.document.getElementById('base_interest_rate_input').readOnly = True
+    js.document.getElementById('base_inflation_rate_input').readOnly = True
+
+
+def unblock_base_params(e):
+    js.document.getElementById('monthly_salary_input').readOnly = False
+    js.document.getElementById('monthly_expenses_input').readOnly = False
+    js.document.getElementById('base_interest_rate_input').readOnly = False
+    js.document.getElementById('base_inflation_rate_input').readOnly = False
+
+
 def populate_year_form(year_number=0, year_info=None):
     trim_decimal = lambda val, round_to: float(round(val, round_to))
 
