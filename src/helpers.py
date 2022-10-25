@@ -111,3 +111,5 @@ def populate_year_form(year_number=0, year_info=None):
     set_info_by_id('inflation_rate_detailed_input', 'inflation_rate', input=True)
     set_info_by_id('monthly_inflated', 'monthly_inflated')
     set_info_by_id('total_inflated', 'total_inflated')
+    set_info_by_id('total_adjusted_income', 'total_adjusted_income')
+    set_info_by_id('yearly_inflated', 'yearly_inflated')
