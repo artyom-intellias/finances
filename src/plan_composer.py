@@ -48,14 +48,14 @@ class PlanComposer:
                   custom_inflation_rate: Decimal = None,
                   custom_monthly_salary: Decimal = None,
                   custom_monthly_expenses: Decimal = None,
-                  is_index_salary: bool = False,
-                  is_index_expenses: bool = False,
                   interest_rate_span: YearsSpan = YearsSpan.THIS_YEAR.value,
                   inflation_rate_span: YearsSpan = YearsSpan.THIS_YEAR.value,
                   monthly_salary_span: YearsSpan = YearsSpan.THIS_YEAR.value,
                   monthly_expenses_span: YearsSpan = YearsSpan.THIS_YEAR.value,
                   salary_indexing_span: YearsSpan = YearsSpan.THIS_YEAR.value,
-                  expenses_indexing_span: YearsSpan = YearsSpan.THIS_YEAR.value
+                  expenses_indexing_span: YearsSpan = YearsSpan.THIS_YEAR.value,
+                  is_index_salary: bool = False,
+                  is_index_expenses: bool = False,
                   ):
         """apply new values from input, method called on "save" """
         old_values = self.years[n:]
@@ -73,15 +73,12 @@ class PlanComposer:
             previous_inflation=before_save.previous_inflation
         )
         year = None
-        print(f'{len(self.years)=}')
-
         for i in range(total_years - n):
-            print(f'{i=}')
             old_year = old_values[i]
-            self.add_year(interest_rate=custom_interest_rate if interest_rate_span == YearsSpan.ALL_SUBSEQUENT.value else old_year.interest_rate,
+            year = self.add_year(interest_rate=custom_interest_rate if interest_rate_span == YearsSpan.ALL_SUBSEQUENT.value else old_year.interest_rate,
                           inflation_rate=custom_inflation_rate if inflation_rate_span == YearsSpan.ALL_SUBSEQUENT.value else old_year.inflation_rate,
-                          monthly_salary=custom_monthly_salary if monthly_salary_span == YearsSpan.ALL_SUBSEQUENT.value else old_year.monthly_salary,
-                          monthly_expenses=custom_monthly_expenses if monthly_expenses_span == YearsSpan.ALL_SUBSEQUENT.value else old_year.monthly_expenses,
+                          monthly_salary=year.report['monthly_salary'] if year is not None else custom_monthly_salary if monthly_salary_span == YearsSpan.ALL_SUBSEQUENT.value else self.years[-1].report['monthly_salary'],
+                          monthly_expenses=year.report['monthly_expenses'] if year is not None else custom_monthly_expenses if monthly_expenses_span == YearsSpan.ALL_SUBSEQUENT.value else self.years[-1].report['monthly_expenses'],
                           is_index_salary=True if salary_indexing_span == YearsSpan.ALL_SUBSEQUENT.value else old_year.is_index_salary,
                           is_index_expenses=True if expenses_indexing_span == YearsSpan.ALL_SUBSEQUENT.value else old_year.is_index_expenses)
 
