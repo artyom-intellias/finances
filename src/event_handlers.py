@@ -97,6 +97,7 @@ def e_remove_year(e):
         js.document.getElementById("years_stored_value").innerText = 0
         populate_year_form()
     else:
+        js.document.getElementById("years_stored_value").innerText = el.childElementCount - 1
         js.document.plan.years.pop()
         if el.lastChild.classList.contains("active"):
             el.lastChild.previousSibling.click()
@@ -104,19 +105,24 @@ def e_remove_year(e):
 
 
 def e_set_years(e):
-    years_desired = int(validate_number_input(js.document.getElementById("years_input"), max_=100, min_=1))
+    value = validate_number_input(js.document.getElementById("years_input"), max_=100, min_=0)
+    if value == '':
+        years_desired = 0
+    else:
+        years_desired = int(value)
+
     js.document.getElementById("years_input").value = ''
-    if not years_desired:
+    if years_desired == '':
         return None
     el = js.document.getElementById("years_list")
     years_amount = el.childElementCount
 
     if years_desired > years_amount:
-        while years_amount < years_desired:
+        while years_desired > years_amount:
             trigger_event(e_add_year)
             years_amount = el.childElementCount
     elif years_desired < years_amount:
-        while years_amount > years_desired:
+        while years_desired < years_amount:
             trigger_event(e_remove_year)
             years_amount = el.childElementCount
     else:
