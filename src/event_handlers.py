@@ -145,6 +145,13 @@ def e_set_base_inflation_rate(e):
     set_base_param('base_inflation_rate_stored_value', 'base_inflation_rate_input', '%', max_=1000, min_=0)
 
 
+def e_hotkeys(e):
+    if e.keyCode == 37:
+        trigger_event(e_prev_year_btn)
+    if e.keyCode == 39:
+        trigger_event(e_next_year_btn)
+
+
 js.document.getElementById("add_year_btn").onclick = e_add_year
 js.document.getElementById("remove_year_btn").onclick = e_remove_year
 js.document.getElementById("set_years_btn").onclick = e_set_years
@@ -154,3 +161,6 @@ js.document.getElementById("set_base_interest_rate_btn").onclick = e_set_base_in
 js.document.getElementById("set_base_inflation_rate_btn").onclick = e_set_base_inflation_rate
 js.document.getElementById("prev_year_btn").onclick = e_prev_year_btn
 js.document.getElementById("next_year_btn").onclick = e_next_year_btn
+js.document.getElementById("save_btn").onclick = e_save_year_btn
+js.document.onkeydown = e_hotkeys
+
