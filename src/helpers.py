@@ -112,6 +112,10 @@ def populate_year_form(year_number=0, year_info=None):
         else:
             js.document.getElementById(id_).textContent = value
 
+    if js.document.active_year:
+        js.document.getElementById("monthly_salary_indexing_input").checked = True if year_info.report['salary_was_indexed'] else False
+        js.document.getElementById("monthly_expenses_indexing_input").checked = True if year_info.report['expenses_was_indexed'] else False
+
     js.document.getElementById("year_number").textContent = f"Year #{year_number}"
 
     set_info_by_id('monthly_salary_detailed_input', 'monthly_salary', input=True)
@@ -119,14 +123,11 @@ def populate_year_form(year_number=0, year_info=None):
     set_info_by_id('monthly_salary_indexed', 'monthly_salary_indexed')
     set_info_by_id('yearly_salary_indexed', 'yearly_salary_indexed')
 
-    js.document.getElementById("monthly_salary_indexing_input").checked = True if year_info.report['salary_indexed'] else False
 
     set_info_by_id('monthly_expenses_detailed_input', 'monthly_expenses', input=True)
     set_info_by_id('yearly_expenses', 'yearly_expenses')
     set_info_by_id('monthly_expenses_indexed', 'monthly_expenses_indexed')
     set_info_by_id('yearly_expenses_indexed', 'yearly_expenses_indexed')
-
-    js.document.getElementById("monthly_expenses_indexing_input").checked = True if year_info.report['expenses_indexed'] else False
 
     set_info_by_id('interest_rate_detailed_input', 'interest_rate', input=True)
     set_info_by_id('yearly_income', 'yearly_income')
