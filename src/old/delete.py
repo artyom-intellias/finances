@@ -1,6 +1,8 @@
+from decimal import Decimal
+
 
 devaluation = 1
-base_inf = 0.02
+base_inf = Decimal(0.02)
 interest_rate = 5
 initial = 0
 initial_non_invested = 0
@@ -11,7 +13,7 @@ wanted_monthly_income = 3000
 expected_lifespan = 60
 
 
-for i in range(30):
+for i in range(1, 30):
     print(f' year {i}')
 
     devaluation *= 1 - base_inf
@@ -20,7 +22,7 @@ for i in range(30):
 
     before_profit = initial
     initial_non_invested += monthly_salary * 12
-    initial *= 1 + interest_rate * 0.01
+    initial *= 1 + interest_rate * Decimal(0.01)
 
     pure_profit = initial - before_profit
     pure_profit_monthly = pure_profit / 12
@@ -32,7 +34,7 @@ for i in range(30):
     inflated_monthly = inflated_yearly / 12
 
     print(f"{initial=:.0f} {initial_non_invested=:.0f} {pure_initial_non_invested=:.0f}")
-    print(f"{pure_profit=:.0f} {pure_real_profit=:.0f} {pure_profit_monthly=:.0f} {pure_real_profit_monthly=:.0f}")
+    print(f"{pure_profit=:.0f} {pure_real_profit=:.0f} {pure_profit_monthly=:.0f} {pure_real_profit_monthly=}")
     print(f"{inflated_yearly=:.0f} {inflated_monthly=:.0f}")
     print()
 
@@ -43,8 +45,3 @@ for i in range(30):
         print('fucking hell!')
         break
 
-if __name__ == '__main__':
-    from decimal import *
-    a = Decimal(1.0) / 2
-    b = type(a)
-    print(b)
