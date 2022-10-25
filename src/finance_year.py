@@ -27,13 +27,22 @@ class FinanceYear:
     def generate_report(self):
         devaluation_rate = self.devaluation_rate * (1 - (self.inflation_rate * Decimal(0.01)))
 
-        yearly_expenses = self.monthly_expenses * 12
         yearly_salary = self.monthly_salary * 12
+        yearly_expenses = self.monthly_expenses * 12
 
         yearly_salary_indexed = yearly_salary * (1 + self.inflation_rate * Decimal(0.01))
         monthly_salary_indexed = yearly_salary_indexed / 12
         yearly_expenses_indexed = yearly_expenses * (1 + self.inflation_rate * Decimal(0.01))
         monthly_expenses_indexed = yearly_expenses_indexed / 12
+
+        if self.is_index_salary:
+            yearly_salary = yearly_salary_indexed
+
+        if self.is_index_expenses:
+            yearly_expenses = yearly_expenses_indexed
+
+        monthly_salary = yearly_salary / 12
+        monthly_expenses = yearly_expenses / 12
 
         before_income = self.previous_balance + yearly_salary - yearly_expenses
         after_income = before_income * (1 + (self.interest_rate * Decimal(0.01)))
@@ -54,8 +63,11 @@ class FinanceYear:
             "inflation_rate": self.inflation_rate,
             "devaluation_rate": devaluation_rate,
 
-            "monthly_salary": monthly_salary_indexed if self.is_index_salary else self.monthly_salary,
-            "monthly_expenses": monthly_expenses_indexed if self.is_index_expenses else self.monthly_expenses,
+            "salary_indexed": self.is_index_salary,
+            "expenses_indexed": self.is_index_expenses,
+
+            "monthly_salary": monthly_salary,
+            "monthly_expenses": monthly_expenses,
 
             "yearly_salary": yearly_salary,
             "yearly_expenses": yearly_expenses,
