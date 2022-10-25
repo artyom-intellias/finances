@@ -89,40 +89,39 @@ class PlanComposer:
                                  is_index_expenses=True if expenses_indexing_span == YearsIndexing.ALL_SUBSEQUENT else False)
             self.years.append(year)
 
-    def add_year(self, prev_year: FinanceYear,
-                 custom_interest_rate: Decimal = None,
-                 custom_inflation_rate: Decimal = None,
+    def add_year(self,
+                 monthly_salary: Decimal = None,
+                 monthly_expenses: Decimal = None,
+                 interest_rate: Decimal = None,
+                 inflation_rate: Decimal = None,
                  is_index_salary: bool = False,
                  is_index_expenses: bool = False
                  ) -> FinanceYear:
         """ calculates values for new year, based on previous """
-        base_year_report = prev_year.generate_report()
 
-        new_year = FinanceYear(
-            initial=base_year_report["total_income"],
-            monthly_salary=base_year_report["monthly_salary"],
-            monthly_expenses=base_year_report["monthly_expenses"],
-            is_index_salary=is_index_salary,
-            is_index_expenses=is_index_expenses,
-            inflation_rate=custom_inflation_rate if custom_inflation_rate else prev_year.inflation_rate,
-            interest_rate=custom_interest_rate if custom_interest_rate else prev_year.interest_rate,
-            devaluation_rate=base_year_report["devaluation_rate"],
-            previous_income=base_year_report["total_income"],
-            previous_inflation=base_year_report["total_inflated"]
-        )
-        return new_year
+        if self.years:
+            prev_year = self.years[-1]
+            prev_year_report = prev_year.report
 
-    # def get_plan_in_json(self):
-    #     return [year.report for year in self.years]
-    #     return json.dumps([year.report for year in self.years], ensure_ascii=False,
-    #                       default=decimal_into_json_float_rounded)
+            new_year = FinanceYear(
+                monthly_salary=monthly_salary if monthly_salary else prev_year_report["monthly_salary"],
+                monthly_expenses=monthly_expenses if monthly_expenses else prev_year_report["monthly_expenses"],
+                is_index_salary=is_index_salary,
+                is_index_expenses=is_index_expenses,
+                inflation_rate=inflation_rate if inflation_rate else prev_year.inflation_rate,
+                interest_rate=interest_rate if interest_rate else prev_year.interest_rate,
+                devaluation_rate=prev_year_report["devaluation_rate"],
+                previous_balance=prev_year_report["total_balance"],
+                previous_inflation=prev_year_report["total_inflated"])
 
-        # with open("sample.json", "w") as outfile:
-        #     outfile.write(years_reports_in_json)
-
-        # pprint(years_reports_in_json)
-
-
-if __name__ == '__main__':
-    plan = PlanComposer(monthly_salary=10, monthly_expenses=5, interest_rate=5, inflation_rate=5, years_total=5)
-    plan.get_plan_in_json()
+            self.years.append(new_year)
+            return new_year
+        else:
+            self.years.append(
+                FinanceYear(
+                    monthly_salary=monthly_salary,
+                    monthly_expenses=monthly_expenses,
+                    inflation_rate=inflation_rate,
+                    interest_rate=interest_rate
+                )
+            )
