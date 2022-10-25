@@ -68,3 +68,7 @@ input[type=range] {
 .year-list-item-btn {
     margin: 6px
 }
+
+.non-display {
+    display: none;
+}
