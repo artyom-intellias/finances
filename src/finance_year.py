@@ -37,21 +37,17 @@ class FinanceYear:
 
         before_income = self.previous_balance + yearly_salary - yearly_expenses
         after_income = before_income * (1 + (self.interest_rate * Decimal(0.01)))
-
         yearly_income = after_income - before_income
         monthly_income = yearly_income / 12
-
         yearly_adjusted_income = yearly_income * self.devaluation_rate
         monthly_adjusted_income = yearly_adjusted_income / 12
 
-        yearly_inflated = (yearly_salary + yearly_income) * (1 - (self.inflation_rate * Decimal(0.01)))
+        yearly_inflated = after_income * (self.inflation_rate * Decimal(0.01))
         monthly_inflated = yearly_inflated / 12
 
         total_balance = after_income
         total_adjusted_balance = total_balance * self.devaluation_rate
         total_inflated = self.previous_inflation + yearly_inflated
-
-        print(f'from year {self.previous_balance=} {before_income=} {after_income=} {total_balance=}')
 
         report = {
             "interest_rate": self.interest_rate,
