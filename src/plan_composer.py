@@ -112,18 +112,33 @@ class PlanComposer:
         else:
             prev_year = self.years[year_index - 1]
             prev_year_report = prev_year.report
-            self.years[year_index] = FinanceYear(
-                interest_rate=interest_rate if interest_rate is not None else year_prev_state.interest_rate,
-                inflation_rate=inflation_rate if inflation_rate is not None else year_prev_state.inflation_rate,
-                monthly_salary=monthly_salary if monthly_salary is not None else year_prev_state.monthly_salary,
-                monthly_expenses=monthly_expenses if monthly_expenses is not None else year_prev_state.monthly_expenses,
-                is_index_salary=is_index_salary if is_index_salary else year_prev_state.is_index_salary,
-                is_index_expenses=is_index_expenses if is_index_expenses else year_prev_state.is_index_expenses,
-                devaluation_rate=prev_year_report['devaluation_rate'],
-                previous_balance=prev_year_report['total_balance'],
-                previous_inflation=prev_year_report['total_inflated'],
-            )
 
+            interest_rate = interest_rate if interest_rate is not None else year_prev_state.interest_rate
+            inflation_rate = inflation_rate if inflation_rate is not None else year_prev_state.inflation_rate
+            monthly_salary = monthly_salary if monthly_salary is not None else year_prev_state.monthly_salary
+            monthly_expenses = monthly_expenses if monthly_expenses is not None else year_prev_state.monthly_expenses
+            is_index_salary = is_index_salary if is_index_salary else year_prev_state.is_index_salary
+            is_index_expenses = is_index_expenses if is_index_expenses else year_prev_state.is_index_expenses
+            devaluation_rate = prev_year_report['devaluation_rate']
+            previous_balance = prev_year_report['total_balance']
+            previous_inflation = prev_year_report['total_inflated']
+
+            self.years[year_index] = FinanceYear(
+                interest_rate=interest_rate,
+                inflation_rate=inflation_rate,
+                monthly_salary=monthly_salary,
+                monthly_expenses=monthly_expenses,
+                is_index_salary=is_index_salary,
+                is_index_expenses=is_index_expenses,
+                devaluation_rate=devaluation_rate,
+                previous_balance=previous_balance,
+                previous_inflation=previous_inflation,
+            )
+            # if year_number != len(self.years):
+            #     self.save_year(year_number,
+            #
+            #
+            #                    )
 
 
 """     for_this_and_subsequent влияет на каждый новый созданный год,
