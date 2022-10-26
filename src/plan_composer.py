@@ -141,8 +141,11 @@ class PlanComposer:
             kwargs_for_next_year.update({"is_index_expenses": is_index_expenses})
             kwargs_for_next_year.update({"expenses_indexing_span": expenses_indexing_span})
 
-        if year_number != len(self.years):  # if that's not last element, recursive call
-            self.save_year(year_number + 1, **kwargs_for_next_year)
+        # print(f'{kwargs_for_next_year=}')
+        next_year = year_number + 1
+        if next_year <= len(self.years):  # if that's not last element, recursive call
+            print(f'{next_year=}')
+            self.save_year(next_year, **kwargs_for_next_year)
 
 
 """     for_this_and_subsequent влияет на каждый новый созданный год,
@@ -153,22 +156,3 @@ class PlanComposer:
         если новая инфляция, галочка индексации, и любая ЗП, то заново расчитываем индексацию, и делаем отображение равных обычной и индексированной зп
         """
 
-        # year = None
-        # for i in range(total_years - n):
-        #     old_year = old_values[i]
-        #
-        #     interest_rate = custom_interest_rate if interest_rate_span == YearsSpan.ALL_SUBSEQUENT.value else old_year.interest_rate
-        #     inflation_rate = custom_inflation_rate if inflation_rate_span == YearsSpan.ALL_SUBSEQUENT.value else old_year.inflation_rate
-        #     monthly_salary = old_year.report[
-        #         'monthly_salary'] if monthly_salary_span == YearsSpan.THIS_YEAR.value else custom_monthly_salary if monthly_salary_span == YearsSpan.ALL_SUBSEQUENT.value else \
-        #     self.years[-1].report['monthly_salary']
-        #     is_index_salary = True if salary_indexing_span == YearsSpan.ALL_SUBSEQUENT.value else old_year.is_index_salary
-        #     is_index_expenses = True if expenses_indexing_span == YearsSpan.ALL_SUBSEQUENT.value else old_year.is_index_expenses
-        #
-        #
-        #     year = self.add_year(interest_rate=custom_interest_rate if interest_rate_span == YearsSpan.ALL_SUBSEQUENT.value else old_year.interest_rate,
-        #                   inflation_rate=custom_inflation_rate if inflation_rate_span == YearsSpan.ALL_SUBSEQUENT.value else old_year.inflation_rate,
-        #                   monthly_salary=old_year.report['monthly_salary'] if monthly_salary_span == YearsSpan.THIS_YEAR.value else custom_monthly_salary if monthly_salary_span == YearsSpan.ALL_SUBSEQUENT.value else self.years[-1].report['monthly_salary'],
-        #                   monthly_expenses=old_year.report['monthly_expenses'] if monthly_salary_span == YearsSpan.THIS_YEAR.value else custom_monthly_expenses if monthly_expenses_span == YearsSpan.ALL_SUBSEQUENT.value else self.years[-1].report['monthly_expenses'],
-        #                   is_index_salary=True if salary_indexing_span == YearsSpan.ALL_SUBSEQUENT.value else old_year.is_index_salary,
-        #                   is_index_expenses=True if expenses_indexing_span == YearsSpan.ALL_SUBSEQUENT.value else old_year.is_index_expenses)
