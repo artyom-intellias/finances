@@ -129,15 +129,15 @@ class PlanComposer:
             kwargs_for_next_year.update({"inflation_rate": inflation_rate if inflation_rate is not None else year_prev_state.inflation_rate})
             kwargs_for_next_year.update({"inflation_rate_span": inflation_rate_span})
         if monthly_salary_span == YearsSpan.ALL_SUBSEQUENT.value:
-            kwargs_for_next_year.update({"monthly_salary": monthly_salary if monthly_salary is not None else year_prev_state.monthly_salary})
             kwargs_for_next_year.update({"monthly_salary_span": monthly_salary_span})
         if monthly_expenses_span == YearsSpan.ALL_SUBSEQUENT.value:
-            kwargs_for_next_year.update({"monthly_expenses": monthly_expenses if monthly_expenses is not None else year_prev_state.monthly_expenses})
             kwargs_for_next_year.update({"monthly_expenses_span": monthly_expenses_span})
         if salary_indexing_span == YearsSpan.ALL_SUBSEQUENT.value:
+            kwargs_for_next_year.update({"monthly_salary": self.years[year_index].report['monthly_salary']})
             kwargs_for_next_year.update({"is_index_salary": is_index_salary})
             kwargs_for_next_year.update({"salary_indexing_span": salary_indexing_span})
         if expenses_indexing_span == YearsSpan.ALL_SUBSEQUENT.value:
+            kwargs_for_next_year.update({"monthly_expenses": self.years[year_index].report['monthly_expenses']})
             kwargs_for_next_year.update({"is_index_expenses": is_index_expenses})
             kwargs_for_next_year.update({"expenses_indexing_span": expenses_indexing_span})
 
