@@ -68,7 +68,7 @@ def e_save_year_btn(e):
         kwargs.update({'is_index_salary': is_index_salary})
         kwargs.update({'salary_indexing_span': salary_indexing_span})
     if is_index_expenses:
-        kwargs.update({'is_index_salary': is_index_expenses})
+        kwargs.update({'is_index_expenses': is_index_expenses})
         kwargs.update({'expenses_indexing_span': expenses_indexing_span})
 
     js.document.plan.save_year(active_year,
