@@ -129,8 +129,10 @@ class PlanComposer:
             kwargs_for_next_year.update({"inflation_rate": inflation_rate if inflation_rate is not None else year_prev_state.inflation_rate})
             kwargs_for_next_year.update({"inflation_rate_span": inflation_rate_span})
         if monthly_salary_span == YearsSpan.ALL_SUBSEQUENT.value:
+            kwargs_for_next_year.update({"monthly_salary": self.years[year_index].report['monthly_salary']})
             kwargs_for_next_year.update({"monthly_salary_span": monthly_salary_span})
         if monthly_expenses_span == YearsSpan.ALL_SUBSEQUENT.value:
+            kwargs_for_next_year.update({"monthly_expenses": self.years[year_index].report['monthly_expenses']})
             kwargs_for_next_year.update({"monthly_expenses_span": monthly_expenses_span})
         if salary_indexing_span == YearsSpan.ALL_SUBSEQUENT.value:
             kwargs_for_next_year.update({"monthly_salary": self.years[year_index].report['monthly_salary']})
