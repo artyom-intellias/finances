@@ -2,12 +2,12 @@ from decimal import Decimal
 
 
 devaluation = 1
-base_inf = Decimal(0.02)
-interest_rate = 5
+base_inf = Decimal(0.05)
+interest_rate = 10
 initial = 0
 initial_non_invested = 0
 
-monthly_salary = 3000
+monthly_salary = 2000
 wanted_monthly_income = 3000
 
 expected_lifespan = 60
