@@ -9,3 +9,6 @@ from pyodide.ffi import create_proxy
 from decimal import Decimal
 from plan_composer import PlanComposer
 
+
+for i in range(4):
+    trigger_event(e_add_year)
