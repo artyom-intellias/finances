@@ -63,6 +63,14 @@ def e_save_year_btn(e):
     salary_indexing_span = js.document.getElementById('monthly_salary_indexing_span_input').value
     expenses_indexing_span = js.document.getElementById('monthly_expenses_indexing_span_input').value
 
+    kwargs = {}
+    if is_index_salary:
+        kwargs.update({'is_index_salary': is_index_salary})
+        kwargs.update({'salary_indexing_span': salary_indexing_span})
+    if is_index_expenses:
+        kwargs.update({'is_index_salary': is_index_expenses})
+        kwargs.update({'expenses_indexing_span': expenses_indexing_span})
+
     js.document.plan.save_year(active_year,
                                interest_rate=Decimal(interest_rate),
                                inflation_rate=Decimal(inflation_rate),
@@ -72,10 +80,7 @@ def e_save_year_btn(e):
                                inflation_rate_span=inflation_rate_span,
                                monthly_salary_span=monthly_salary_span,
                                monthly_expenses_span=monthly_expenses_span,
-                               is_index_salary=is_index_salary,
-                               is_index_expenses=is_index_expenses,
-                               salary_indexing_span=salary_indexing_span,
-                               expenses_indexing_span=expenses_indexing_span
+                               **kwargs
                                )
 
     # fill with calculated data
