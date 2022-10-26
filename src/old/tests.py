@@ -62,11 +62,32 @@ def test_add_index_expenses(empty_plan):
     empty_plan.add_year(monthly_expenses=initial_salary, inflation_rate=new_inflation, is_index_expenses=True)
     assert float(empty_plan.years[-1].report['monthly_expenses']) == float(12)
 
-def test_save_monthly_salary_one_year(three_years_plan):
+def test_save_one_year_plan(one_year_plan):
     year_number = 1
-    three_years_plan.save_year(year_number, monthly_salary=3000)
-    assert three_years_plan.years[-1].monthly_salary == Decimal(2000)
-    assert three_years_plan.years[-1].report['monthly_salary'] == Decimal(2000)
+    one_year_plan.save_year(year_number, monthly_salary=Decimal(3000))
+    assert not one_year_plan.years[-1].monthly_salary == Decimal(2000)
+    assert not one_year_plan.years[-1].report['monthly_salary'] == Decimal(2000)
+    assert one_year_plan.years[-1].monthly_salary == Decimal(3000)
+    assert one_year_plan.years[-1].report['monthly_salary'] == Decimal(3000)
+
+    one_year_plan.save_year(year_number, monthly_expenses=Decimal(3000))
+    assert not one_year_plan.years[-1].monthly_expenses == Decimal(2000)
+    assert not one_year_plan.years[-1].report['monthly_expenses'] == Decimal(2000)
+    assert one_year_plan.years[-1].monthly_expenses == Decimal(3000)
+    assert one_year_plan.years[-1].report['monthly_expenses'] == Decimal(3000)
+
+    one_year_plan.save_year(year_number, inflation_rate=Decimal(50))
+    assert not one_year_plan.years[-1].inflation_rate == Decimal(2000)
+    assert not one_year_plan.years[-1].report['inflation_rate'] == Decimal(2000)
+    assert one_year_plan.years[-1].inflation_rate == Decimal(50)
+    assert one_year_plan.years[-1].report['inflation_rate'] == Decimal(50)
+
+    one_year_plan.save_year(year_number, interest_rate=Decimal(50))
+    assert not one_year_plan.years[-1].interest_rate == Decimal(2000)
+    assert not one_year_plan.years[-1].report['interest_rate'] == Decimal(2000)
+    assert one_year_plan.years[-1].interest_rate == Decimal(50)
+    assert one_year_plan.years[-1].report['interest_rate'] == Decimal(50)
+
 
 def test_save_monthly_salary_single(three_years_plan):...
 def test_save_monthly_salary_single_indexed(three_years_plan): ...
