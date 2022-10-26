@@ -77,11 +77,11 @@ def test_save_single_year_plan(one_year_plan):
     assert plan.years[-1].monthly_salary == Decimal(3000)
     assert plan.years[-1].report['monthly_salary'] == Decimal(3000)
 
-    plan.save_year(year_number, monthly_expenses=Decimal(3000))
+    plan.save_year(year_number, monthly_expenses=Decimal(500))
     assert not plan.years[-1].monthly_expenses == Decimal(2000)
     assert not plan.years[-1].report['monthly_expenses'] == Decimal(2000)
-    assert plan.years[-1].monthly_expenses == Decimal(3000)
-    assert plan.years[-1].report['monthly_expenses'] == Decimal(3000)
+    assert plan.years[-1].monthly_expenses == Decimal(500)
+    assert plan.years[-1].report['monthly_expenses'] == Decimal(500)
 
     plan.save_year(year_number, inflation_rate=Decimal(50))
     assert not plan.years[-1].inflation_rate == Decimal(2000)
@@ -94,6 +94,27 @@ def test_save_single_year_plan(one_year_plan):
     assert not plan.years[-1].report['interest_rate'] == Decimal(2000)
     assert plan.years[-1].interest_rate == Decimal(50)
     assert plan.years[-1].report['interest_rate'] == Decimal(50)
+
+    plan.save_year(year_number, is_index_salary=True)
+    assert not plan.years[-1].is_index_salary == False
+    assert not plan.years[-1].report['salary_was_indexed'] == False
+    assert plan.years[-1].is_index_salary == True
+    assert plan.years[-1].report['salary_was_indexed'] == True
+    assert not plan.years[-1].report['monthly_salary'] == Decimal(3000)
+    assert not plan.years[-1].report['monthly_salary_indexed'] == Decimal(3000)
+    assert float(plan.years[-1].report['monthly_salary_indexed']) == float(4500)
+    assert float(plan.years[-1].report['monthly_salary']) == float(4500)
+
+    plan.save_year(year_number, is_index_expenses=True)
+    assert not plan.years[-1].is_index_expenses == False
+    assert not plan.years[-1].report['expenses_was_indexed'] == False
+    assert plan.years[-1].is_index_expenses == True
+    assert plan.years[-1].report['expenses_was_indexed'] == True
+    assert not plan.years[-1].report['monthly_expenses'] == Decimal(3000)
+    assert not plan.years[-1].report['monthly_expenses_indexed'] == Decimal(3000)
+    assert float(plan.years[-1].report['monthly_expenses_indexed']) == float(750)
+    assert float(plan.years[-1].report['monthly_expenses']) == float(750)
+
 
 def test_save_two_years_plan_second_year(two_years_plan):
     year_number = 2
@@ -121,6 +142,26 @@ def test_save_two_years_plan_second_year(two_years_plan):
     assert not plan.years[-1].report['interest_rate'] == Decimal(2000)
     assert plan.years[-1].interest_rate == Decimal(50)
     assert plan.years[-1].report['interest_rate'] == Decimal(50)
+
+    plan.save_year(year_number, is_index_salary=True)
+    assert not plan.years[-1].is_index_salary == False
+    assert not plan.years[-1].report['salary_was_indexed'] == False
+    assert plan.years[-1].is_index_salary == True
+    assert plan.years[-1].report['salary_was_indexed'] == True
+    assert not plan.years[-1].report['monthly_salary'] == Decimal(3000)
+    assert not plan.years[-1].report['monthly_salary_indexed'] == Decimal(3000)
+    assert float(plan.years[-1].report['monthly_salary_indexed']) == float(4500)
+    assert float(plan.years[-1].report['monthly_salary']) == float(4500)
+
+    plan.save_year(year_number, is_index_expenses=True)
+    assert not plan.years[-1].is_index_expenses == False
+    assert not plan.years[-1].report['expenses_was_indexed'] == False
+    assert plan.years[-1].is_index_expenses == True
+    assert plan.years[-1].report['expenses_was_indexed'] == True
+    assert not plan.years[-1].report['monthly_expenses'] == Decimal(3000)
+    assert not plan.years[-1].report['monthly_expenses_indexed'] == Decimal(3000)
+    assert float(plan.years[-1].report['monthly_expenses_indexed']) == float(750)
+    assert float(plan.years[-1].report['monthly_expenses']) == float(750)
 
 
 def test_save_monthly_salary_single(three_years_plan):...
