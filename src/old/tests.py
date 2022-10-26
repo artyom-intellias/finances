@@ -47,19 +47,23 @@ def test_add_inflation_rate_consistency(empty_plan):
 
 def test_add_index_salary(empty_plan):
     initial_salary = Decimal(10)
-    empty_plan.add_year(monthly_salary=initial_salary, is_index_salary=True)
-    assert empty_plan.years[-1].report['monthly_salary'] == initial_salary
-
     inflation = Decimal(10)
+
     empty_plan.add_year(monthly_salary=initial_salary, inflation_rate=inflation, is_index_salary=True)
     assert float(empty_plan.years[-1].report['monthly_salary']) == float(11)
 
+    new_inflation = Decimal(20)
+    empty_plan.add_year(monthly_salary=initial_salary, inflation_rate=new_inflation, is_index_salary=True)
+    assert float(empty_plan.years[-1].report['monthly_salary']) == float(12)
+
 
 def test_add_index_expenses(empty_plan):
-    initial_expenses = Decimal(10)
-    empty_plan.add_year(monthly_expenses=initial_expenses, is_index_expenses=True)
-    assert empty_plan.years[-1].report['monthly_expenses'] == initial_expenses
-
+    initial_salary = Decimal(10)
     inflation = Decimal(10)
-    empty_plan.add_year(monthly_expenses=initial_expenses, inflation_rate=inflation, is_index_expenses=True)
+
+    empty_plan.add_year(monthly_expenses=initial_salary, inflation_rate=inflation, is_index_expenses=True)
     assert float(empty_plan.years[-1].report['monthly_expenses']) == float(11)
+
+    new_inflation = Decimal(20)
+    empty_plan.add_year(monthly_expenses=initial_salary, inflation_rate=new_inflation, is_index_expenses=True)
+    assert float(empty_plan.years[-1].report['monthly_expenses']) == float(12)

@@ -76,7 +76,9 @@ class PlanComposer:
                     monthly_salary=monthly_salary if monthly_salary is not None else Decimal(0),
                     monthly_expenses=monthly_expenses if monthly_expenses is not None else Decimal(0),
                     inflation_rate=inflation_rate if inflation_rate is not None else Decimal(0),
-                    interest_rate=interest_rate if interest_rate is not None else Decimal(0)
+                    interest_rate=interest_rate if interest_rate is not None else Decimal(0),
+                    is_index_salary=is_index_salary,
+                    is_index_expenses=is_index_expenses,
                 ))
         return self.years[-1]
 
