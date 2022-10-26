@@ -13,8 +13,8 @@ def one_year_plan(empty_plan):
     return empty_plan
 @pytest.fixture
 def three_years_plan(one_year_plan):
-    one_year_plan.add()
-    one_year_plan.add()
+    one_year_plan.add_year()
+    one_year_plan.add_year()
     return one_year_plan
 def test_empty(empty_plan):
     assert len(empty_plan.years) == 0
@@ -63,6 +63,11 @@ def test_add_index_expenses(empty_plan):
     assert float(empty_plan.years[-1].report['monthly_expenses']) == float(12)
 
 def test_save_monthly_salary_one_year(three_years_plan):
+    year_number = 1
+    three_years_plan.save_year(year_number, monthly_salary=3000)
+    assert three_years_plan.years[-1].monthly_salary == Decimal(2000)
+    assert three_years_plan.years[-1].report['monthly_salary'] == Decimal(2000)
+
 def test_save_monthly_salary_single(three_years_plan):...
 def test_save_monthly_salary_single_indexed(three_years_plan): ...
 def test_save_monthly_salary_multi(three_years_plan): ...
