@@ -22,7 +22,6 @@ def two_years_plan(one_year_plan):
 def three_years_plan(two_years_plan):
     two_years_plan.add_year()
     return two_years_plan
-
 def test_empty(empty_plan):
     assert len(empty_plan.years) == 0
 def test_add(empty_plan):
@@ -71,29 +70,57 @@ def test_add_index_expenses(empty_plan):
 
 def test_save_single_year_plan(one_year_plan):
     year_number = 1
-    one_year_plan.save_year(year_number, monthly_salary=Decimal(3000))
-    assert not one_year_plan.years[-1].monthly_salary == Decimal(2000)
-    assert not one_year_plan.years[-1].report['monthly_salary'] == Decimal(2000)
-    assert one_year_plan.years[-1].monthly_salary == Decimal(3000)
-    assert one_year_plan.years[-1].report['monthly_salary'] == Decimal(3000)
+    plan = one_year_plan
+    plan.save_year(year_number, monthly_salary=Decimal(3000))
+    assert not plan.years[-1].monthly_salary == Decimal(2000)
+    assert not plan.years[-1].report['monthly_salary'] == Decimal(2000)
+    assert plan.years[-1].monthly_salary == Decimal(3000)
+    assert plan.years[-1].report['monthly_salary'] == Decimal(3000)
 
-    one_year_plan.save_year(year_number, monthly_expenses=Decimal(3000))
-    assert not one_year_plan.years[-1].monthly_expenses == Decimal(2000)
-    assert not one_year_plan.years[-1].report['monthly_expenses'] == Decimal(2000)
-    assert one_year_plan.years[-1].monthly_expenses == Decimal(3000)
-    assert one_year_plan.years[-1].report['monthly_expenses'] == Decimal(3000)
+    plan.save_year(year_number, monthly_expenses=Decimal(3000))
+    assert not plan.years[-1].monthly_expenses == Decimal(2000)
+    assert not plan.years[-1].report['monthly_expenses'] == Decimal(2000)
+    assert plan.years[-1].monthly_expenses == Decimal(3000)
+    assert plan.years[-1].report['monthly_expenses'] == Decimal(3000)
 
-    one_year_plan.save_year(year_number, inflation_rate=Decimal(50))
-    assert not one_year_plan.years[-1].inflation_rate == Decimal(2000)
-    assert not one_year_plan.years[-1].report['inflation_rate'] == Decimal(2000)
-    assert one_year_plan.years[-1].inflation_rate == Decimal(50)
-    assert one_year_plan.years[-1].report['inflation_rate'] == Decimal(50)
+    plan.save_year(year_number, inflation_rate=Decimal(50))
+    assert not plan.years[-1].inflation_rate == Decimal(2000)
+    assert not plan.years[-1].report['inflation_rate'] == Decimal(2000)
+    assert plan.years[-1].inflation_rate == Decimal(50)
+    assert plan.years[-1].report['inflation_rate'] == Decimal(50)
 
-    one_year_plan.save_year(year_number, interest_rate=Decimal(50))
-    assert not one_year_plan.years[-1].interest_rate == Decimal(2000)
-    assert not one_year_plan.years[-1].report['interest_rate'] == Decimal(2000)
-    assert one_year_plan.years[-1].interest_rate == Decimal(50)
-    assert one_year_plan.years[-1].report['interest_rate'] == Decimal(50)
+    plan.save_year(year_number, interest_rate=Decimal(50))
+    assert not plan.years[-1].interest_rate == Decimal(2000)
+    assert not plan.years[-1].report['interest_rate'] == Decimal(2000)
+    assert plan.years[-1].interest_rate == Decimal(50)
+    assert plan.years[-1].report['interest_rate'] == Decimal(50)
+
+def test_save_two_years_plan_second_year(two_years_plan):
+    year_number = 2
+    plan = two_years_plan
+    plan.save_year(year_number, monthly_salary=Decimal(3000))
+    assert not plan.years[-1].monthly_salary == Decimal(2000)
+    assert not plan.years[-1].report['monthly_salary'] == Decimal(2000)
+    assert plan.years[-1].monthly_salary == Decimal(3000)
+    assert plan.years[-1].report['monthly_salary'] == Decimal(3000)
+
+    plan.save_year(year_number, monthly_expenses=Decimal(3000))
+    assert not plan.years[-1].monthly_expenses == Decimal(2000)
+    assert not plan.years[-1].report['monthly_expenses'] == Decimal(2000)
+    assert plan.years[-1].monthly_expenses == Decimal(3000)
+    assert plan.years[-1].report['monthly_expenses'] == Decimal(3000)
+
+    plan.save_year(year_number, inflation_rate=Decimal(50))
+    assert not plan.years[-1].inflation_rate == Decimal(2000)
+    assert not plan.years[-1].report['inflation_rate'] == Decimal(2000)
+    assert plan.years[-1].inflation_rate == Decimal(50)
+    assert plan.years[-1].report['inflation_rate'] == Decimal(50)
+
+    plan.save_year(year_number, interest_rate=Decimal(50))
+    assert not plan.years[-1].interest_rate == Decimal(2000)
+    assert not plan.years[-1].report['interest_rate'] == Decimal(2000)
+    assert plan.years[-1].interest_rate == Decimal(50)
+    assert plan.years[-1].report['interest_rate'] == Decimal(50)
 
 
 def test_save_monthly_salary_single(three_years_plan):...

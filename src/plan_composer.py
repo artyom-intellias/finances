@@ -110,18 +110,19 @@ class PlanComposer:
                 is_index_expenses=is_index_expenses if is_index_expenses else year_prev_state.is_index_expenses
             )
         else:
-            pass
-            # self.years[year_index] = FinanceYear(
-            #     interest_rate=custom_interest_rate if custom_interest_rate is not None else year_prev_state.report['interest_rate'],
-            #     inflation_rate=custom_inflation_rate if custom_inflation_rate is not None else year_prev_state.report['inflation_rate'],
-            #     monthly_salary=custom_monthly_salary if custom_monthly_salary is not None else year_prev_state.report['monthly_salary'],
-            #     monthly_expenses=custom_monthly_expenses if custom_monthly_expenses is not None else year_prev_state.report['monthly_expenses'],
-            #     # is_index_salary=True if year_prev_state.report['salary_was_indexed'] else None,
-            #     # is_index_expenses=False if year_prev_state.report['expenses_was_indexed'] else None,
-            #     devaluation_rate=year_prev_state.report['devaluation_rate'],
-            #     previous_balance=year_prev_state.report['previous_balance'],
-            #     previous_inflation=year_prev_state.report['previous_inflation'],
-            # )
+            prev_year = self.years[year_index - 1]
+            prev_year_report = prev_year.report
+            self.years[year_index] = FinanceYear(
+                interest_rate=interest_rate if interest_rate is not None else year_prev_state.interest_rate,
+                inflation_rate=inflation_rate if inflation_rate is not None else year_prev_state.inflation_rate,
+                monthly_salary=monthly_salary if monthly_salary is not None else year_prev_state.monthly_salary,
+                monthly_expenses=monthly_expenses if monthly_expenses is not None else year_prev_state.monthly_expenses,
+                is_index_salary=is_index_salary if is_index_salary else year_prev_state.is_index_salary,
+                is_index_expenses=is_index_expenses if is_index_expenses else year_prev_state.is_index_expenses,
+                devaluation_rate=prev_year_report['devaluation_rate'],
+                previous_balance=prev_year_report['total_balance'],
+                previous_inflation=prev_year_report['total_inflated'],
+            )
 
 
 
