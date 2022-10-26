@@ -22,6 +22,7 @@ def two_years_plan(one_year_plan):
 def three_years_plan(two_years_plan):
     two_years_plan.add_year()
     return two_years_plan
+
 def test_empty(empty_plan):
     assert len(empty_plan.years) == 0
 def test_add(empty_plan):
@@ -160,8 +161,11 @@ def test_save_two_years_plan_second_year(two_years_plan):
     assert plan.years[-1].report['expenses_was_indexed'] == True
     assert not plan.years[-1].report['monthly_expenses'] == Decimal(3000)
     assert not plan.years[-1].report['monthly_expenses_indexed'] == Decimal(3000)
-    assert float(plan.years[-1].report['monthly_expenses_indexed']) == float(750)
-    assert float(plan.years[-1].report['monthly_expenses']) == float(750)
+    assert float(plan.years[-1].report['monthly_expenses_indexed']) == float(4500)
+    assert float(plan.years[-1].report['monthly_expenses']) == float(4500)
+
+
+
 
 
 def test_save_monthly_salary_single(three_years_plan):...
