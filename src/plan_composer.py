@@ -102,7 +102,7 @@ class PlanComposer:
         year_prev_state = self.years[year_index]
 
         kwargs_for_current = {}
-        if len(self.years) > 1:
+        if len(self.years) > 1 and (year_index - 1) >= 0:
             prev_year = self.years[year_index - 1]
             prev_year_report = prev_year.report
 
@@ -141,10 +141,8 @@ class PlanComposer:
             kwargs_for_next_year.update({"is_index_expenses": is_index_expenses})
             kwargs_for_next_year.update({"expenses_indexing_span": expenses_indexing_span})
 
-        # print(f'{kwargs_for_next_year=}')
         next_year = year_number + 1
         if next_year <= len(self.years):  # if that's not last element, recursive call
-            print(f'{next_year=}')
             self.save_year(next_year, **kwargs_for_next_year)
 
 
