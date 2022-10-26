@@ -39,12 +39,12 @@ def e_save_year_btn(e):
 
     # input values
 
-    custom_inflation_rate = validate_years_param('inflation_rate_detailed_input', min_=0, max_=1000)
-    custom_interest_rate = validate_years_param('interest_rate_detailed_input', min_=0, max_=100)
-    custom_monthly_salary = validate_years_param('monthly_salary_detailed_input', min_=1, max_=100000)
-    custom_monthly_expenses = validate_years_param('monthly_expenses_detailed_input', min_=0, max_=100000)
+    inflation_rate = validate_years_param('inflation_rate_detailed_input', min_=0, max_=1000)
+    interest_rate = validate_years_param('interest_rate_detailed_input', min_=0, max_=100)
+    monthly_salary = validate_years_param('monthly_salary_detailed_input', min_=1, max_=100000)
+    monthly_expenses = validate_years_param('monthly_expenses_detailed_input', min_=0, max_=100000)
 
-    for i in [custom_inflation_rate, custom_interest_rate, custom_monthly_salary, custom_monthly_expenses]:
+    for i in [inflation_rate, interest_rate, monthly_salary, monthly_expenses]:
         if i is None or i == '':
             return None
 
@@ -63,11 +63,11 @@ def e_save_year_btn(e):
     salary_indexing_span = js.document.getElementById('monthly_salary_indexing_span_input').value
     expenses_indexing_span = js.document.getElementById('monthly_expenses_indexing_span_input').value
 
-    js.document.plan.save_year(active_year, years_amount,
-                               custom_interest_rate=Decimal(custom_interest_rate),
-                               custom_inflation_rate=Decimal(custom_inflation_rate),
-                               custom_monthly_salary=Decimal(custom_monthly_salary),
-                               custom_monthly_expenses=Decimal(custom_monthly_expenses),
+    js.document.plan.save_year(active_year,
+                               interest_rate=Decimal(interest_rate),
+                               inflation_rate=Decimal(inflation_rate),
+                               monthly_salary=Decimal(monthly_salary),
+                               monthly_expenses=Decimal(monthly_expenses),
                                interest_rate_span=interest_rate_span,
                                inflation_rate_span=inflation_rate_span,
                                monthly_salary_span=monthly_salary_span,
