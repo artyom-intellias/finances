@@ -77,17 +77,6 @@ class FinanceYear:
             "salary_was_indexed": self.is_index_salary,
             "expenses_was_indexed": self.is_index_expenses,
 
-            "monthly_salary": monthly_salary,
-            "monthly_expenses": monthly_expenses,
-
-            "yearly_salary": yearly_salary,
-            "yearly_expenses": yearly_expenses,
-
-            "monthly_salary_indexed": monthly_salary_indexed,
-            "yearly_salary_indexed": yearly_salary_indexed,
-            "monthly_expenses_indexed": monthly_expenses_indexed,
-            "yearly_expenses_indexed": yearly_expenses_indexed,
-
             "yearly_income": yearly_income,
             "monthly_income": monthly_income,
 
@@ -100,6 +89,8 @@ class FinanceYear:
             "total_balance": total_balance,
             "total_adjusted_balance": total_adjusted_balance,
             "total_inflated": total_inflated,
+
+            "devaluation_rate": devaluation_rate,
         }
         return report
 
