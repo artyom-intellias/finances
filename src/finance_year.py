@@ -59,9 +59,20 @@ class FinanceYear:
         total_inflated = self.previous_inflation + yearly_inflated
 
         report = {
+            "monthly_salary": monthly_salary,
+            "yearly_salary": yearly_salary,
+
+            "monthly_expenses": monthly_expenses,
+            "yearly_expenses": yearly_expenses,
+
             "interest_rate": self.interest_rate,
             "inflation_rate": self.inflation_rate,
-            "devaluation_rate": devaluation_rate,
+
+            "monthly_salary_indexed": monthly_salary_indexed,
+            "yearly_salary_indexed": yearly_salary_indexed,
+
+            "monthly_expenses_indexed": monthly_expenses_indexed,
+            "yearly_expenses_indexed": yearly_expenses_indexed,
 
             "salary_was_indexed": self.is_index_salary,
             "expenses_was_indexed": self.is_index_expenses,
