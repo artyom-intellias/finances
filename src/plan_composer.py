@@ -43,6 +43,43 @@ class PlanComposer:
     def __init__(self):
         self.years = []
 
+    def add_year(self,
+                 monthly_salary: Decimal = None,
+                 monthly_expenses: Decimal = None,
+                 interest_rate: Decimal = None,
+                 inflation_rate: Decimal = None,
+                 is_index_salary: bool = False,
+                 is_index_expenses: bool = False
+                 ) -> FinanceYear:
+        """ calculates values for new year, based on previous """
+
+        # TODO сделать автоиндексацию по предыдущему году
+
+        if self.years:
+            prev_year = self.years[-1]
+            prev_year_report = prev_year.report
+            self.years.append(FinanceYear(
+                monthly_salary=monthly_salary if monthly_salary is not None else prev_year_report["monthly_salary"],
+                monthly_expenses=monthly_expenses if monthly_expenses is not None else prev_year_report[
+                    "monthly_expenses"],
+                inflation_rate=inflation_rate if inflation_rate is not None else prev_year.inflation_rate,
+                interest_rate=interest_rate if interest_rate is not None else prev_year.interest_rate,
+                is_index_salary=is_index_salary,
+                is_index_expenses=is_index_expenses,
+                devaluation_rate=prev_year_report["devaluation_rate"],
+                previous_balance=prev_year_report["total_balance"],
+                previous_inflation=prev_year_report["total_inflated"]))
+
+        else:
+            self.years.append(
+                FinanceYear(
+                    monthly_salary=monthly_salary if monthly_salary is not None else Decimal(0),
+                    monthly_expenses=monthly_expenses if monthly_expenses is not None else Decimal(0),
+                    inflation_rate=inflation_rate if inflation_rate is not None else Decimal(0),
+                    interest_rate=interest_rate if interest_rate is not None else Decimal(0)
+                ))
+        return self.years[-1]
+
     def save_year(self, n: int, total_years: int,
                   custom_interest_rate: Decimal = None,
                   custom_inflation_rate: Decimal = None,
