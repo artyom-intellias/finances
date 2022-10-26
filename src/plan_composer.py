@@ -94,51 +94,55 @@ class PlanComposer:
                   monthly_expenses_span: YearsSpan = YearsSpan.THIS_YEAR.value,
                   salary_indexing_span: YearsSpan = YearsSpan.THIS_YEAR.value,
                   expenses_indexing_span: YearsSpan = YearsSpan.THIS_YEAR.value,
-                  is_index_salary: bool = False,
-                  is_index_expenses: bool = False,
+                  is_index_salary: bool = None,
+                  is_index_expenses: bool = None,
                   ):
         """apply new values from input, method called on "save" """
         year_index = year_number - 1
         year_prev_state = self.years[year_index]
-        if len(self.years) == 1:
-            self.years[year_index] = FinanceYear(
-                interest_rate=interest_rate if interest_rate is not None else year_prev_state.interest_rate,
-                inflation_rate=inflation_rate if inflation_rate is not None else year_prev_state.inflation_rate,
-                monthly_salary=monthly_salary if monthly_salary is not None else year_prev_state.monthly_salary,
-                monthly_expenses=monthly_expenses if monthly_expenses is not None else year_prev_state.monthly_expenses,
-                is_index_salary=is_index_salary if is_index_salary else year_prev_state.is_index_salary,
-                is_index_expenses=is_index_expenses if is_index_expenses else year_prev_state.is_index_expenses
-            )
-        else:
+
+        kwargs_for_current = {}
+        if len(self.years) > 1:
             prev_year = self.years[year_index - 1]
             prev_year_report = prev_year.report
 
-            interest_rate = interest_rate if interest_rate is not None else year_prev_state.interest_rate
-            inflation_rate = inflation_rate if inflation_rate is not None else year_prev_state.inflation_rate
-            monthly_salary = monthly_salary if monthly_salary is not None else year_prev_state.monthly_salary
-            monthly_expenses = monthly_expenses if monthly_expenses is not None else year_prev_state.monthly_expenses
-            is_index_salary = is_index_salary if is_index_salary else year_prev_state.is_index_salary
-            is_index_expenses = is_index_expenses if is_index_expenses else year_prev_state.is_index_expenses
-            devaluation_rate = prev_year_report['devaluation_rate']
-            previous_balance = prev_year_report['total_balance']
-            previous_inflation = prev_year_report['total_inflated']
+            kwargs_for_current.update({"devaluation_rate": prev_year_report['devaluation_rate']})
+            kwargs_for_current.update({"previous_balance": prev_year_report['total_balance']})
+            kwargs_for_current.update({"previous_inflation": prev_year_report['total_inflated']})
 
-            self.years[year_index] = FinanceYear(
-                interest_rate=interest_rate,
-                inflation_rate=inflation_rate,
-                monthly_salary=monthly_salary,
-                monthly_expenses=monthly_expenses,
-                is_index_salary=is_index_salary,
-                is_index_expenses=is_index_expenses,
-                devaluation_rate=devaluation_rate,
-                previous_balance=previous_balance,
-                previous_inflation=previous_inflation,
-            )
-            # if year_number != len(self.years):
-            #     self.save_year(year_number,
-            #
-            #
-            #                    )
+        self.years[year_index] = FinanceYear(
+            interest_rate=interest_rate if interest_rate is not None else year_prev_state.interest_rate,
+            inflation_rate=inflation_rate if inflation_rate is not None else year_prev_state.inflation_rate,
+            monthly_salary=monthly_salary if monthly_salary is not None else year_prev_state.monthly_salary,
+            monthly_expenses=monthly_expenses if monthly_expenses is not None else year_prev_state.monthly_expenses,
+            is_index_salary=is_index_salary,
+            is_index_expenses=is_index_expenses,
+            **kwargs_for_current
+        )
+
+        kwargs_for_next_year = {}
+
+        if interest_rate_span == YearsSpan.ALL_SUBSEQUENT.value:
+            kwargs_for_next_year.update({"interest_rate": interest_rate if interest_rate is not None else year_prev_state.interest_rate})
+            kwargs_for_next_year.update({"interest_rate_span": interest_rate_span})
+        if inflation_rate_span == YearsSpan.ALL_SUBSEQUENT.value:
+            kwargs_for_next_year.update({"inflation_rate": inflation_rate if inflation_rate is not None else year_prev_state.inflation_rate})
+            kwargs_for_next_year.update({"inflation_rate_span": inflation_rate_span})
+        if monthly_salary_span == YearsSpan.ALL_SUBSEQUENT.value:
+            kwargs_for_next_year.update({"monthly_salary": monthly_salary if monthly_salary is not None else year_prev_state.monthly_salary})
+            kwargs_for_next_year.update({"monthly_salary_span": monthly_salary_span})
+        if monthly_expenses_span == YearsSpan.ALL_SUBSEQUENT.value:
+            kwargs_for_next_year.update({"monthly_expenses": monthly_expenses if monthly_expenses is not None else year_prev_state.monthly_expenses})
+            kwargs_for_next_year.update({"monthly_expenses_span": monthly_expenses_span})
+        if salary_indexing_span == YearsSpan.ALL_SUBSEQUENT.value:
+            kwargs_for_next_year.update({"is_index_salary": is_index_salary})
+            kwargs_for_next_year.update({"salary_indexing_span": salary_indexing_span})
+        if expenses_indexing_span == YearsSpan.ALL_SUBSEQUENT.value:
+            kwargs_for_next_year.update({"is_index_expenses": is_index_expenses})
+            kwargs_for_next_year.update({"expenses_indexing_span": expenses_indexing_span})
+
+        if year_number != len(self.years):  # if that's not last element, recursive call
+            self.save_year(year_number + 1, **kwargs_for_next_year)
 
 
 """     for_this_and_subsequent влияет на каждый новый созданный год,
