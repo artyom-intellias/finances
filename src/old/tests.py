@@ -6,16 +6,23 @@ from src.plan_composer import PlanComposer
 @pytest.fixture
 def empty_plan():
     return PlanComposer()
+
 @pytest.fixture
 def one_year_plan(empty_plan):
     empty_plan.add_year(monthly_salary=Decimal(2000), monthly_expenses=Decimal(1000), interest_rate=Decimal(10),
                         inflation_rate=Decimal(10))
     return empty_plan
+
 @pytest.fixture
-def three_years_plan(one_year_plan):
-    one_year_plan.add_year()
+def two_years_plan(one_year_plan):
     one_year_plan.add_year()
     return one_year_plan
+
+@pytest.fixture
+def three_years_plan(two_years_plan):
+    two_years_plan.add_year()
+    return two_years_plan
+
 def test_empty(empty_plan):
     assert len(empty_plan.years) == 0
 def test_add(empty_plan):
@@ -62,7 +69,7 @@ def test_add_index_expenses(empty_plan):
     empty_plan.add_year(monthly_expenses=initial_salary, inflation_rate=new_inflation, is_index_expenses=True)
     assert float(empty_plan.years[-1].report['monthly_expenses']) == float(12)
 
-def test_save_one_year_plan(one_year_plan):
+def test_save_single_year_plan(one_year_plan):
     year_number = 1
     one_year_plan.save_year(year_number, monthly_salary=Decimal(3000))
     assert not one_year_plan.years[-1].monthly_salary == Decimal(2000)
